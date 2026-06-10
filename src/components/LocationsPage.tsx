@@ -65,7 +65,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
       
       {/* Title section from Specifications */}
       <div className="text-center mb-12">
-        <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// STATIONS MAP</span>
+        <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// STATIONS MAP</span>
         <h1 className="font-display text-4xl font-extrabold uppercase text-white tracking-widest mt-1">
           Strategic Site Network
         </h1>
@@ -109,13 +109,13 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             ></iframe>
             
             {/* Legend / Overlay */}
-            <div className="absolute top-4 left-4 z-10 bg-slate-950/95 border border-orange-500/30 px-3 py-2 font-mono text-[9px] text-orange-400 backdrop-blur-sm shadow-xl">
+            <div className="absolute top-4 left-4 z-10 bg-slate-950/95 border border-emerald-600/30 px-3 py-2 font-mono text-[9px] text-emerald-500 backdrop-blur-sm shadow-xl">
               <span className="font-bold">ACTIVE NODE:</span> {activeHub.city.toUpperCase()} [{activeHub.coords.lat}, {activeHub.coords.lng}]
             </div>
           </div>
 
           <div className="flex justify-between items-center mt-4 font-mono text-[9px] text-slate-500">
-            <span>SELECTED NODE STATUS: <span className="text-orange-400 uppercase font-black">{activeHub.status}</span></span>
+            <span>SELECTED NODE STATUS: <span className="text-emerald-500 uppercase font-black">{activeHub.status}</span></span>
             <span>STAFF MEMBERS: <span className="text-slate-300 font-bold">{activeHub.staff.split(',')[0]}</span></span>
           </div>
 
@@ -144,7 +144,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
                   />
                   <div className="absolute inset-0 bg-brand-dark/10 mix-blend-color" />
                   <div className={`absolute top-3 right-3 px-2 py-0.5 font-mono text-[8px] font-bold tracking-widest uppercase ${
-                    activeHub.status === 'NOMINAL' ? 'bg-emerald-500 text-slate-950 font-black' : 'bg-amber-400 text-slate-950'
+                    activeHub.status === 'NOMINAL' ? 'bg-emerald-500 text-slate-950 font-black' : 'bg-emerald-400 text-slate-950'
                   }`}>
                     STATE: {activeHub.status}
                   </div>
@@ -155,7 +155,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
                   <h3 className="font-display text-2xl font-black text-white uppercase tracking-tight">
                     {activeHub.name}
                   </h3>
-                  <div className="font-mono text-[10px] text-orange-400 mt-1 uppercase flex gap-2">
+                  <div className="font-mono text-[10px] text-emerald-500 mt-1 uppercase flex gap-2">
                     <span>GPS: {activeHub.coords.lat}</span>
                     <span>/</span>
                     <span>{activeHub.coords.lng}</span>
@@ -170,14 +170,14 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
                 {/* Details list logs */}
                 <div className="mt-6 border-t border-slate-850 pt-5 space-y-3 font-mono text-xs">
                   <div className="flex gap-2 items-start text-slate-400">
-                    <MapPin className="h-4 w-4 text-orange-500 shrink-0 mt-0.5" />
+                    <MapPin className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-[10px] text-slate-500 block uppercase font-bold">ADDRESS STATION:</span>
                       <span className="text-slate-300">{activeHub.address}</span>
                     </div>
                   </div>
                   <div className="flex gap-2 items-start text-slate-400">
-                    <Phone className="h-4 w-4 text-orange-500 shrink-0 mt-0.5" />
+                    <Phone className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
                     <div>
                       <span className="text-[10px] text-slate-500 block uppercase font-bold">CONTACT DIRECT:</span>
                       <span className="text-slate-300">{activeHub.phone}</span>
@@ -190,9 +190,9 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
               <div className="mt-8 border-t border-slate-900 pt-5">
                 <button
                   onClick={() => handleGetDirections(activeHub)}
-                  className="w-full flex items-center justify-center gap-2 border border-slate-700 bg-slate-900/60 hover:bg-slate-900 hover:border-orange-500/30 transition-all py-2.5 font-display text-xs font-bold uppercase tracking-widest text-slate-200 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 border border-slate-700 bg-slate-900/60 hover:bg-slate-900 hover:border-emerald-600/30 transition-all py-2.5 font-display text-xs font-bold uppercase tracking-widest text-slate-200 cursor-pointer"
                 >
-                  <Compass className="h-4 w-4 text-orange-500" />
+                  <Compass className="h-4 w-4 text-emerald-600" />
                   Generate Transit Directions
                 </button>
               </div>
@@ -213,17 +213,17 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             exit={{ opacity: 0, height: 0 }}
             className="border border-slate-800 bg-slate-950 p-6 mb-16 relative overflow-hidden font-mono text-xs"
           >
-            <div className="absolute top-0 left-0 h-2 w-2 border-t border-l border-orange-500" />
-            <div className="absolute top-0 right-0 h-2 w-2 border-t border-r border-orange-500" />
+            <div className="absolute top-0 left-0 h-2 w-2 border-t border-l border-emerald-600" />
+            <div className="absolute top-0 right-0 h-2 w-2 border-t border-r border-emerald-600" />
             
             <div className="flex items-center gap-2.5 border-b border-slate-900 pb-3 mb-4">
-              <Terminal className="h-4 w-4 text-orange-400 shrink-0" />
+              <Terminal className="h-4 w-4 text-emerald-500 shrink-0" />
               <span className="font-bold text-slate-300 uppercase">TRANSIT ROUTE GENERATOR CONSOLE // OUTPUT</span>
             </div>
 
             {calculatingPath ? (
               <div className="flex items-center gap-3 py-4 text-slate-500">
-                <Layers className="h-4 w-4 animate-spin text-orange-500" />
+                <Layers className="h-4 w-4 animate-spin text-emerald-600" />
                 <span>Computing dynamic transit vector lines based on real GPS metrics...</span>
               </div>
             ) : (
@@ -232,7 +232,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
                   <div key={idx} className="flex gap-3 leading-normal">
                     <span className="text-slate-600 select-none">[0{idx + 1}]</span>
                     <span 
-                      className={idx === 0 ? 'text-orange-400 font-bold' : idx === directionsPath.length - 1 ? 'text-emerald-400 font-bold' : 'text-slate-300'}
+                      className={idx === 0 ? 'text-emerald-500 font-bold' : idx === directionsPath.length - 1 ? 'text-emerald-400 font-bold' : 'text-slate-300'}
                       dangerouslySetInnerHTML={{ __html: path }}
                     />
                   </div>
@@ -245,7 +245,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
 
       {/* Global Command Center Grid List below */}
       <div className="mb-16">
-        <h3 className="font-display text-xs font-bold uppercase tracking-widest text-orange-400 mb-6">// STATION COMPENDIUM</h3>
+        <h3 className="font-display text-xs font-bold uppercase tracking-widest text-emerald-500 mb-6">// STATION COMPENDIUM</h3>
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
           {HUBS.map((hub) => (
             <div 
@@ -253,13 +253,13 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
               onClick={() => handleHubClick(hub)}
               className={`border p-4 cursor-pointer transition-all ${
                 activeHub.id === hub.id 
-                  ? 'border-orange-500 bg-orange-950/10 text-orange-400' 
+                  ? 'border-emerald-600 bg-emerald-950/10 text-emerald-500' 
                   : 'border-slate-850 bg-slate-900/10 text-slate-400 hover:border-slate-700 hover:text-slate-200'
               }`}
             >
               <div className="flex items-center justify-between mb-2">
                 <span className="font-display text-sm font-bold uppercase tracking-wider">{hub.city} unit</span>
-                <span className={`h-1.5 w-1.5 rounded-full ${hub.status === 'NOMINAL' ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'}`} />
+                <span className={`h-1.5 w-1.5 rounded-full ${hub.status === 'NOMINAL' ? 'bg-emerald-500 animate-pulse' : 'bg-emerald-500'}`} />
               </div>
               <p className="text-[10px] font-mono leading-relaxed truncate mb-1">
                 COORDS: {hub.coords.lat}
@@ -273,10 +273,10 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
       </div>
 
       {/* Primary Service Station Map Section */}
-      <section className="mb-16 border border-slate-800/80 bg-slate-900/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl shadow-orange-950/10 hover:border-slate-700/50 transition-all duration-300">
+      <section className="mb-16 border border-slate-800/80 bg-slate-900/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl shadow-emerald-950/10 hover:border-slate-700/50 transition-all duration-300">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// STRATEGIC INFRASTRUCTURE SITE</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// STRATEGIC INFRASTRUCTURE SITE</span>
             <h2 className="font-display text-3xl font-black text-white uppercase tracking-tight mt-1">
               Primary Service Station
             </h2>
@@ -285,17 +285,17 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             </p>
           </div>
           <div className="flex flex-col items-start md:items-end text-left md:text-right bg-slate-950/40 border border-slate-800 p-4 rounded-xl min-w-[240px]">
-            <span className="font-mono text-[10px] text-orange-400 uppercase tracking-widest font-black">STATION ADDR // GLOBAL COORDS</span>
+            <span className="font-mono text-[10px] text-emerald-500 uppercase tracking-widest font-black">STATION ADDR // GLOBAL COORDS</span>
             <span className="font-display text-md font-bold text-slate-100 mt-1">1101 Halsey Drive</span>
             <span className="font-display text-xs text-slate-400 font-medium">Leander, TX 78641</span>
           </div>
         </div>
         
-        <div className="relative h-[450px] w-full border border-slate-800/60 bg-slate-950 rounded-xl overflow-hidden shadow-2xl shadow-black/80 group">
+        <div className="relative h-[450px] w-full border border-slate-800/60 bg-slate-950 rounded-xl overflow-hidden shadow-2xl shadow-slate-950/80 group">
           {/* Elegant Floating Map Card overlay (Hidden on mobile for seamless navigation) */}
-          <div className="absolute top-4 left-4 z-10 hidden lg:block max-w-[320px] bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-5 rounded-xl shadow-2xl transition-all duration-300 group-hover:border-orange-500/30">
+          <div className="absolute top-4 left-4 z-10 hidden lg:block max-w-[320px] bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-5 rounded-xl shadow-2xl transition-all duration-300 group-hover:border-emerald-600/30">
             <div className="flex items-center gap-3 mb-3.5">
-              <div className="p-2.5 bg-orange-500/10 rounded-lg border border-orange-500/20 text-orange-400">
+              <div className="p-2.5 bg-emerald-700/10 rounded-lg border border-emerald-600/20 text-emerald-500">
                 <MapPin className="h-5 w-5" />
               </div>
               <div>
@@ -335,10 +335,10 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
           ></iframe>
           
           {/* Technical overlay corners to preserve brand vibe */}
-          <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500 pointer-events-none" />
-          <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-orange-500 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-orange-500 pointer-events-none" />
-          <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-orange-500 pointer-events-none" />
+          <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-emerald-600 pointer-events-none" />
+          <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-emerald-600 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-emerald-600 pointer-events-none" />
+          <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-emerald-600 pointer-events-none" />
         </div>
         
         <div className="mt-6 flex justify-center">
@@ -346,7 +346,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             href="https://www.google.com/maps/dir/?api=1&destination=1101+Halsey+Drive+Leander+TX+78641" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-orange-500/30 bg-orange-500/5 hover:bg-orange-500 hover:text-brand-dark transition-all duration-300 px-8 py-3.5 rounded-xl font-display text-xs font-bold uppercase tracking-wider text-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] hover:border-orange-500 cursor-pointer"
+            className="inline-flex items-center gap-2 border border-emerald-600/30 bg-emerald-700/5 hover:bg-emerald-700 hover:text-brand-dark transition-all duration-300 px-8 py-3.5 rounded-xl font-display text-xs font-bold uppercase tracking-wider text-emerald-500 hover:shadow-[0_0_20px_rgba(6, 95, 70,0.15)] hover:border-emerald-600 cursor-pointer"
           >
             <MapPin className="h-4 w-4" />
             Get Directions to Site
@@ -356,12 +356,12 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
 
       {/* Inquire globally Call to Action */}
       <section className="bg-brand-dark border border-slate-800 p-8 sm:p-12 relative overflow-hidden text-center max-w-4xl mx-auto">
-        <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500" />
-        <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-orange-500" />
-        <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-orange-500" />
-        <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-orange-500" />
+        <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-emerald-600" />
+        <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-emerald-600" />
+        <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-emerald-600" />
+        <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-emerald-600" />
 
-        <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// EXPANSION INQUIRIES</span>
+        <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// EXPANSION INQUIRIES</span>
         <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-white mt-1">
           Can't find a local office?
         </h2>
@@ -382,11 +382,11 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
               value={globalInquiryRegion}
               onChange={(e) => setGlobalInquiryRegion(e.target.value)}
               placeholder="E.g. Berlin, Tokyo, Sydney"
-              className="flex-1 bg-slate-950 border border-slate-800 focus:border-orange-500 px-4 py-2 text-slate-100 text-xs font-mono tracking-wide outline-none placeholder-slate-700"
+              className="flex-1 bg-slate-950 border border-slate-800 focus:border-emerald-600 px-4 py-2 text-slate-100 text-xs font-mono tracking-wide outline-none placeholder-slate-700"
             />
             <button
               type="submit"
-              className="bg-orange-500 text-brand-dark hover:bg-orange-600 transition-colors py-2 px-6 font-display text-xs font-bold uppercase tracking-wider cursor-pointer"
+              className="bg-emerald-700 text-brand-dark hover:bg-emerald-800 transition-colors py-2 px-6 font-display text-xs font-bold uppercase tracking-wider cursor-pointer"
             >
               Inquire Globally
             </button>

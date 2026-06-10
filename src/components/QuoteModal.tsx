@@ -113,15 +113,15 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             className="relative w-full max-w-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)] text-slate-100"
           >
             {/* Corner decorations */}
-            <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500" />
-            <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-orange-500" />
-            <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-orange-500" />
-            <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-orange-500" />
+            <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-emerald-600" />
+            <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-emerald-600" />
+            <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-emerald-600" />
+            <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-emerald-600" />
 
             {/* Header */}
             <div className="flex justify-between items-start border-b border-slate-900 pb-4 mb-6">
               <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center border-2 border-orange-500 font-mono text-sm font-bold text-orange-400">
+                <div className="flex h-8 w-8 items-center justify-center border-2 border-emerald-600 font-mono text-sm font-bold text-emerald-500">
                   <Calculator className="h-4.5 w-4.5" />
                 </div>
                 <div>
@@ -135,7 +135,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               </div>
               <button 
                 onClick={onClose} 
-                className="text-slate-500 hover:text-orange-500 p-1 bg-slate-950 hover:bg-slate-900 border border-transparent hover:border-slate-800 rounded transition-all"
+                className="text-slate-500 hover:text-emerald-600 p-1 bg-slate-950 hover:bg-slate-900 border border-transparent hover:border-slate-800 rounded transition-all"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -144,13 +144,13 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             {/* Sub-steps Indicator */}
             <div className="flex justify-between items-center mb-6 font-mono text-[10px] text-slate-500 border-b border-slate-900/60 pb-3">
               <div className="flex gap-4">
-                <span className={step === 1 ? 'text-orange-400 font-bold' : 'text-slate-500'}>01. PARAM_SPECS</span>
+                <span className={step === 1 ? 'text-emerald-500 font-bold' : 'text-slate-500'}>01. PARAM_SPECS</span>
                 <span>&rarr;</span>
-                <span className={step === 2 ? 'text-orange-400 font-bold' : 'text-slate-500'}>02. COMPILATION</span>
+                <span className={step === 2 ? 'text-emerald-500 font-bold' : 'text-slate-500'}>02. COMPILATION</span>
                 <span>&rarr;</span>
-                <span className={step === 3 ? 'text-orange-400 font-bold' : 'text-slate-500'}>03. GEN_INVOICE</span>
+                <span className={step === 3 ? 'text-emerald-500 font-bold' : 'text-slate-500'}>03. GEN_INVOICE</span>
               </div>
-              <div className="text-[9px] text-orange-500 font-extrabold uppercase">
+              <div className="text-[9px] text-emerald-600 font-extrabold uppercase">
                 BID_RES: ${activeEstimate.toLocaleString()} USD
               </div>
             </div>
@@ -184,7 +184,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <select
                           value={projectType}
                           onChange={(e) => setProjectType(e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-800 p-2.5 text-slate-200 focus:border-orange-500 outline-none rounded"
+                          className="w-full bg-slate-900 border border-slate-800 p-2.5 text-slate-200 focus:border-emerald-600 outline-none rounded"
                         >
                           <option value="water-remediation">Water Remediation (24/7 EMERGENCY)</option>
                           <option value="foundation">Foundation Repair (DIVISION 03)</option>
@@ -200,7 +200,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <div className="space-y-1.5">
                           <div className="flex justify-between text-[11px] text-slate-400">
                             <span>LENGTH FACTOR:</span>
-                            <span className="text-orange-400 text-bold font-bold">{length} FT</span>
+                            <span className="text-emerald-500 text-bold font-bold">{length} FT</span>
                           </div>
                           <input 
                             type="range"
@@ -208,13 +208,13 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             max="300"
                             value={length}
                             onChange={(e) => setLength(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-emerald-600"
                           />
                         </div>
                         <div className="space-y-1.5">
                           <div className="flex justify-between text-[11px] text-slate-400">
                             <span>WIDTH FACTOR:</span>
-                            <span className="text-orange-400 text-bold font-bold">{width} FT</span>
+                            <span className="text-emerald-500 text-bold font-bold">{width} FT</span>
                           </div>
                           <input 
                             type="range"
@@ -222,7 +222,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             max="200"
                             value={width}
                             onChange={(e) => setWidth(Number(e.target.value))}
-                            className="w-full accent-orange-500"
+                            className="w-full accent-emerald-600"
                           />
                         </div>
                       </div>
@@ -240,7 +240,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                               onClick={() => setLevels(num)}
                               className={`flex-1 py-1.5 font-bold uppercase tracking-wider text-[10px] border transition-all ${
                                 levels === num 
-                                  ? 'bg-orange-500 text-slate-900 border-orange-600' 
+                                  ? 'bg-emerald-700 text-slate-900 border-emerald-700' 
                                   : 'bg-slate-900 border-slate-800 text-slate-400'
                               }`}
                             >
@@ -254,7 +254,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <button
                           type="button"
                           onClick={() => setStep(2)}
-                          className="w-full bg-slate-900 border border-slate-800 hover:border-orange-500/40 text-orange-400 py-3 font-display uppercase tracking-wider text-xs font-bold"
+                          className="w-full bg-slate-900 border border-slate-800 hover:border-emerald-600/40 text-emerald-500 py-3 font-display uppercase tracking-wider text-xs font-bold"
                         >
                           PROCEED TO AUTHENTICATION PARAMETERS &rarr;
                         </button>
@@ -274,7 +274,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             placeholder="John Doe"
                             value={clientName}
                             onChange={(e) => setClientName(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 focus:border-orange-500 p-2 text-slate-200 outline-none"
+                            className="w-full bg-slate-900 border border-slate-800 focus:border-emerald-600 p-2 text-slate-200 outline-none"
                           />
                         </div>
                         <div>
@@ -285,7 +285,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             placeholder="doe@contractor.org"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 focus:border-orange-500 p-2 text-slate-200 outline-none"
+                            className="w-full bg-slate-900 border border-slate-800 focus:border-emerald-600 p-2 text-slate-200 outline-none"
                           />
                         </div>
                       </div>
@@ -296,7 +296,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           <select
                             value={materialGrade}
                             onChange={(e) => setMaterialGrade(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 p-2 text-slate-200 focus:border-orange-500 outline-none"
+                            className="w-full bg-slate-900 border border-slate-800 p-2 text-slate-200 focus:border-emerald-600 outline-none"
                           >
                             <option value="standard">ASTM Standard Steel/Concrete</option>
                             <option value="high-tensile">High-Tensile (Cold-Rolled Decking)</option>
@@ -308,7 +308,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           <select
                             value={safetyLevel}
                             onChange={(e) => setSafetyLevel(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 p-2 text-slate-200 focus:border-orange-500 outline-none"
+                            className="w-full bg-slate-900 border border-slate-800 p-2 text-slate-200 focus:border-emerald-600 outline-none"
                           >
                             <option value="10% Redundancy">10% Safety Buffer (Standard)</option>
                             <option value="20% Redundancy">20% Redundancy (Commercial Highrise)</option>
@@ -324,7 +324,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           rows={2}
                           value={notes}
                           onChange={(e) => setNotes(e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-800 focus:border-orange-500 p-2 text-slate-200 outline-none resize-none"
+                          className="w-full bg-slate-900 border border-slate-800 focus:border-emerald-600 p-2 text-slate-200 outline-none resize-none"
                         />
                       </div>
 
@@ -338,7 +338,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         </button>
                         <button
                           type="submit"
-                          className="flex-1 bg-orange-500 text-brand-dark hover:bg-orange-600 transition-colors py-3 font-display uppercase tracking-widest text-xs font-bold font-black"
+                          className="flex-1 bg-emerald-700 text-brand-dark hover:bg-emerald-800 transition-colors py-3 font-display uppercase tracking-widest text-xs font-bold font-black"
                         >
                           SUBMIT SPEC TO REGISTRY
                         </button>
@@ -350,7 +350,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   {step === 3 && (
                     <div className="space-y-4 font-mono text-xs">
                       <div className="bg-slate-900/60 border border-slate-850 p-4 rounded text-slate-300 relative space-y-3">
-                        <div className="absolute right-3 top-3 bg-orange-950/20 text-orange-400 font-bold border border-orange-500/10 text-[8px] px-1.5 py-0.5 uppercase">
+                        <div className="absolute right-3 top-3 bg-emerald-950/20 text-emerald-500 font-bold border border-emerald-600/10 text-[8px] px-1.5 py-0.5 uppercase">
                           OFFICIAL CERTIFICATE
                         </div>
                         <div className="border-b border-slate-800 pb-2">
@@ -364,7 +364,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           </div>
                           <div>
                             <span className="text-[10px] text-slate-500 block uppercase font-bold">MATERIAL CONFORMENT:</span>
-                            <span className="text-orange-400 uppercase font-bold">{materialGrade}</span>
+                            <span className="text-emerald-500 uppercase font-bold">{materialGrade}</span>
                           </div>
                         </div>
                         <div className="border-t border-slate-850 pt-2 flex justify-between items-center bg-slate-950 p-2">
@@ -389,7 +389,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <button
                           type="button"
                           onClick={onClose}
-                          className="flex-1 bg-orange-500 text-slate-900 hover:bg-orange-600 transition-colors font-display font-extrabold uppercase tracking-widest text-xs py-3"
+                          className="flex-1 bg-emerald-700 text-slate-900 hover:bg-emerald-800 transition-colors font-display font-extrabold uppercase tracking-widest text-xs py-3"
                         >
                           Close SURVEYOR
                         </button>
@@ -404,7 +404,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   <div className="flex-1 flex flex-col justify-between">
                     <div>
                       <div className="text-[10px] text-slate-400 uppercase mb-3 font-bold flex items-center gap-1">
-                        <FileText className="h-4 w-4 text-orange-500 shrink-0" />
+                        <FileText className="h-4 w-4 text-emerald-600 shrink-0" />
                         COMMITTED SPECS REGISTRY ({quoteHistory.length})
                       </div>
                       
@@ -425,10 +425,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                                 setSafetyLevel(q.safetyLevel);
                                 setStep(3);
                               }}
-                              className="border border-slate-850 bg-slate-900/30 p-2.5 transition-all hover:border-orange-500/30 cursor-pointer relative"
+                              className="border border-slate-850 bg-slate-900/30 p-2.5 transition-all hover:border-emerald-600/30 cursor-pointer relative"
                             >
                               <div className="flex justify-between items-start">
-                                <span className="font-extrabold text-[9px] text-orange-400">{q.id}</span>
+                                <span className="font-extrabold text-[9px] text-emerald-500">{q.id}</span>
                                 <button 
                                   onClick={(e) => handleDeleteHistoryItem(q.id, e)}
                                   className="text-slate-600 hover:text-rose-500 transition-colors"

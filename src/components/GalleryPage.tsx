@@ -61,7 +61,7 @@ export default function GalleryPage() {
       {/* Title block from specifications */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4 mb-12">
         <div>
-          <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// STRUCTURAL PORTFOLIO</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// STRUCTURAL PORTFOLIO</span>
           <h1 className="font-display text-4xl font-extrabold uppercase tracking-tight text-white mt-1">
             Visual Project Registry
           </h1>
@@ -74,7 +74,7 @@ export default function GalleryPage() {
         <button
           onClick={handleDownloadRegistry}
           disabled={downloading}
-          className="group flex items-center gap-2 border border-orange-500 bg-orange-950/10 hover:bg-orange-500 hover:text-brand-dark transition-all duration-200 px-5 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-orange-400 cursor-pointer"
+          className="group flex items-center gap-2 border border-emerald-600 bg-emerald-950/10 hover:bg-emerald-700 hover:text-brand-dark transition-all duration-200 px-5 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-emerald-500 cursor-pointer"
         >
           {downloading ? (
             <>
@@ -106,7 +106,7 @@ export default function GalleryPage() {
               onClick={() => setFilter(tab)}
               className={`px-4 py-2 font-mono text-xs uppercase tracking-wider transition-all duration-150 border cursor-pointer ${
                 (filter === tab)
-                  ? 'bg-orange-500 border-orange-600 text-slate-900 font-bold'
+                  ? 'bg-emerald-700 border-emerald-700 text-slate-900 font-bold'
                   : 'bg-slate-950/60 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-705'
               }`}
             >
@@ -122,7 +122,7 @@ export default function GalleryPage() {
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search matching blueprints..."
-            className="w-full bg-slate-950/90 border border-slate-800 focus:border-orange-500 px-4 py-2 pl-10 text-slate-100 text-xs font-mono tracking-wide outline-none placeholder-slate-600"
+            className="w-full bg-slate-950/90 border border-slate-800 focus:border-emerald-600 px-4 py-2 pl-10 text-slate-100 text-xs font-mono tracking-wide outline-none placeholder-slate-600"
           />
           <Search className="absolute left-3.5 top-2.5 h-4 w-4 text-slate-600" />
         </div>
@@ -139,7 +139,7 @@ export default function GalleryPage() {
               exit={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               key={proj.id}
-              className="group border border-slate-800 bg-brand-dark hover:border-orange-500/40 transition-all flex flex-col justify-between"
+              className="group border border-slate-800 bg-brand-dark hover:border-emerald-600/40 transition-all flex flex-col justify-between"
             >
               {/* Image Frame */}
               <div className="h-48 overflow-hidden relative border-b border-slate-850 bg-slate-950">
@@ -153,7 +153,7 @@ export default function GalleryPage() {
                 {/* Floating Status Badge */}
                 <div className="absolute top-3 left-3 flex gap-1.5 font-mono text-[8px] font-bold uppercase">
                   <span className={`px-2 py-0.5 text-slate-900 ${
-                    proj.status === 'Completed' ? 'bg-emerald-400' : 'bg-amber-400 font-extrabold'
+                    proj.status === 'Completed' ? 'bg-emerald-400' : 'bg-emerald-400 font-extrabold'
                   }`}>
                     {proj.status}
                   </span>
@@ -172,7 +172,7 @@ export default function GalleryPage() {
               {/* Title, description, specifications summaries */}
               <div className="p-6 flex-1 flex flex-col justify-between">
                 <div>
-                  <h3 className="font-display text-lg font-bold text-slate-100 group-hover:text-orange-400 transition-colors uppercase tracking-tight">
+                  <h3 className="font-display text-lg font-bold text-slate-100 group-hover:text-emerald-500 transition-colors uppercase tracking-tight">
                     {proj.title}
                   </h3>
                   <div className="flex items-center gap-1.5 font-mono text-[9px] text-slate-500 mt-1 mb-3">
@@ -196,7 +196,7 @@ export default function GalleryPage() {
                   </div>
                   <div className="flex justify-between items-center text-slate-400">
                     <span>RATIO:</span>
-                    <span className="text-orange-400 font-semibold font-bold uppercase">{proj.specs.completion}</span>
+                    <span className="text-emerald-500 font-semibold font-bold uppercase">{proj.specs.completion}</span>
                   </div>
                 </div>
               </div>
@@ -205,7 +205,7 @@ export default function GalleryPage() {
               <div className="border-t border-slate-900 p-4">
                 <button
                   onClick={() => setSelectedProject(proj)}
-                  className="w-full flex items-center justify-center gap-2 border border-slate-800 bg-slate-900/60 hover:bg-slate-900 hover:border-orange-500/30 transition-all py-2 font-display text-[11px] font-bold uppercase text-slate-300 tracking-wider cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 border border-slate-800 bg-slate-900/60 hover:bg-slate-900 hover:border-emerald-600/30 transition-all py-2 font-display text-[11px] font-bold uppercase text-slate-300 tracking-wider cursor-pointer"
                 >
                   <Eye className="h-3.5 w-3.5" />
                   View Blueprint Specs
@@ -238,15 +238,15 @@ export default function GalleryPage() {
               className="relative w-full max-w-xl border border-slate-800 bg-slate-950 p-6 sm:p-8 overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
             >
               {/* Highlight corners */}
-              <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500" />
-              <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-orange-500" />
-              <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-orange-500" />
-              <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-orange-500" />
+              <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-emerald-600" />
+              <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-emerald-600" />
+              <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-emerald-600" />
+              <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-emerald-600" />
 
               {/* Top Row Close trigger */}
               <div className="flex justify-between items-start mb-6 border-b border-slate-900 pb-4">
                 <div>
-                  <span className="font-mono text-[9px] text-orange-400 font-extrabold uppercase bg-orange-950/20 px-2 py-0.5 border border-orange-500/10">
+                  <span className="font-mono text-[9px] text-emerald-500 font-extrabold uppercase bg-emerald-950/20 px-2 py-0.5 border border-emerald-600/10">
                     CERTIFIED: {selectedProject.blueprintCode}
                   </span>
                   <h2 className="font-display text-2xl font-black text-slate-100 uppercase mt-1.5 tracking-tight">
@@ -255,7 +255,7 @@ export default function GalleryPage() {
                 </div>
                 <button 
                   onClick={() => setSelectedProject(null)}
-                  className="text-slate-500 hover:text-orange-500 transition-colors p-1"
+                  className="text-slate-500 hover:text-emerald-600 transition-colors p-1"
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -292,21 +292,21 @@ export default function GalleryPage() {
                   <div>
                     <span className="text-[10px] text-slate-500 uppercase">LEAD ENGINEER SIGN-OFF:</span>
                     <div className="text-slate-200 font-bold flex items-center gap-1.5 mt-1">
-                      <User className="h-3.5 w-3.5 text-orange-400" />
+                      <User className="h-3.5 w-3.5 text-emerald-500" />
                       {selectedProject.engineer}
                     </div>
                   </div>
                   <div>
                     <span className="text-[10px] text-slate-500 uppercase">LOCATION STATUS:</span>
                     <div className="text-slate-200 font-bold flex items-center gap-1.5 mt-1">
-                      <MapPin className="h-3.5 w-3.5 text-orange-400" />
+                      <MapPin className="h-3.5 w-3.5 text-emerald-500" />
                       {selectedProject.location}
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-orange-950/20 border border-orange-500/10 p-3 flex gap-2.5 items-center">
-                  <Info className="h-4 w-4 text-orange-500 shrink-0" />
+                <div className="bg-emerald-950/20 border border-emerald-600/10 p-3 flex gap-2.5 items-center">
+                  <Info className="h-4 w-4 text-emerald-600 shrink-0" />
                   <p className="font-sans text-[11px] text-slate-400 leading-normal">
                     This file is verified in Solid State Construction Global Vault. To request modified dimensional files or physical sample cores, launch the Spec Quote Generator.
                   </p>

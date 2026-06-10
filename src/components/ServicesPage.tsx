@@ -73,7 +73,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
       
       {/* Header and subtitle */}
       <div className="text-center mb-12">
-        <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// DIVISION STANDARDS</span>
+        <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// DIVISION STANDARDS</span>
         <h1 className="font-display text-4xl font-extrabold uppercase text-white tracking-widest mt-1">
           Precision Engineering Services
         </h1>
@@ -100,7 +100,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   onClick={() => setSelectedService(serv)}
                   className={`w-full text-left p-4 border transition-all duration-200 shrink-0 ${
                     isSelected 
-                      ? 'border-orange-500 bg-orange-950/10 text-orange-400 shadow-[0_4px_15px_rgba(249,115,22,0.05)]' 
+                      ? 'border-emerald-600 bg-emerald-950/10 text-emerald-500 shadow-[0_4px_15px_rgba(6, 95, 70,0.05)]' 
                       : 'border-slate-800 bg-slate-900/30 text-slate-400 hover:border-slate-700 hover:text-slate-200'
                   }`}
                 >
@@ -110,7 +110,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   </div>
                   <div className="flex items-center justify-between mt-2 font-mono text-[9px]">
                     <span className="text-slate-500">RESILIENCE_RATING:</span>
-                    <span className={isSelected ? 'text-orange-400' : 'text-slate-400'}>98.4%</span>
+                    <span className={isSelected ? 'text-emerald-500' : 'text-slate-400'}>98.4%</span>
                   </div>
                 </button>
               );
@@ -119,7 +119,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
 
           {/* Prompt Quote block widget */}
           <div className="hidden lg:block border border-dashed border-slate-800 p-4 bg-brand-darker/50 text-center relative overflow-hidden">
-            <span className="font-mono text-[9px] text-orange-400 uppercase tracking-wider block mb-2">
+            <span className="font-mono text-[9px] text-emerald-500 uppercase tracking-wider block mb-2">
               REQUIRE DISCARD SPECS?
             </span>
             <p className="text-[11px] text-slate-400 leading-relaxed mb-4">
@@ -127,7 +127,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
             </p>
             <button
               onClick={onRequestQuote}
-              className="w-full bg-orange-500 hover:bg-orange-600 font-display text-[10px] font-extrabold uppercase tracking-widest text-brand-dark py-2.5 transition-colors"
+              className="w-full bg-emerald-700 hover:bg-emerald-800 font-display text-[10px] font-extrabold uppercase tracking-widest text-brand-dark py-2.5 transition-colors"
             >
               LAUNCH QUANTITY BIDDER &rarr;
             </button>
@@ -147,15 +147,15 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
               className="border border-slate-800 bg-brand-dark p-6 sm:p-8 relative overflow-hidden"
             >
               {/* Highlight corners */}
-              <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-orange-500" />
-              <div className="absolute top-0 right-0 h-3 w-3 border-t-2 border-r-2 border-orange-500" />
-              <div className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-orange-500" />
-              <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-orange-500" />
+              <div className="absolute top-0 left-0 h-3 w-3 border-t-2 border-l-2 border-emerald-600" />
+              <div className="absolute top-0 right-0 h-3 w-3 border-t-2 border-r-2 border-emerald-600" />
+              <div className="absolute bottom-0 left-0 h-3 w-3 border-b-2 border-l-2 border-emerald-600" />
+              <div className="absolute bottom-0 right-0 h-3 w-3 border-b-2 border-r-2 border-emerald-600" />
 
               {/* Title & Division Banner */}
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-b border-slate-800 pb-5">
                 <div>
-                  <div className="font-mono text-xs text-orange-400 font-bold uppercase tracking-wider">
+                  <div className="font-mono text-xs text-emerald-500 font-bold uppercase tracking-wider">
                     {selectedService.divisionCode}
                   </div>
                   <h2 className="font-display text-2xl font-black text-white uppercase tracking-tight mt-1">
@@ -169,7 +169,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
 
               {/* Tagline & Core description */}
               <div className="mt-6">
-                <blockquote className="border-l-2 border-orange-500 pl-4 py-1 italic font-mono text-slate-300 text-xs sm:text-sm">
+                <blockquote className="border-l-2 border-emerald-600 pl-4 py-1 italic font-mono text-slate-300 text-xs sm:text-sm">
                   "{selectedService.tagline}"
                 </blockquote>
                 <p className="mt-4 text-xs sm:text-sm text-slate-400 leading-relaxed font-sans">
@@ -183,7 +183,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                 {/* Specs list with real animated progress meters */}
                 <div className="space-y-5">
                   <h4 className="font-display text-xs font-bold uppercase tracking-widest text-slate-200 flex items-center gap-2">
-                    <Cpu className="h-4 w-4 text-orange-500 shrink-0" />
+                    <Cpu className="h-4 w-4 text-emerald-600 shrink-0" />
                     Technical Ratings & Indexes
                   </h4>
                   <div className="space-y-4">
@@ -191,14 +191,14 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                       <div key={item.label} className="space-y-1.5 font-mono text-xs">
                         <div className="flex justify-between text-slate-400">
                           <span>{item.label}</span>
-                          <span className="text-orange-400 font-bold">{item.value}</span>
+                          <span className="text-emerald-500 font-bold">{item.value}</span>
                         </div>
                         <div className="w-full bg-slate-900 h-2 border border-slate-800">
                           <motion.div 
                             initial={{ width: 0 }}
                             animate={{ width: `${item.progress ?? 85}%` }}
                             transition={{ duration: 0.6 }}
-                            className="bg-gradient-to-r from-orange-600 to-amber-500 h-full"
+                            className="bg-gradient-to-r from-emerald-700 to-emerald-500 h-full"
                           />
                         </div>
                       </div>
@@ -225,7 +225,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                 {/* Right block: Division Photos and Subsections */}
                 <div className="space-y-4">
                   <h4 className="font-display text-xs font-bold uppercase tracking-widest text-slate-200 flex items-center gap-2">
-                    <Layers className="h-4 w-4 text-orange-500 shrink-0" />
+                    <Layers className="h-4 w-4 text-emerald-600 shrink-0" />
                     Visual Component Blueprint
                   </h4>
                   <div className="relative border border-slate-850 h-56 bg-slate-950 overflow-hidden">
@@ -244,7 +244,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   {/* Geometric layout specific tile highlights if Tiling */}
                   {selectedService.id === 'tiling' && selectedService.details[0]?.image && (
                     <div className="flex flex-col border border-dashed border-slate-800 p-3 bg-slate-900/40">
-                      <div className="flex items-center gap-2 mb-2 font-mono text-[10px] text-orange-400 font-bold uppercase">
+                      <div className="flex items-center gap-2 mb-2 font-mono text-[10px] text-emerald-500 font-bold uppercase">
                         <span>Hexagonal Tiling System</span>
                       </div>
                       <div className="flex gap-3 items-center">
@@ -273,7 +273,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   {selectedService.details.map((detail, index) => (
                     <div key={index} className="border border-slate-800/80 bg-slate-900/20 p-4 font-sans text-xs">
                       <div className="font-display font-bold text-slate-200 uppercase flex items-center gap-1.5 mb-1.5">
-                        <span className="text-orange-500 font-mono">0{index + 1}.</span>
+                        <span className="text-emerald-600 font-mono">0{index + 1}.</span>
                         {detail.title}
                       </div>
                       <p className="text-slate-400 text-[11px] leading-relaxed">
@@ -290,7 +290,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
           {/* Interactive Specification Live Testing Console */}
           <div className="border border-slate-800 bg-brand-dark/80 p-6 relative overflow-hidden technical-grid">
             <div className="flex items-center gap-3 border-b border-slate-800 pb-4 mb-6">
-              <div className="flex h-7 w-7 items-center justify-center border border-orange-500 font-mono text-xs text-orange-400">
+              <div className="flex h-7 w-7 items-center justify-center border border-emerald-600 font-mono text-xs text-emerald-500">
                 <Sliders className="h-4 w-4" />
               </div>
               <div>
@@ -310,7 +310,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   <div className="space-y-2 font-mono text-xs">
                     <div className="flex justify-between">
                       <span className="text-slate-400">WIND_LOAD_SPEED:</span>
-                      <span className="text-orange-400 font-bold">{windSpeed} MPH</span>
+                      <span className="text-emerald-500 font-bold">{windSpeed} MPH</span>
                     </div>
                     <input 
                       type="range"
@@ -318,7 +318,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                       max="180"
                       value={windSpeed}
                       onChange={(e) => setWindSpeed(Number(e.target.value))}
-                      className="w-full accent-orange-500 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
+                      className="w-full accent-emerald-600 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
                     />
                     <div className="flex justify-between text-[9px] text-slate-500">
                       <span>90 MPH (CAT 1)</span>
@@ -332,7 +332,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   <div className="space-y-2 font-mono text-xs">
                     <div className="flex justify-between">
                       <span className="text-slate-400">CONCRETE_CORE_STRENGTH:</span>
-                      <span className="text-orange-400 font-bold">{concretePSI} PSI</span>
+                      <span className="text-emerald-500 font-bold">{concretePSI} PSI</span>
                     </div>
                     <input 
                       type="range"
@@ -340,7 +340,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                       max="10000"
                       value={concretePSI}
                       onChange={(e) => setConcretePSI(Number(e.target.value))}
-                      className="w-full accent-orange-500 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
+                      className="w-full accent-emerald-600 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
                     />
                     <div className="flex justify-between text-[9px] text-slate-500">
                       <span>3,500 PSI (MED RES)</span>
@@ -354,7 +354,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   <div className="space-y-2 font-mono text-xs">
                     <div className="flex justify-between">
                       <span className="text-slate-400">HYDRAULIC_PRESSURE:</span>
-                      <span className="text-orange-400 font-bold">{fluidPressure} PSI</span>
+                      <span className="text-emerald-500 font-bold">{fluidPressure} PSI</span>
                     </div>
                     <input 
                       type="range"
@@ -362,7 +362,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                       max="600"
                       value={fluidPressure}
                       onChange={(e) => setFluidPressure(Number(e.target.value))}
-                      className="w-full accent-orange-500 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
+                      className="w-full accent-emerald-600 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
                     />
                     <div className="flex justify-between text-[9px] text-slate-500">
                       <span>100 PSI (LOW DISCHARGE)</span>
@@ -376,7 +376,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                   <div className="space-y-2 font-mono text-xs">
                     <div className="flex justify-between">
                       <span className="text-slate-400">GEOMETRIC_JOINT_SPACING:</span>
-                      <span className="text-orange-400 font-bold">{groutSpacing} mm</span>
+                      <span className="text-emerald-500 font-bold">{groutSpacing} mm</span>
                     </div>
                     <input 
                       type="range"
@@ -385,7 +385,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                       step="0.1"
                       value={groutSpacing}
                       onChange={(e) => setGroutSpacing(Number(e.target.value))}
-                      className="w-full accent-orange-500 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
+                      className="w-full accent-emerald-600 cursor-pointer h-1.5 bg-slate-900 border border-slate-800 rounded-lg appearance-none"
                     />
                     <div className="flex justify-between text-[9px] text-slate-500">
                       <span>0.5 mm (REFINED MICRO)</span>
@@ -396,7 +396,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                 )}
 
                 <div className="p-3 bg-slate-900/60 border border-slate-850 text-slate-400 text-xs font-mono flex items-center gap-2">
-                  <Zap className="h-4 w-4 text-orange-400 shrink-0" />
+                  <Zap className="h-4 w-4 text-emerald-500 shrink-0" />
                   <span>Real-time adjustments feedback is updated automatically based on standard ISO-213 codes.</span>
                 </div>
               </div>
@@ -413,7 +413,7 @@ export default function ServicesPage({ onRequestQuote }: { onRequestQuote: () =>
                     {simulationReport.metrics.map((met, i) => (
                       <div key={i} className="space-y-0.5">
                         <span className="text-[10px] text-slate-500 uppercase">{met.label}</span>
-                        <div className={`text-xs font-bold ${met.state === 'safe' ? 'text-emerald-400' : met.state === 'warn' ? 'text-amber-400' : 'text-slate-200'}`}>
+                        <div className={`text-xs font-bold ${met.state === 'safe' ? 'text-emerald-400' : met.state === 'warn' ? 'text-emerald-400' : 'text-slate-200'}`}>
                           {met.value}
                         </div>
                       </div>

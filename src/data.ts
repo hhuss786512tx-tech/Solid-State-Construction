@@ -83,7 +83,7 @@ export const SERVICES: TechnicalService[] = [
     tagline: 'Structural Integrity & Soil Stabilization',
     description: 'Expert foundation leveling and crack repair tailored for volatile Texas soil. We deploy precision-calibrated leveling units to neutralize structural shifts and prevent masonry failure.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCaXJF9yT4Xy7MVHmoq1ytLOSRxeWWhsU1hTIAdtCgnE9mADKb5BqFN_elz-fI-lAhvJSr_Ko-tgWRgxojHzKUqkXXnSHTLP_rP4AbtzOMkHy5KV3eApv2G3LikE9Ml7Ut3OtcQLoqWbFDQOMMaD_leNp7Att198gJY-Pck1RxYtG7tur1dUhI1PYcXb-Vu2mqnfAm_L1LByo5sw70KmI3YvGqY9VdqjKBubwOEzLHhTAAKiRHNRi6TbvqXx9jtpMUelo7IGEq--Qoj',
-    accentColor: 'border-orange-500 text-orange-400 focus:ring-orange-500',
+    accentColor: 'border-emerald-600 text-emerald-500 focus:ring-emerald-600',
     specs: [
       { label: 'Core Compressive PSI', value: '8,500 High-Density', progress: 98 },
       { label: 'Shift Compensation', value: 'Millimetric Precision', progress: 96 },
@@ -107,7 +107,7 @@ export const SERVICES: TechnicalService[] = [
     tagline: 'Complete Design-Build Transformations',
     description: 'Total kitchen, bathroom, and interior transformations. We synthesize architectural design with high-end finishing to reconstruct your living environment from the studs up.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCk2K108nURfJKP1uHAvYWbgjg0B3FLT2-bQHYwypYoMI3gGlz7P1oOn-ohSpnqvULDQNBpGB07kUMyzGJWZsKJN3xxArxSY1LjIbaYriKkwOdiBb3l0yj95lQsM8VUFNkB0Ib8P53P_Cinjzascg4DS3aNYMlLQdCQrbwpzouZscWiQndR9Sd63Wm0NERlZnheg0t0SUJ4OCnjJFcrOtvfVywNGd1aEhUtUhkZp2kxuNbdnknGIm-U8FEArHIx_uhAnJ9p_4nPwAUG',
-    accentColor: 'border-amber-400 text-amber-300 focus:ring-amber-300',
+    accentColor: 'border-emerald-400 text-amber-300 focus:ring-amber-300',
     specs: [
       { label: 'Build Quality Metric', value: 'Zero-Defect Standard', progress: 97 },
       { label: 'Aesthetic Alignment', value: 'Custom Specification', progress: 92 },
@@ -155,7 +155,7 @@ export const SERVICES: TechnicalService[] = [
     tagline: 'High-Resilience Barrier Systems',
     description: 'Reliable roof repairs and full replacements using top-tier materials. Engineered to withstand high wind-uplift and localized thermal expansion.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBpCeep-lXIE_j6onkjP4zZ25PCF-PK6PsngVvUGbvxMbD7TP97wmB4fOc5pF20FQdYihl29MoMSvnmAOXMaQgihtrZwP9tuiuLuWmfTir74P9pe3eWitn27dYbhGQs682uadMpwGtml3dqRjpUOFNaWTByRIFq181JEwjt4mivgqOoEwjtuve_Z1SnS7-C7qgjMuMKi2mrZU7PaY-2R_r4qmcCBXwdzbMsUdpKVDop1YkM2L1JNSbUX1bME5dYKSxdpIDIEHPAI5YZ',
-    accentColor: 'border-orange-600 text-orange-500 focus:ring-orange-500',
+    accentColor: 'border-emerald-700 text-emerald-600 focus:ring-emerald-600',
     specs: [
       { label: 'Wind Uplift Rating', value: '135 MPH Confirmed', progress: 94 },
       { label: 'Impact Resistance', value: 'Class 4 Shingle Spec', progress: 92 },
@@ -179,7 +179,7 @@ export const SERVICES: TechnicalService[] = [
     tagline: 'Custom Geometric Tile & Floor Matrices',
     description: 'Intricate tile work and custom flooring installations including hardwood and laminate. We focus on laser-level layouts and zero-tolerance joint alignment.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDvGY9whEnTAB-_ldLCbceXqDPcYVuVnP4yjCS72PBDevrULpfBXKN5ov5nIoaSq3setURD3v0Yc-xD7OdWKpKjtn4XezWm-YC7F3wMN8yPC170-vEnaY8B0kpTUbUrcrRo_MteQksR7TLNna1PrOCgJoRE2ENJ-_w16-WkMogtNhYix-i5hsJ89D3Z_Cc68743pmTuZCce6hMbLlGeAwDKraqar0SQzw405PmEn4ZDXR0uEazOINITvr1lveSD0_gT7Bj5OxzoKUjv',
-    accentColor: 'border-amber-600 text-amber-500 focus:ring-amber-500',
+    accentColor: 'border-emerald-600 text-emerald-500 focus:ring-emerald-500',
     specs: [
       { label: 'Layout Precision', value: '< 1.5mm Tolerance', progress: 97 },
       { label: 'Adhesive Bond Strength', value: 'Industrial Grade', progress: 95 },

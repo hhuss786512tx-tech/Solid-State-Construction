@@ -34,23 +34,23 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-orange-500/10 bg-brand-darker/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-emerald-600/10 bg-brand-darker/80 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo and Brand */}
         <div 
           onClick={() => setTab('homepage')} 
           className="flex cursor-pointer items-center gap-3 transition-colors hover:opacity-90"
         >
-          <div className="relative flex h-9 w-9 items-center justify-center border-2 border-orange-500 bg-brand-dark font-display text-lg font-bold text-orange-400">
+          <div className="relative flex h-9 w-9 items-center justify-center border-2 border-emerald-600 bg-brand-dark font-display text-lg font-bold text-emerald-500">
             S
-            <span className="absolute -right-1 -top-1 h-1.5 w-1.5 bg-orange-500" />
-            <span className="absolute -bottom-1 -left-1 h-1.5 w-1.5 bg-orange-500" />
+            <span className="absolute -right-1 -top-1 h-1.5 w-1.5 bg-emerald-700" />
+            <span className="absolute -bottom-1 -left-1 h-1.5 w-1.5 bg-emerald-700" />
           </div>
           <div className="flex flex-col">
             <span className="font-display text-lg font-bold tracking-widest text-slate-100 uppercase">
-              SOLID STATE <span className="text-orange-500">CONSTRUCTION</span>
+              SOLID STATE <span className="text-emerald-600">CONSTRUCTION</span>
             </span>
-            <span className="font-mono text-[9px] tracking-widest text-orange-400/80 uppercase">
+            <span className="font-mono text-[9px] tracking-widest text-emerald-500/80 uppercase">
               SPEC SYSTEM V4.1
             </span>
           </div>
@@ -66,14 +66,14 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
                 key={tab.id}
                 id={`nav-link-${tab.id}`}
                 onClick={() => setTab(tab.id)}
-                className="relative flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase tracking-wider transition-colors duration-150 text-slate-400 hover:text-orange-400"
+                className="relative flex items-center gap-2 px-4 py-2 font-mono text-xs uppercase tracking-wider transition-colors duration-150 text-slate-400 hover:text-emerald-500"
               >
-                <Icon className={`h-3.5 w-3.5 ${isActive ? 'text-orange-500' : 'text-slate-500'}`} />
+                <Icon className={`h-3.5 w-3.5 ${isActive ? 'text-emerald-600' : 'text-slate-500'}`} />
                 <span>{tab.label}</span>
                 {isActive && (
                   <motion.div
                     layoutId="activeTabUnderline"
-                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-orange-600 to-amber-400"
+                    className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-emerald-700 to-emerald-400"
                     transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                   />
                 )}
@@ -86,7 +86,7 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
         <div className="flex items-center gap-3">
           <button
             onClick={toggleTheme}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-orange-500 transition-colors"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-emerald-600 transition-colors"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
@@ -103,13 +103,13 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
           <button
             id="rfq-trigger-button"
             onClick={onRequestQuote}
-            className="group relative overflow-hidden bg-orange-500 px-4 py-2 font-display text-xs font-bold uppercase tracking-wider text-brand-dark shadow-[0_0_15px_rgba(249,115,22,0.2)] transition-all hover:bg-orange-600 hover:shadow-[0_0_25px_rgba(249,115,22,0.4)]"
+            className="group relative overflow-hidden bg-emerald-700 px-4 py-2 font-display text-xs font-bold uppercase tracking-wider text-brand-dark shadow-[0_0_15px_rgba(6, 95, 70,0.2)] transition-all hover:bg-emerald-800 hover:shadow-[0_0_25px_rgba(6, 95, 70,0.4)]"
           >
             <span className="relative z-10 flex items-center gap-2">
               <Terminal className="h-3.5 w-3.5" />
               Request Spec Quote
             </span>
-            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-amber-400 via-orange-400 to-orange-600 transition-transform duration-300 group-hover:translate-x-0" />
+            <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-emerald-400 via-emerald-500 to-emerald-700 transition-transform duration-300 group-hover:translate-x-0" />
           </button>
         </div>
       </div>
@@ -124,7 +124,7 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
               key={tab.id}
               onClick={() => setTab(tab.id)}
               className={`flex flex-col items-center gap-1 font-mono text-[10px] uppercase tracking-wide px-2 py-1 ${
-                isActive ? 'text-orange-400' : 'text-slate-400'
+                isActive ? 'text-emerald-500' : 'text-slate-400'
               }`}
             >
               <Icon className="h-4.5 w-4.5" />

@@ -46,7 +46,7 @@ export default function App() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col bg-brand-darker font-sans text-slate-100 selection:bg-orange-500 selection:text-slate-900">
+    <div className="flex min-h-screen flex-col bg-brand-darker font-sans text-slate-100 selection:bg-emerald-700 selection:text-slate-900">
       
       {/* Dynamic Global Top Header Navigation */}
       <Navbar 

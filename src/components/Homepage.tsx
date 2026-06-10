@@ -21,7 +21,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
     <div className="relative min-h-screen text-slate-100 technical-grid-fine">
       {/* Background glowing gradients */}
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center opacity-10">
-        <div className="h-[500px] w-[500px] rounded-full bg-orange-500 blur-[120px]" />
+        <div className="h-[500px] w-[500px] rounded-full bg-emerald-700 blur-[120px]" />
       </div>
 
       {/* Hero Section */}
@@ -33,11 +33,11 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
             <motion.div 
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 border border-orange-500/20 bg-orange-950/10 px-4 py-1.5 font-mono text-xs text-orange-400 mb-6 uppercase tracking-widest rounded-full"
+              className="inline-flex items-center gap-2 border border-emerald-600/20 bg-emerald-950/10 px-4 py-1.5 font-mono text-xs text-emerald-500 mb-6 uppercase tracking-widest rounded-full"
             >
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-400 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-700"></span>
               </span>
               <span>SYSTEM_STATUS // OPTIMAL // REGISTRY ONLINE</span>
             </motion.div>
@@ -50,7 +50,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               className="font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-6xl max-w-4xl leading-none"
             >
               Leander's Choice for <br />
-              <span className="bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-emerald-600 via-emerald-400 to-emerald-500 bg-clip-text text-transparent">
                 Quality Construction
               </span>
             </motion.h1>
@@ -74,10 +74,10 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               <button
                 id="hero-request-quote"
                 onClick={onRequestQuote}
-                className="group relative cursor-pointer overflow-hidden border border-orange-500 bg-orange-500/10 px-8 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-orange-400 shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500 hover:text-brand-dark hover:shadow-[0_0_30px_rgba(249,115,22,0.3)]"
+                className="group relative cursor-pointer overflow-hidden border border-emerald-600 bg-emerald-700/10 px-8 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-emerald-500 shadow-[0_0_20px_rgba(6, 95, 70,0.1)] transition-all hover:bg-emerald-700 hover:text-brand-dark hover:shadow-[0_0_30px_rgba(6, 95, 70,0.3)]"
               >
                 Get a Quote Online
-                <div className="absolute right-2 top-2 h-1.5 w-1.5 bg-orange-400 group-hover:bg-brand-dark" />
+                <div className="absolute right-2 top-2 h-1.5 w-1.5 bg-emerald-500 group-hover:bg-brand-dark" />
               </button>
 
               <a
@@ -85,7 +85,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                 className="group flex items-center gap-2 cursor-pointer border border-slate-700/80 bg-slate-900/40 px-8 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-slate-300 transition-all hover:border-slate-500 hover:bg-slate-900"
               >
                 Call Now: (512) 595-2332
-                <ArrowRight className="h-4 w-4 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-orange-400" />
+                <ArrowRight className="h-4 w-4 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-emerald-500" />
               </a>
             </motion.div>
           </div>
@@ -96,7 +96,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
       <section className="px-4 py-16 sm:px-6 lg:px-8 bg-slate-950/40 border-y border-slate-900">
         <div className="mx-auto max-w-7xl">
           <div className="mb-10 text-center sm:text-left">
-            <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// INTEGRATED SOLUTIONS</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// INTEGRATED SOLUTIONS</span>
             <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-white mt-1">
               Bento Services Overview
             </h2>
@@ -106,12 +106,12 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
             {/* Bento Card 1: Architectural Engineering */}
             <div 
               onClick={() => setTab('services')}
-              className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark p-6 transition-all hover:border-orange-500/40 hover:-translate-y-1"
+              className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark p-6 transition-all hover:border-emerald-600/40 hover:-translate-y-1"
             >
-              <div className="flex h-12 w-12 items-center justify-center border border-slate-800 bg-slate-900 font-mono text-xs text-orange-400 group-hover:border-orange-500/20 group-hover:text-orange-300">
+              <div className="flex h-12 w-12 items-center justify-center border border-slate-800 bg-slate-900 font-mono text-xs text-emerald-500 group-hover:border-emerald-600/20 group-hover:text-emerald-400">
                 01
               </div>
-              <h3 className="font-display font-bold uppercase text-white mt-8 tracking-wider group-hover:text-orange-400 transition-colors">
+              <h3 className="font-display font-bold uppercase text-white mt-8 tracking-wider group-hover:text-emerald-500 transition-colors">
                 {HOMEPAGE_WIDGETS.bento.engineering.title}
               </h3>
               <p className="text-slate-400 text-xs mt-3 leading-relaxed font-sans">
@@ -131,12 +131,12 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
             {/* Bento Card 2: Future-Proof Infrastructure */}
             <div 
               onClick={() => setTab('services')}
-              className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark p-6 transition-all hover:border-orange-500/40 hover:-translate-y-1"
+              className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark p-6 transition-all hover:border-emerald-600/40 hover:-translate-y-1"
             >
-              <div className="flex h-12 w-12 items-center justify-center border border-slate-800 bg-slate-900 font-mono text-xs text-orange-400 group-hover:border-orange-500/20 group-hover:text-orange-300">
+              <div className="flex h-12 w-12 items-center justify-center border border-slate-800 bg-slate-900 font-mono text-xs text-emerald-500 group-hover:border-emerald-600/20 group-hover:text-emerald-400">
                 02
               </div>
-              <h3 className="font-display font-bold uppercase text-white mt-8 tracking-wider group-hover:text-orange-400 transition-colors">
+              <h3 className="font-display font-bold uppercase text-white mt-8 tracking-wider group-hover:text-emerald-500 transition-colors">
                 {HOMEPAGE_WIDGETS.bento.infrastructure.title}
               </h3>
               <p className="text-slate-400 text-xs mt-3 leading-relaxed font-sans">
@@ -156,13 +156,13 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
             {/* Bento Card 3: Digital Twins (Hover Offsets) */}
             <div 
               onClick={() => setTab('services')}
-              className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark p-6 flex flex-col justify-between transition-all hover:border-orange-500/40 hover:-translate-y-1"
+              className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark p-6 flex flex-col justify-between transition-all hover:border-emerald-600/40 hover:-translate-y-1"
             >
               <div>
-                <div className="flex h-12 w-12 items-center justify-center border border-slate-800 bg-slate-900 font-mono text-xs text-orange-400 group-hover:border-orange-500/20 group-hover:text-orange-300">
+                <div className="flex h-12 w-12 items-center justify-center border border-slate-800 bg-slate-900 font-mono text-xs text-emerald-500 group-hover:border-emerald-600/20 group-hover:text-emerald-400">
                   03
                 </div>
-                <h3 className="font-display font-bold uppercase text-white mt-8 tracking-wider group-hover:text-orange-400 transition-colors">
+                <h3 className="font-display font-bold uppercase text-white mt-8 tracking-wider group-hover:text-emerald-500 transition-colors">
                   {HOMEPAGE_WIDGETS.bento.digitalTwins.title}
                 </h3>
                 <p className="text-slate-400 text-xs mt-3 leading-relaxed font-sans">
@@ -170,7 +170,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                 </p>
                 
                 {/* Visual Digital twin telemetry dashboard mockup layout */}
-                <div className="mt-8 p-4 border border-dashed border-slate-800 bg-slate-950/80 font-mono text-[9px] text-orange-400/80 space-y-2 relative">
+                <div className="mt-8 p-4 border border-dashed border-slate-800 bg-slate-950/80 font-mono text-[9px] text-emerald-500/80 space-y-2 relative">
                   <div className="flex justify-between border-b border-slate-900 pb-1">
                     <span>SENSOR_NODE_099</span>
                     <span className="text-emerald-400">ACTIVE</span>
@@ -181,7 +181,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                       <span className="text-slate-300">0.42 / 1.0</span>
                     </div>
                     <div className="w-full bg-slate-900 h-1.5 rounded-full overflow-hidden">
-                      <div className="bg-orange-500 h-full w-[42%] transition-all duration-500" />
+                      <div className="bg-emerald-700 h-full w-[42%] transition-all duration-500" />
                     </div>
                   </div>
                   <div className="space-y-1">
@@ -195,7 +195,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                   </div>
                 </div>
               </div>
-              <div className="mt-8 flex items-center justify-end text-orange-400 text-xs font-mono group-hover:text-orange-300">
+              <div className="mt-8 flex items-center justify-end text-emerald-500 text-xs font-mono group-hover:text-emerald-400">
                 <span>View specification details &rarr;</span>
               </div>
             </div>
@@ -211,7 +211,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
             {/* Stats Left Pane */}
             <div className="lg:col-span-5 space-y-8">
               <div>
-                <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// PERFORMANCE AUDITS</span>
+                <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// PERFORMANCE AUDITS</span>
                 <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-white mt-1">
                   Who We Are & What We Do
                 </h2>
@@ -223,7 +223,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               {/* Statistics Grid */}
               <div className="grid grid-cols-2 gap-6 border-t border-slate-800 pt-8 font-mono">
                 <div>
-                  <div className="text-4xl font-extrabold text-orange-500 tracking-tight">100%</div>
+                  <div className="text-4xl font-extrabold text-emerald-600 tracking-tight">100%</div>
                   <div className="text-[10px] uppercase text-slate-400 tracking-wider mt-1.5">
                     Local Leander Focus
                   </div>
@@ -241,7 +241,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                   </div>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-orange-400 tracking-tight">Zero</div>
+                  <div className="text-4xl font-extrabold text-emerald-500 tracking-tight">Zero</div>
                   <div className="text-[10px] uppercase text-slate-400 tracking-wider mt-1.5">
                     Defect Guarantee
                   </div>
@@ -265,13 +265,13 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                       className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute top-2 left-2 bg-slate-900/80 text-orange-400 text-[8px] font-mono px-1.5 py-0.5 uppercase">
+                    <div className="absolute top-2 left-2 bg-slate-900/80 text-emerald-500 text-[8px] font-mono px-1.5 py-0.5 uppercase">
                       SECURED // SPEC
                     </div>
                   </div>
                   {/* Polaroid Label Footer */}
                   <div className="mt-4 flex flex-col items-center text-center">
-                    <span className="font-mono text-[9px] tracking-widest text-orange-600 font-bold uppercase leading-none">
+                    <span className="font-mono text-[9px] tracking-widest text-emerald-700 font-bold uppercase leading-none">
                       {p.label}
                     </span>
                     <h4 className="font-display text-sm font-bold text-slate-800 tracking-tight mt-1">
@@ -294,14 +294,14 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10">
             <div>
-              <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// COMMAND CENTERS</span>
+              <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// COMMAND CENTERS</span>
               <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-white mt-1">
                 Global Operations Nodes
               </h2>
             </div>
             <button 
               onClick={() => setTab('locations')}
-              className="mt-4 sm:mt-0 font-mono text-xs text-orange-400 hover:text-orange-300 flex items-center gap-1 hover:underline"
+              className="mt-4 sm:mt-0 font-mono text-xs text-emerald-500 hover:text-emerald-400 flex items-center gap-1 hover:underline"
             >
               Open Tactical Blueprint Map &rarr;
             </button>
@@ -312,7 +312,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               <div 
                 key={hub.city}
                 onClick={() => handleHubSelect(hub.city === 'CHICAGO' ? 'chicago-hub' : hub.city === 'LONDON' ? 'london-hub' : 'ny-hub')}
-                className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark transition-all hover:border-orange-500/40"
+                className="group relative cursor-pointer overflow-hidden border border-slate-800 bg-brand-dark transition-all hover:border-emerald-600/40"
               >
                 {/* Image panel: Grayscale to color transition */}
                 <div className="h-44 overflow-hidden relative">
@@ -327,7 +327,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent" />
                   
                   <div className="absolute bottom-3 left-4">
-                    <span className="font-mono text-[9px] bg-orange-600 text-slate-900 font-extrabold px-1.5 py-0.5 uppercase">
+                    <span className="font-mono text-[9px] bg-emerald-800 text-slate-900 font-extrabold px-1.5 py-0.5 uppercase">
                       {hub.role}
                     </span>
                   </div>
@@ -356,7 +356,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
       <section className="px-4 py-20 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="text-center mb-12">
-            <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// NEIGHBOR FEEDBACK</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// NEIGHBOR FEEDBACK</span>
             <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-white mt-1">
               Top Rated in Leander
             </h2>
@@ -365,18 +365,18 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {TESTIMONIALS.map((t, i) => (
-              <div key={i} className="border border-slate-800 bg-brand-dark p-8 relative group hover:border-orange-500/30 transition-all">
-                <div className="absolute top-0 left-0 h-2 w-2 border-t border-l border-orange-500 opacity-50 group-hover:opacity-100" />
-                <div className="text-orange-400 mb-6 flex gap-1">
+              <div key={i} className="border border-slate-800 bg-brand-dark p-8 relative group hover:border-emerald-600/30 transition-all">
+                <div className="absolute top-0 left-0 h-2 w-2 border-t border-l border-emerald-600 opacity-50 group-hover:opacity-100" />
+                <div className="text-emerald-500 mb-6 flex gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Award key={i} className="h-4 w-4 fill-orange-500/20" />
+                    <Award key={i} className="h-4 w-4 fill-emerald-600/20" />
                   ))}
                 </div>
                 <p className="text-slate-300 font-serif text-lg leading-relaxed italic mb-8">
                   "{t.quote}"
                 </p>
                 <div className="border-t border-slate-900 pt-6 flex items-center gap-4">
-                  <div className="h-10 w-10 bg-slate-900 border border-slate-800 flex items-center justify-center font-display font-bold text-orange-400 text-sm">
+                  <div className="h-10 w-10 bg-slate-900 border border-slate-800 flex items-center justify-center font-display font-bold text-emerald-500 text-sm">
                     {t.name.charAt(0)}
                   </div>
                   <div>
@@ -391,14 +391,14 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
       </section>
 
       {/* Hero-like Call to Action */}
-      <section className="px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-t from-orange-950/20 to-transparent border-t border-slate-900">
-        <div className="mx-auto max-w-5xl text-center border-2 border-dashed border-orange-500/20 bg-brand-darker/60 p-8 sm:p-12 relative overflow-hidden">
-          <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500" />
-          <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-orange-500" />
-          <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-orange-500" />
-          <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-orange-500" />
+      <section className="px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-t from-emerald-950/20 to-transparent border-t border-slate-900">
+        <div className="mx-auto max-w-5xl text-center border-2 border-dashed border-emerald-600/20 bg-brand-darker/60 p-8 sm:p-12 relative overflow-hidden">
+          <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-emerald-600" />
+          <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-emerald-600" />
+          <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-emerald-600" />
+          <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-emerald-600" />
 
-          <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// READY TO EXECUTE</span>
+          <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// READY TO EXECUTE</span>
           <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-white mt-2">
             Constructing the Future
           </h2>
@@ -408,7 +408,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
           <div className="mt-8 flex justify-center">
             <button 
               onClick={onRequestQuote}
-              className="bg-orange-500 text-brand-dark hover:bg-orange-600 shadow-[0_0_20px_rgba(249,115,22,0.3)] transition-all font-display text-xs font-bold uppercase tracking-widest px-8 py-3"
+              className="bg-emerald-700 text-brand-dark hover:bg-emerald-800 shadow-[0_0_20px_rgba(6, 95, 70,0.3)] transition-all font-display text-xs font-bold uppercase tracking-widest px-8 py-3"
             >
               LAUNCH QUANTITY BID RUN
             </button>
