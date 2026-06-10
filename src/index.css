@@ -7,32 +7,67 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
   --color-brand-orange: #f97316;
-  --color-brand-dark: #0f172a;
-  --color-brand-darker: #020617;
+  --color-brand-dark: var(--bg-surface);
+  --color-brand-darker: var(--bg-base);
 }
 
-/* Custom styles for professional industrial aesthetic */
+:root {
+  /* Default: Dark Theme */
+  --bg-base: #040815;
+  --bg-surface: #0f172a;
+  --text-base: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-base: rgba(249, 115, 22, 0.1);
+  --grid-color: rgba(249, 115, 22, 0.04);
+  --grid-color-fine: rgba(249, 115, 22, 0.02);
+}
+
+:root.light {
+  /* Light Theme Mode */
+  --bg-base: #f9fafb;
+  --bg-surface: #ffffff;
+  --text-base: #111827;
+  --text-muted: #4b5563;
+  --border-base: rgba(249, 115, 22, 0.2);
+  --grid-color: rgba(0, 0, 0, 0.03);
+  --grid-color-fine: rgba(0, 0, 0, 0.01);
+}
+
+/* Base style resets */
 body {
   font-family: var(--font-sans);
-  background-color: #040815;
-  color: #f1f5f9;
+  background-color: var(--bg-base);
+  color: var(--text-base);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Technical grid background */
 .technical-grid {
   background-size: 40px 40px;
   background-image: 
-    linear-gradient(to right, rgba(249, 115, 22, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(249, 115, 22, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
 }
 
 .technical-grid-fine {
   background-size: 10px 10px;
   background-image: 
-    linear-gradient(to right, rgba(249, 115, 22, 0.02) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(249, 115, 22, 0.02) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-color-fine) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color-fine) 1px, transparent 1px);
 }
+
+/* Utility overrides for theme */
+.text-white { color: var(--text-base) !important; }
+.text-slate-100 { color: var(--text-base) !important; }
+.text-slate-300 { color: var(--text-base) !important; }
+.text-slate-400 { color: var(--text-muted) !important; }
+.border-slate-800 { border-color: var(--border-base) !important; }
+.border-slate-850 { border-color: var(--border-base) !important; }
+.bg-slate-950 { background-color: var(--bg-base) !important; }
+.bg-slate-900 { background-color: var(--bg-surface) !important; }
+.bg-brand-darker { background-color: var(--bg-base) !important; }
+.bg-brand-dark { background-color: var(--bg-surface) !important; }
 
 /* Custom scrollbars */
 ::-webkit-scrollbar {
@@ -40,17 +75,17 @@ body {
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: #020617;
+  background: var(--bg-base);
 }
 ::-webkit-scrollbar-thumb {
-  background: #334155;
+  background: var(--text-muted);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #f97316;
 }
 
-/* Corner element decorations to highlight high-tech precise design */
+/* Corner element decorations */
 .industrial-corner-tl {
   border-top: 2px solid #f97316;
   border-left: 2px solid #f97316;

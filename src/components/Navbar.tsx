@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Compass, Hammer, Image, MapPin, Layers, LayoutGrid, Terminal } from 'lucide-react';
+import { Compass, Hammer, Image, MapPin, Layers, LayoutGrid, Terminal, Sun, Moon } from 'lucide-react';
 
 interface NavbarProps {
   currentTab: string;
@@ -9,6 +9,23 @@ interface NavbarProps {
 }
 
 export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarProps) {
+  const [theme, setTheme] = React.useState<'light' | 'dark'>(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('light') ? 'light' : 'dark';
+    }
+    return 'dark';
+  });
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(newTheme);
+    if (newTheme === 'light') {
+      document.documentElement.classList.add('light');
+    } else {
+      document.documentElement.classList.remove('light');
+    }
+  };
+
   const tabs = [
     { id: 'homepage', label: 'Overview', icon: LayoutGrid },
     { id: 'services', label: 'Services', icon: Hammer },
@@ -67,6 +84,14 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
 
         {/* Global CTA Status button */}
         <div className="flex items-center gap-3">
+          <button
+            onClick={toggleTheme}
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-slate-800 bg-slate-900/60 text-slate-400 hover:text-orange-500 transition-colors"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
+          </button>
+          
           <div className="hidden lg:flex items-center gap-2 border border-slate-800 bg-slate-900/60 px-3 py-1 font-mono text-[10px] text-slate-400">
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>

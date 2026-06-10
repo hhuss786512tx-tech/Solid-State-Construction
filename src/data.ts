@@ -207,7 +207,7 @@ export const HUBS: HubLocation[] = [
     phone: '(512) 595-2332',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA3KOEuPjgbqkeB1k3qIl1ZsFi_ZLrRfwQZH1g05Y4fcZ_sso0Izwzwj7RgmcFJKpTFJmcFRB_x6WvL3egLRYD0MnRgcggAkgfLvfar1HvhR8fNJPvJylCsnHOpnRKj6Xc9FbSK94wD5Xlpai5yR-obNL_SfWIqkp9CzNUn-6R2MmkOhXce17-1ymoRe52mmhzE6JXi6kb5n352iMEkjADIXO00j0e4qvdy8kCI5coQOX4wB-sCnrfv8SOXUI6TQKSOk6jneNJWoi41',
     status: 'NOMINAL',
-    coords: { x: 45, y: 55, lat: '30.5788Â° N', lng: '97.8531Â° W' },
+    coords: { x: 45, y: 55, lat: '30.5788', lng: '-97.8531' },
     description: 'Our primary command center serving Leander, Cedar Park, and the North Austin metropolitan area. Specialized in rapid 24/7 water remediation and structural restoration.',
     staff: '12 Restoration Techs, 8 Master Carpenters',
     workloads: 'Active Local Pipeline: High'
@@ -248,9 +248,9 @@ export const HOMEPAGE_WIDGETS = {
     }
   },
   globalCommandCenters: [
-    { city: 'LEANDER', role: 'HQ & RESTORATION', lat: '30.5788Â° N', lng: '97.8531Â° W', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA3KOEuPjgbqkeB1k3qIl1ZsFi_ZLrRfwQZH1g05Y4fcZ_sso0Izwzwj7RgmcFJKpTFJmcFRB_x6WvL3egLRYD0MnRgcggAkgfLvfar1HvhR8fNJPvJylCsnHOpnRKj6Xc9FbSK94wD5Xlpai5yR-obNL_SfWIqkp9CzNUn-6R2MmkOhXce17-1ymoRe52mmhzE6JXi6kb5n352iMEkjADIXO00j0e4qvdy8kCI5coQOX4wB-sCnrfv8SOXUI6TQKSOk6jneNJWoi41' },
-    { city: 'CEDAR PARK', role: 'REMODELING UNIT', lat: '30.5063Â° N', lng: '97.8297Â° W', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTfFUyzUhCfKCK8k7nXUxsZS5uY3hAZ2naBejHKt3JvFxjcwnjwlrH6TBZWWn_xTDWwFwXwaroFv18pQVL1IWH8AXuk0pfBiegvIGkhWcJNj8ekukKBTgKkZ4oswi1shRQMLOHrpN9UIGA1LxGLjDGoD34QgZ0yotTB1kAgNgB6q6QP7l3XHGHrNUxrptv5ZyDh7U4yZA3dYrSznIkxXECcEkFr61k06W3hvYg8nrQxaizvGIIkclGw4AG6lZjxA1-Q963OpZMktS2' },
-    { city: 'NORTH AUSTIN', role: 'FOUNDATION SQUAD', lat: '30.3674Â° N', lng: '97.7333Â° W', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAd9YL24IkSjArfIBAjh1stXRzZdmfnh86H660QPM2hDsJPnVBuwSWzEnRKyPskz9TMMHT2VS0hBaJDsEEU5E80DBYdvKpx1Z7DlH8HZ-xfabyCY2qcJP8SX076ZBi3WHv9482ZHTOu9cg4_Q6JF26NUgDCCYJT1sXMbh2vDmrlrf5haFqWKTjmpRfIY9QvK8GAaGgyT-MJh8uYbj6aa4rdo4CIlHLdc0yJNHctkMwXaHr85PO86LsflOYNE0lYxmAULWjkUYkZL758' }
+    { city: 'LEANDER', role: 'HQ & RESTORATION', lat: '30.5788', lng: '-97.8531', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA3KOEuPjgbqkeB1k3qIl1ZsFi_ZLrRfwQZH1g05Y4fcZ_sso0Izwzwj7RgmcFJKpTFJmcFRB_x6WvL3egLRYD0MnRgcggAkgfLvfar1HvhR8fNJPvJylCsnHOpnRKj6Xc9FbSK94wD5Xlpai5yR-obNL_SfWIqkp9CzNUn-6R2MmkOhXce17-1ymoRe52mmhzE6JXi6kb5n352iMEkjADIXO00j0e4qvdy8kCI5coQOX4wB-sCnrfv8SOXUI6TQKSOk6jneNJWoi41' },
+    { city: 'CEDAR PARK', role: 'REMODELING UNIT', lat: '30.5063', lng: '-97.8297', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCTfFUyzUhCfKCK8k7nXUxsZS5uY3hAZ2naBejHKt3JvFxjcwnjwlrH6TBZWWn_xTDWwFwXwaroFv18pQVL1IWH8AXuk0pfBiegvIGkhWcJNj8ekukKBTgKkZ4oswi1shRQMLOHrpN9UIGA1LxGLjDGoD34QgZ0yotTB1kAgNgB6q6QP7l3XHGHrNUxrptv5ZyDh7U4yZA3dYrSznIkxXECcEkFr61k06W3hvYg8nrQxaizvGIIkclGw4AG6lZjxA1-Q963OpZMktS2' },
+    { city: 'NORTH AUSTIN', role: 'FOUNDATION SQUAD', lat: '30.3674', lng: '-97.7333', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAd9YL24IkSjArfIBAjh1stXRzZdmfnh86H660QPM2hDsJPnVBuwSWzEnRKyPskz9TMMHT2VS0hBaJDsEEU5E80DBYdvKpx1Z7DlH8HZ-xfabyCY2qcJP8SX076ZBi3WHv9482ZHTOu9cg4_Q6JF26NUgDCCYJT1sXMbh2vDmrlrf5haFqWKTjmpRfIY9QvK8GAaGgyT-MJh8uYbj6aa4rdo4CIlHLdc0yJNHctkMwXaHr85PO86LsflOYNE0lYxmAULWjkUYkZL758' }
   ]
 };
 
