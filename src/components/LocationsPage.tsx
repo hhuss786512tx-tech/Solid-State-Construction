@@ -330,12 +330,11 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.918991475141!2d-97.8556857244249!3d30.58000497465893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2d7c5b1c5b1d%3A0x5b1c5b1d5b1c5b1d!2s1101%20Halsey%20Dr%2C%20Leander%2C%20TX%2078641!5e0!3m2!1sen!2sus!4v1717880000000!5m2!1sen!2sus" 
             width="100%" 
             height="100%" 
-            style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)' }} 
+            style={{ border: 0 }} 
             allowFullScreen={true} 
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade"
             title="Solid State Construction Location"
-            className="grayscale brightness-75 contrast-125"
           ></iframe>
           {/* Technical overlay corners */}
           <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500 pointer-events-none" />

@@ -186,11 +186,12 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           onChange={(e) => setProjectType(e.target.value)}
                           className="w-full bg-slate-900 border border-slate-800 p-2.5 text-slate-200 focus:border-orange-500 outline-none rounded"
                         >
-                          <option value="roofing">Roofing & Overlaps (DIVISION 07)</option>
-                          <option value="foundation">Concrete Foundation Core (DIVISION 03)</option>
-                          <option value="plumbing">Hydraulic Networks (DIVISION 22)</option>
-                          <option value="tiling">Precision Finish Groutings (DIVISION 09)</option>
-                          <option value="combined">COMBINED MASTER FRAME (DIV 03-22)</option>
+                          <option value="water-remediation">Water Remediation (24/7 EMERGENCY)</option>
+                          <option value="foundation">Foundation Repair (DIVISION 03)</option>
+                          <option value="remodeling">Full Home Remodeling (DIVISION 09)</option>
+                          <option value="painting">Painting & Drywall (DIVISION 09)</option>
+                          <option value="roofing">Roofing Services (DIVISION 07)</option>
+                          <option value="flooring">Flooring & Tile (DIVISION 09)</option>
                         </select>
                       </div>
 
