@@ -94,61 +94,24 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             </div>
           </div>
 
-          {/* Map canvas containing grids, circles, and coordinate markers */}
-          <div className="relative h-96 w-full bg-brand-darker border border-slate-850 overflow-hidden flex items-center justify-center">
+          {/* Dynamic Google Map based on selected hub */}
+          <div className="relative h-96 w-full bg-slate-900 border border-slate-850 overflow-hidden">
+            <iframe 
+              key={activeHub.id}
+              src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d50000!2d${activeHub.coords.lng.split('Â°')[0]}!3d${activeHub.coords.lat.split('Â°')[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1717880000000!5m2!1sen!2sus`} 
+              width="100%" 
+              height="100%" 
+              style={{ border: 0 }} 
+              allowFullScreen={true} 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+              title={`Map of ${activeHub.city}`}
+            ></iframe>
             
-            {/* Fine technical blueprint lines */}
-            <div className="absolute inset-0 technical-grid opacity-30" />
-            <div className="absolute inset-0 bg-radial-gradient from-transparent to-brand-darker" />
-
-            {/* Simulated Satellite Earth map background watermark to match mock style */}
-            <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-6QZqJv8esJ-wzlLbpGdZ893QzE6yVOwmCzCMPlKd1unh70cEC08DX4myR4jpfZN_uK__TwJ0FDEydzC_c29x_t3274KjithHJWQ0Cj-sYOsHbEWQpH1-l38dmEh913QZnatdce7LqQdXWC2Xk2bqcy5xfIFQDIoDhgaKeIMt8HDaBoKHNx8FndqAO5jBkPKZG2Ps_sTIDoBHG1EgKdSl3NBYS6tUL_QUAs9eWPfqT083q1aV_mmsPqpMPaHaQa7JoLS0kdHSmcHt" 
-              alt="Globe watermark blueprint" 
-              className="absolute w-full h-full object-cover opacity-20 filter invert brightness-50"
-              referrerPolicy="no-referrer"
-            />
-
-            {/* Dynamic coordinate axis numbers */}
-            <div className="absolute bottom-2 left-3 font-mono text-[8px] text-slate-500">Y-AXIS 09B</div>
-            <div className="absolute top-2 right-3 font-mono text-[8px] text-slate-500">X-AXIS 441A</div>
-
-            {/* Live radar sweep element */}
-            <div className="absolute inset-0 pointer-events-none bg-[conic-gradient(from_0deg_at_50%_50%,rgba(249,115,22,0.1),transparent_90deg)] animate-spin duration-10000" />
-
-            {/* Dynamic target coords lines for selected node */}
-            <div className="absolute left-0 right-0 border-t border-orange-500/10" style={{ top: `${activeHub.coords.y}%` }} />
-            <div className="absolute top-0 bottom-0 border-l border-orange-500/10" style={{ left: `${activeHub.coords.x}%` }} />
-
-            {/* Render interactive coordinate pointers for each Hub */}
-            {HUBS.map((hub) => {
-              const isSelected = activeHub.id === hub.id;
-              return (
-                <button
-                  key={hub.id}
-                  onClick={() => handleHubClick(hub)}
-                  style={{ left: `${hub.coords.x}%`, top: `${hub.coords.y}%` }}
-                  className="absolute z-20 cursor-pointer -translate-x-1/2 -translate-y-1/2 flex items-center justify-center p-2 group"
-                >
-                  {/* Outer pulsing ring */}
-                  <span className={`absolute h-8 w-8 rounded-full border border-orange-500/30 transition-transform ${
-                    isSelected ? 'animate-ping scale-110' : 'group-hover:scale-105'
-                  }`} />
-                  
-                  {/* Concentric marker dot */}
-                  <span className={`h-4.5 w-4.5 rounded-full border-2 border-brand-darker flex items-center justify-center transition-all ${
-                    isSelected ? 'bg-orange-500 scale-110 shadow-[0_0_12px_#f97316]' : 'bg-slate-800'
-                  }`} />
-
-                  {/* Tooltip on hover/active */}
-                  <div className={`absolute bottom-6 whitespace-nowrap bg-slate-900 border border-slate-800 font-mono text-[8px] tracking-wider px-2 py-1 text-slate-100 uppercase transition-all ${
-                    isSelected ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-1 group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0'
-                  }`}>
-                    {hub.city.toUpperCase()}: [{hub.coords.lat}, {hub.coords.lng}]
-                  </div>
-                </button>
-              );
-            })}
+            {/* Legend / Overlay */}
+            <div className="absolute top-4 left-4 z-10 bg-slate-900/90 border border-orange-500/30 px-3 py-2 font-mono text-[9px] text-orange-400 backdrop-blur-sm">
+              <span className="font-bold">ACTIVE NODE:</span> {activeHub.city.toUpperCase()} [{activeHub.coords.lat}, {activeHub.coords.lng}]
+            </div>
           </div>
 
           <div className="flex justify-between items-center mt-4 font-mono text-[9px] text-slate-500">
