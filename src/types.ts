@@ -27,6 +27,13 @@ export interface ServiceDetail {
   image?: string;
 }
 
+export interface Testimonial {
+  name: string;
+  location: string;
+  quote: string;
+  avatar?: string;
+}
+
 export interface TechnicalService {
   id: string;
   divisionCode: string;

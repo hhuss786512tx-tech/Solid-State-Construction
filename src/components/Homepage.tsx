@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Terminal, Award, Network, Compass, ShieldCheck } from 'lucide-react';
-import { HOMEPAGE_WIDGETS } from '../data';
+import { HOMEPAGE_WIDGETS, TESTIMONIALS } from '../data';
 
 interface HomepageProps {
   setTab: (tab: string) => void;
@@ -213,10 +213,10 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               <div>
                 <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// PERFORMANCE AUDITS</span>
                 <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-white mt-1">
-                  Quality Remodeling & Emergency Care
+                  Who We Are & What We Do
                 </h2>
                 <p className="text-sm text-slate-400 leading-relaxed font-sans mt-4">
-                  Based in Leander, we provide high-tier craftsmanship for every corner of your home. From emergency water restoration to custom home remodeling, our team ensures your living environment remains resilient and aesthetically perfect.
+                  SOLID STATE CONSTRUCTION is Leander's premier partner for comprehensive home restoration and improvement. We pride ourselves on being a local business that understands the unique construction needs of our Leander and North Austin neighbors. Every project we undertake is an essential service designed to keep your home safe and structurally sound.
                 </p>
               </div>
 
@@ -344,6 +344,44 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                   <div className="flex justify-between font-mono text-[9px] text-slate-500 border-t border-slate-900 pt-2">
                     <span>COORDINATES // Lat: {hub.lat}</span>
                     <span>Lon: {hub.lng}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="px-4 py-20 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// NEIGHBOR FEEDBACK</span>
+            <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-white mt-1">
+              Top Rated in Leander
+            </h2>
+            <p className="text-sm text-slate-400 font-mono mt-2">5.0/5.0 BASED ON 50+ LOCAL REVIEWS</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((t, i) => (
+              <div key={i} className="border border-slate-800 bg-brand-dark p-8 relative group hover:border-orange-500/30 transition-all">
+                <div className="absolute top-0 left-0 h-2 w-2 border-t border-l border-orange-500 opacity-50 group-hover:opacity-100" />
+                <div className="text-orange-400 mb-6 flex gap-1">
+                  {[...Array(5)].map((_, i) => (
+                    <Award key={i} className="h-4 w-4 fill-orange-500/20" />
+                  ))}
+                </div>
+                <p className="text-slate-300 font-serif text-lg leading-relaxed italic mb-8">
+                  "{t.quote}"
+                </p>
+                <div className="border-t border-slate-900 pt-6 flex items-center gap-4">
+                  <div className="h-10 w-10 bg-slate-900 border border-slate-800 flex items-center justify-center font-display font-bold text-orange-400 text-sm">
+                    {t.name.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="text-white font-bold text-sm tracking-tight">{t.name}</div>
+                    <div className="text-slate-500 font-mono text-[10px] uppercase tracking-widest">{t.location}</div>
                   </div>
                 </div>
               </div>

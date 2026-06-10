@@ -253,3 +253,22 @@ export const HOMEPAGE_WIDGETS = {
     { city: 'NORTH AUSTIN', role: 'FOUNDATION SQUAD', lat: '30.3674Â° N', lng: '97.7333Â° W', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAd9YL24IkSjArfIBAjh1stXRzZdmfnh86H660QPM2hDsJPnVBuwSWzEnRKyPskz9TMMHT2VS0hBaJDsEEU5E80DBYdvKpx1Z7DlH8HZ-xfabyCY2qcJP8SX076ZBi3WHv9482ZHTOu9cg4_Q6JF26NUgDCCYJT1sXMbh2vDmrlrf5haFqWKTjmpRfIY9QvK8GAaGgyT-MJh8uYbj6aa4rdo4CIlHLdc0yJNHctkMwXaHr85PO86LsflOYNE0lYxmAULWjkUYkZL758' }
   ]
 };
+
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    name: "Sarah M.",
+    location: "Leander, TX",
+    quote: "Solid State saved us when our pipes burst. They were here in 30 minutes for the water remediation and handled everything with the insurance. Truly the best in Leander!"
+  },
+  {
+    name: "James R.",
+    location: "Crystal Falls",
+    quote: "Extremely professional foundation repair. I was worried about the Texas soil shifts, but these guys explained the whole process and did a flawless job. Highly recommend."
+  },
+  {
+    name: "Elena G.",
+    location: "Cedar Park, TX",
+    quote: "We used them for a full kitchen remodel and flooring. The attention to detail in the tile work is incredible. Our home looks brand new!"
+  }
+];
+

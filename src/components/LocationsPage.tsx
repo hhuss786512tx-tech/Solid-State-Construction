@@ -309,6 +309,54 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
         </div>
       </div>
 
+      {/* Primary Service Station Map Section */}
+      <section className="mb-16 border border-slate-800 bg-brand-dark p-6 sm:p-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
+          <div>
+            <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// WHERE TO FIND US</span>
+            <h2 className="font-display text-2xl font-black text-white uppercase tracking-tight mt-1">
+              Primary Service Station
+            </h2>
+            <p className="text-sm text-slate-400 font-sans mt-2">Located in the heart of Leander, we serve the entire Cedar Park and North Austin metropolitan area.</p>
+          </div>
+          <div className="flex flex-col items-end text-right">
+            <span className="font-mono text-[10px] text-slate-500 uppercase tracking-widest">Address Station</span>
+            <span className="font-display text-sm font-bold text-slate-100">1101 Halsey Drive, Leander, TX 78641</span>
+          </div>
+        </div>
+        
+        <div className="relative h-[400px] w-full border border-slate-800 bg-slate-950 overflow-hidden">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.918991475141!2d-97.8556857244249!3d30.58000497465893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2d7c5b1c5b1d%3A0x5b1c5b1d5b1c5b1d!2s1101%20Halsey%20Dr%2C%20Leander%2C%20TX%2078641!5e0!3m2!1sen!2sus!4v1717880000000!5m2!1sen!2sus" 
+            width="100%" 
+            height="100%" 
+            style={{ border: 0, filter: 'invert(90%) hue-rotate(180deg) brightness(95%) contrast(90%)' }} 
+            allowFullScreen={true} 
+            loading="lazy" 
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Solid State Construction Location"
+            className="grayscale brightness-75 contrast-125"
+          ></iframe>
+          {/* Technical overlay corners */}
+          <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500 pointer-events-none" />
+          <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-orange-500 pointer-events-none" />
+          <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-orange-500 pointer-events-none" />
+          <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-orange-500 pointer-events-none" />
+        </div>
+        
+        <div className="mt-6 flex justify-center">
+          <a 
+            href="https://www.google.com/maps/dir/?api=1&destination=1101+Halsey+Drive+Leander+TX+78641" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 border border-orange-500 bg-orange-950/10 hover:bg-orange-500 hover:text-brand-dark transition-all duration-200 px-8 py-3 font-display text-xs font-bold uppercase tracking-wider text-orange-400 cursor-pointer"
+          >
+            <MapPin className="h-4 w-4" />
+            Get Directions to Site
+          </a>
+        </div>
+      </section>
+
       {/* Inquire globally Call to Action */}
       <section className="bg-brand-dark border border-slate-800 p-8 sm:p-12 relative overflow-hidden text-center max-w-4xl mx-auto">
         <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500" />
