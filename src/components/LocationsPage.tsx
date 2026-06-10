@@ -98,7 +98,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
           <div className="relative h-96 w-full bg-slate-900 border border-slate-850 overflow-hidden">
             <iframe 
               key={activeHub.id}
-              src={`https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d50000!2d${activeHub.coords.lng.split('Â°')[0]}!3d${activeHub.coords.lat.split('Â°')[0]}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1717880000000!5m2!1sen!2sus`} 
+              src={`https://maps.google.com/maps?q=${activeHub.coords.lat},${activeHub.coords.lng}&z=15&output=embed`} 
               width="100%" 
               height="100%" 
               style={{ border: 0 }} 
@@ -109,7 +109,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             ></iframe>
             
             {/* Legend / Overlay */}
-            <div className="absolute top-4 left-4 z-10 bg-slate-900/90 border border-orange-500/30 px-3 py-2 font-mono text-[9px] text-orange-400 backdrop-blur-sm">
+            <div className="absolute top-4 left-4 z-10 bg-slate-950/95 border border-orange-500/30 px-3 py-2 font-mono text-[9px] text-orange-400 backdrop-blur-sm shadow-xl">
               <span className="font-bold">ACTIVE NODE:</span> {activeHub.city.toUpperCase()} [{activeHub.coords.lat}, {activeHub.coords.lng}]
             </div>
           </div>
@@ -323,7 +323,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
           </div>
 
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3434.3311894435553!2d-97.85966562442533!3d30.582295674657895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2d4fdf80fbcf%3A0xc6cb556209b5eb3b!2s1101%20Halsey%20Dr%2C%20Leander%2C%20TX%2078641!5e0!3m2!1sen!2sus!4v1717900000000!5m2!1sen!2sus" 
+            src="https://maps.google.com/maps?q=30.58000497465893,-97.8556857244249&z=15&output=embed" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
