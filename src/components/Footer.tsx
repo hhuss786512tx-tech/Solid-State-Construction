@@ -32,39 +32,31 @@ export default function Footer({ setTab }: { setTab: (tab: string) => void }) {
               </span>
             </div>
             <p className="max-w-md text-sm text-slate-400 leading-relaxed font-sans">
-              Deploying industrial design matrices, resilient structural concrete foundations, complex hydraulic plumbing arrays, and modern thermal envelopments. Tested for extreme environments and high architectural load margins.
+              Your local Leander construction and restoration specialists. Quality craftsmanship for remodeling, foundation repair, and 24/7 emergency services.
             </p>
             <div className="flex items-center gap-3 font-mono text-xs text-orange-400 bg-orange-950/20 max-w-xs p-3 border border-orange-500/10">
               <Terminal className="h-4 w-4 shrink-0 text-orange-500" />
-              <span>TERMINAL COMPONENT V4.1.2 // SECURE</span>
+              <span>(512) 595-2332 // 24/7 SUPPORT</span>
             </div>
           </div>
 
           {/* Quick Hub Links */}
           <div>
             <h4 className="font-display text-xs font-bold uppercase tracking-wider text-slate-100 mb-4 border-l-2 border-orange-500 pl-2">
-              SYSTEM REGISTRY
+              CONTACT US
             </h4>
             <ul className="space-y-2.5 font-mono text-xs">
-              <li>
-                <button onClick={() => setTab('homepage')} className="hover:text-orange-400 transition-colors">
-                  &gt; OVERVIEW_DASHBOARD
-                </button>
+              <li className="flex items-center gap-2">
+                <span className="text-orange-500">&gt;</span>
+                <span>1101 Halsey Drive, Leander, TX 78641</span>
               </li>
-              <li>
-                <button onClick={() => setTab('services')} className="hover:text-orange-400 transition-colors">
-                  &gt; SERVICES_CATALOG
-                </button>
+              <li className="flex items-center gap-2">
+                <span className="text-orange-500">&gt;</span>
+                <a href="tel:5125952332" className="hover:text-orange-400 transition-colors">(512) 595-2332</a>
               </li>
-              <li>
-                <button onClick={() => setTab('gallery')} className="hover:text-orange-400 transition-colors">
-                  &gt; PROJECT_REGISTRY
-                </button>
-              </li>
-              <li>
-                <button onClick={() => setTab('locations')} className="hover:text-orange-400 transition-colors">
-                  &gt; ACTIVE_LOCATIONS
-                </button>
+              <li className="flex items-center gap-2">
+                <span className="text-orange-500">&gt;</span>
+                <a href="mailto:contact@solidstateconstruction.com" className="hover:text-orange-400 transition-colors">contact@solidstateconstruction.com</a>
               </li>
             </ul>
           </div>

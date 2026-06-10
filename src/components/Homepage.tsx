@@ -49,9 +49,9 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               transition={{ delay: 0.1 }}
               className="font-display text-4xl font-extrabold uppercase tracking-tight text-white sm:text-6xl max-w-4xl leading-none"
             >
-              Precision Engineering <br />
+              Leander's Choice for <br />
               <span className="bg-gradient-to-r from-orange-500 via-amber-400 to-orange-400 bg-clip-text text-transparent">
-                Defining the Skyline
+                Quality Construction
               </span>
             </motion.h1>
 
@@ -61,7 +61,7 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               transition={{ delay: 0.2 }}
               className="mt-6 max-w-2xl text-base sm:text-lg text-slate-400 leading-relaxed font-sans"
             >
-              SOLID STATE CONSTRUCTION designs high-resilience systems combining exposed cold-formed steel frameworks, continuous tension concrete foundations, automated hydraulics, and customized thermal barriers.
+              SOLID STATE CONSTRUCTION is Leander's premier partner for comprehensive home restoration and improvement. We specialize in essential services designed to keep your home safe, beautiful, and structurally sound.
             </motion.p>
 
             {/* CTA Triggers */}
@@ -76,18 +76,17 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
                 onClick={onRequestQuote}
                 className="group relative cursor-pointer overflow-hidden border border-orange-500 bg-orange-500/10 px-8 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-orange-400 shadow-[0_0_20px_rgba(249,115,22,0.1)] transition-all hover:bg-orange-500 hover:text-brand-dark hover:shadow-[0_0_30px_rgba(249,115,22,0.3)]"
               >
-                Get a Quote
+                Get a Quote Online
                 <div className="absolute right-2 top-2 h-1.5 w-1.5 bg-orange-400 group-hover:bg-brand-dark" />
               </button>
 
-              <button
-                id="hero-view-projects"
-                onClick={() => setTab('gallery')}
+              <a
+                href="tel:5125952332"
                 className="group flex items-center gap-2 cursor-pointer border border-slate-700/80 bg-slate-900/40 px-8 py-3.5 font-display text-xs font-bold uppercase tracking-widest text-slate-300 transition-all hover:border-slate-500 hover:bg-slate-900"
               >
-                View Projects
+                Call Now: (512) 595-2332
                 <ArrowRight className="h-4 w-4 text-slate-500 transition-transform group-hover:translate-x-1 group-hover:text-orange-400" />
-              </button>
+              </a>
             </motion.div>
           </div>
         </div>
@@ -214,37 +213,37 @@ export default function Homepage({ setTab, onRequestQuote, setSelectedHubId }: H
               <div>
                 <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// PERFORMANCE AUDITS</span>
                 <h2 className="font-display text-3xl font-bold uppercase tracking-tight text-white mt-1">
-                  Charting the Future of Steel
+                  Quality Remodeling & Emergency Care
                 </h2>
                 <p className="text-sm text-slate-400 leading-relaxed font-sans mt-4">
-                  Leveraging heavy metallurgical design constraints across dozens of micro-regions, we continuously improve structural load bearings. Every system built adheres to rigorous ISO quality and environmental shields.
+                  Based in Leander, we provide high-tier craftsmanship for every corner of your home. From emergency water restoration to custom home remodeling, our team ensures your living environment remains resilient and aesthetically perfect.
                 </p>
               </div>
 
               {/* Statistics Grid */}
               <div className="grid grid-cols-2 gap-6 border-t border-slate-800 pt-8 font-mono">
                 <div>
-                  <div className="text-4xl font-extrabold text-orange-500 tracking-tight">450+</div>
+                  <div className="text-4xl font-extrabold text-orange-500 tracking-tight">100%</div>
                   <div className="text-[10px] uppercase text-slate-400 tracking-wider mt-1.5">
-                    Completed Project Structures
+                    Local Leander Focus
                   </div>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-white tracking-tight">18+</div>
+                  <div className="text-4xl font-extrabold text-white tracking-tight">24/7</div>
                   <div className="text-[10px] uppercase text-slate-400 tracking-wider mt-1.5">
-                    Global Engineering Hubs
+                    Emergency Support
                   </div>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-slate-300 tracking-tight">100%</div>
+                  <div className="text-4xl font-extrabold text-slate-300 tracking-tight">50+</div>
                   <div className="text-[10px] uppercase text-slate-400 tracking-wider mt-1.5">
-                    Digital Twin Telemetry
+                    5-Star Local Reviews
                   </div>
                 </div>
                 <div>
-                  <div className="text-4xl font-extrabold text-orange-400 tracking-tight">&lt;1mm</div>
+                  <div className="text-4xl font-extrabold text-orange-400 tracking-tight">Zero</div>
                   <div className="text-[10px] uppercase text-slate-400 tracking-wider mt-1.5">
-                    Laser Assembly Tolerance
+                    Defect Guarantee
                   </div>
                 </div>
               </div>

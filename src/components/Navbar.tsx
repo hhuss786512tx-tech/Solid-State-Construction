@@ -72,7 +72,7 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
             </span>
-            <span>SYS_STABLE // NO ERRORS</span>
+            <span>(512) 595-2332 // 24/7 EMERGENCY</span>
           </div>
 
           <button

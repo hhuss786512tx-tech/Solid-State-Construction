@@ -266,7 +266,7 @@ export default function GalleryPage() {
                 <div>// BENTLEY BIM EXPORT LAYER: ELEVATION_01A</div>
                 <div>{`_______________________________________________________`}</div>
                 <div>{`      /\\                                           /\\ `}</div>
-                <div>{`     /  \\          [SECURE ARCHIVEMENT]           /  \\`}</div>
+                <div>{`     /  \\          [SOLID STATE CORE]             /  \\`}</div>
                 <div>{`____/____\\_______________________________________/____\\`}</div>
                 <div>{`   |      |                                     |      |`}</div>
                 <div>{`   |  []  |      SYS STATUS: ACTIVE CONTRACT     |  []  |`}</div>
@@ -275,7 +275,7 @@ export default function GalleryPage() {
                 <div>{`   |      |   X-DIM: 480ft || Y-DIM: 220ft      |      |`}</div>
                 <div>{`   |  __  |   FOUNDATION COMPRESSION: 8.5K psi   |  __  |`}</div>
                 <div>{`___|__||__|_____________________________________|__||__|`}</div>
-                <div>// LATITUDE_COORD: 41.240.3 // LONGITUDE_COORD: -87.114.9</div>
+                <div>// LATITUDE_COORD: 30.578 // LONGITUDE_COORD: -97.853</div>
               </div>
 
               <div className="space-y-4">
