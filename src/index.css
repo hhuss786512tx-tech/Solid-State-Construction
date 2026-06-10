@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500;600;700&family=Sora:wght@300;400;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Hanken Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Sora", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-orange: #f97316;
+  --color-brand-dark: #0f172a;
+  --color-brand-darker: #020617;
+}
+
+/* Custom styles for professional industrial aesthetic */
+body {
+  font-family: var(--font-sans);
+  background-color: #040815;
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+/* Technical grid background */
+.technical-grid {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(249, 115, 22, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(249, 115, 22, 0.04) 1px, transparent 1px);
+}
+
+.technical-grid-fine {
+  background-size: 10px 10px;
+  background-image: 
+    linear-gradient(to right, rgba(249, 115, 22, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(249, 115, 22, 0.02) 1px, transparent 1px);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #f97316;
+}
+
+/* Corner element decorations to highlight high-tech precise design */
+.industrial-corner-tl {
+  border-top: 2px solid #f97316;
+  border-left: 2px solid #f97316;
+}
+.industrial-corner-tr {
+  border-top: 2px solid #f97316;
+  border-right: 2px solid #f97316;
+}
+.industrial-corner-bl {
+  border-bottom: 2px solid #f97316;
+  border-left: 2px solid #f97316;
+}
+.industrial-corner-br {
+  border-bottom: 2px solid #f97316;
+  border-right: 2px solid #f97316;
+}

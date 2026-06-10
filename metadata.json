@@ -1,0 +1,6 @@
+{
+  "name": "Solid State Construction",
+  "description": "Architectural and engineering excelence firm. Features Homepage bento overview, Advanced Services section (Roofing, Foundation, Plumbing, Tiling), filterable Portfolio Gallery, and interactive Global Sites Map.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
