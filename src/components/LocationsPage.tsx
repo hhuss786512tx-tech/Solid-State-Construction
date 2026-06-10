@@ -310,24 +310,57 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
       </div>
 
       {/* Primary Service Station Map Section */}
-      <section className="mb-16 border border-slate-800 bg-brand-dark p-6 sm:p-8">
+      <section className="mb-16 border border-slate-800/80 bg-slate-900/40 backdrop-blur-md p-6 sm:p-8 rounded-2xl shadow-2xl shadow-orange-950/10 hover:border-slate-700/50 transition-all duration-300">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
           <div>
-            <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// WHERE TO FIND US</span>
-            <h2 className="font-display text-2xl font-black text-white uppercase tracking-tight mt-1">
+            <span className="font-mono text-xs uppercase tracking-widest text-orange-400">// STRATEGIC INFRASTRUCTURE SITE</span>
+            <h2 className="font-display text-3xl font-black text-white uppercase tracking-tight mt-1">
               Primary Service Station
             </h2>
-            <p className="text-sm text-slate-400 font-sans mt-2">Located in the heart of Leander, we serve the entire Cedar Park and North Austin metropolitan area.</p>
+            <p className="text-sm text-slate-400 font-sans mt-2 max-w-xl">
+              Our central manufacturing and deployment hub is located in Leander, serving the entire Cedar Park, Round Rock, and North Austin metropolitan areas with rapid response telemetry.
+            </p>
           </div>
-          <div className="flex flex-col items-end text-right">
-            <span className="font-mono text-[10px] text-slate-500 uppercase tracking-widest">Address Station</span>
-            <span className="font-display text-sm font-bold text-slate-100">1101 Halsey Drive, Leander, TX 78641</span>
+          <div className="flex flex-col items-start md:items-end text-left md:text-right bg-slate-950/40 border border-slate-800 p-4 rounded-xl min-w-[240px]">
+            <span className="font-mono text-[10px] text-orange-400 uppercase tracking-widest font-black">STATION ADDR // GLOBAL COORDS</span>
+            <span className="font-display text-md font-bold text-slate-100 mt-1">1101 Halsey Drive</span>
+            <span className="font-display text-xs text-slate-400 font-medium">Leander, TX 78641</span>
           </div>
         </div>
         
-        <div className="relative h-[400px] w-full border border-slate-800 bg-slate-950 overflow-hidden">
+        <div className="relative h-[450px] w-full border border-slate-800/60 bg-slate-950 rounded-xl overflow-hidden shadow-2xl shadow-black/80 group">
+          {/* Elegant Floating Map Card overlay (Hidden on mobile for seamless navigation) */}
+          <div className="absolute top-4 left-4 z-10 hidden lg:block max-w-[320px] bg-slate-950/95 backdrop-blur-md border border-slate-800/80 p-5 rounded-xl shadow-2xl transition-all duration-300 group-hover:border-orange-500/30">
+            <div className="flex items-center gap-3 mb-3.5">
+              <div className="p-2.5 bg-orange-500/10 rounded-lg border border-orange-500/20 text-orange-400">
+                <MapPin className="h-5 w-5" />
+              </div>
+              <div>
+                <h4 className="font-display text-sm font-black text-white uppercase tracking-wider">LEANDER HQ</h4>
+                <p className="text-[10px] font-mono text-emerald-400 uppercase tracking-widest font-bold">STATUS: NOMINAL // ONLINE</p>
+              </div>
+            </div>
+            <p className="text-xs text-slate-400 font-sans leading-relaxed mb-4">
+              Our state-of-the-art facility managing continuous live-load operations, fabrication engineering, and rapid deployment crews.
+            </p>
+            <div className="space-y-2 border-t border-slate-900 pt-3.5 text-[11px] font-mono">
+              <div className="flex justify-between">
+                <span className="text-slate-500 uppercase">SYSTEM RESPONSE:</span>
+                <span className="text-slate-300 font-bold">0.04ms latency</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500 uppercase">TELEMETRY FREQ:</span>
+                <span className="text-emerald-400 font-bold">5.8 GHz SOLID</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-slate-500 uppercase">HOURS OF OPS:</span>
+                <span className="text-slate-300">0700 - 1800 CST</span>
+              </div>
+            </div>
+          </div>
+
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3433.918991475141!2d-97.8556857244249!3d30.58000497465893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2d7c5b1c5b1d%3A0x5b1c5b1d5b1c5b1d!2s1101%20Halsey%20Dr%2C%20Leander%2C%20TX%2078641!5e0!3m2!1sen!2sus!4v1717880000000!5m2!1sen!2sus" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3434.3311894435553!2d-97.85966562442533!3d30.582295674657895!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x865b2d4fdf80fbcf%3A0xc6cb556209b5eb3b!2s1101%20Halsey%20Dr%2C%20Leander%2C%20TX%2078641!5e0!3m2!1sen!2sus!4v1717900000000!5m2!1sen!2sus" 
             width="100%" 
             height="100%" 
             style={{ border: 0 }} 
@@ -335,8 +368,10 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             loading="lazy" 
             referrerPolicy="no-referrer-when-downgrade"
             title="Solid State Construction Location"
+            className="transition-all duration-300 filter saturate-[0.85] contrast-[1.05] brightness-[0.9] hover:saturate-[1] hover:brightness-[0.95]"
           ></iframe>
-          {/* Technical overlay corners */}
+          
+          {/* Technical overlay corners to preserve brand vibe */}
           <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-orange-500 pointer-events-none" />
           <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-orange-500 pointer-events-none" />
           <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-orange-500 pointer-events-none" />
@@ -348,7 +383,7 @@ export default function LocationsPage({ selectedHubId, setSelectedHubId }: Locat
             href="https://www.google.com/maps/dir/?api=1&destination=1101+Halsey+Drive+Leander+TX+78641" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 border border-orange-500 bg-orange-950/10 hover:bg-orange-500 hover:text-brand-dark transition-all duration-200 px-8 py-3 font-display text-xs font-bold uppercase tracking-wider text-orange-400 cursor-pointer"
+            className="inline-flex items-center gap-2 border border-orange-500/30 bg-orange-500/5 hover:bg-orange-500 hover:text-brand-dark transition-all duration-300 px-8 py-3.5 rounded-xl font-display text-xs font-bold uppercase tracking-wider text-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.15)] hover:border-orange-500 cursor-pointer"
           >
             <MapPin className="h-4 w-4" />
             Get Directions to Site
