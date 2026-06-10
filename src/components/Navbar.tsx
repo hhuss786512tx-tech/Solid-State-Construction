@@ -25,13 +25,13 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
           className="flex cursor-pointer items-center gap-3 transition-colors hover:opacity-90"
         >
           <div className="relative flex h-9 w-9 items-center justify-center border-2 border-orange-500 bg-brand-dark font-display text-lg font-bold text-orange-400">
-            A
+            S
             <span className="absolute -right-1 -top-1 h-1.5 w-1.5 bg-orange-500" />
             <span className="absolute -bottom-1 -left-1 h-1.5 w-1.5 bg-orange-500" />
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-lg font-bold tracking-widest text-slate-100">
-              ARCHI<span className="text-orange-500">STRUCT</span>
+            <span className="font-display text-lg font-bold tracking-widest text-slate-100 uppercase">
+              SOLID STATE <span className="text-orange-500">CONSTRUCTION</span>
             </span>
             <span className="font-mono text-[9px] tracking-widest text-orange-400/80 uppercase">
               SPEC SYSTEM V4.1

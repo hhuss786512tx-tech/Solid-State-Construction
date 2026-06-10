@@ -25,10 +25,10 @@ export default function Footer({ setTab }: { setTab: (tab: string) => void }) {
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
               <div className="flex h-8 w-8 items-center justify-center border border-orange-500 font-display text-sm font-bold text-orange-400">
-                A
+                S
               </div>
-              <span className="font-display text-lg font-bold tracking-widest text-slate-100">
-                ARCHI<span className="text-orange-500">STRUCT</span>
+              <span className="font-display text-lg font-bold tracking-widest text-slate-100 uppercase">
+                SOLID STATE <span className="text-orange-500">CONSTRUCTION</span>
               </span>
             </div>
             <p className="max-w-md text-sm text-slate-400 leading-relaxed font-sans">
