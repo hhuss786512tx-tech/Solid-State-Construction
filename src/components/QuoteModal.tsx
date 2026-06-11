@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, CheckCircle2, FileText, Trash2, Phone, Mail, User } from 'lucide-react';
+import { X, CheckCircle2, FileText, Trash2, Phone, Mail, User, Maximize } from 'lucide-react';
 import { QuoteRequest } from '../types';
 
 interface QuoteModalProps {
@@ -14,7 +14,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [projectType, setProjectType] = useState('water-remediation');
-  const [projectSize, setProjectSize] = useState('medium'); 
+  const [sqFt, setSqFt] = useState(1500); 
   const [notes, setNotes] = useState('');
   const [quoteHistory, setQuoteHistory] = useState<QuoteRequest[]>([]);
   const [savedSuccess, setSavedSuccess] = useState(false);
@@ -31,24 +31,20 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   }, []);
 
   // PRICING FRAMEWORK
-  const pricingData: Record<string, { min: number, max: number, label: string }> = {
-    'water-remediation': { min: 2500, max: 250000, label: 'Water Remediation' },
-    'roofing': { min: 4000, max: 300000, label: 'Roofing Services' },
-    'foundation': { min: 5000, max: 500000, label: 'Concrete & Foundation' },
-    'plumbing': { min: 2000, max: 150000, label: 'Concrete Plumbing' },
-    'painting': { min: 1500, max: 150000, label: 'Painting & Drywall' },
-    'flooring': { min: 2500, max: 200000, label: 'Flooring & Tile' },
-    'remodeling': { min: 15000, max: 2500000, label: 'Full Home Remodeling' }
+  const pricingData: Record<string, { min: number, max: number, label: string, baseSqFt: number }> = {
+    'water-remediation': { min: 2500, max: 250000, label: 'Water Remediation', baseSqFt: 500 },
+    'roofing': { min: 4000, max: 300000, label: 'Roofing Services', baseSqFt: 2000 },
+    'concrete': { min: 5000, max: 500000, label: 'Concrete & Foundation', baseSqFt: 1000 },
+    'plumbing': { min: 2000, max: 150000, label: 'Concrete Plumbing', baseSqFt: 500 }
   };
 
   const computeEstimate = () => {
-    const range = pricingData[projectType] || { min: 0, max: 0 };
-    let multiplier = 0.4; // Medium
-    if (projectSize === 'small') multiplier = 0.1;
-    if (projectSize === 'large') multiplier = 0.7;
-    if (projectSize === 'custom') multiplier = 1.0;
-
-    const computed = range.min + (range.max - range.min) * multiplier;
+    const range = pricingData[projectType] || { min: 0, max: 0, baseSqFt: 1000 };
+    
+    // Scale pricing based on SqFt (Max is reached at 10,000 SqFt for this model)
+    const scaleFactor = Math.min(sqFt / 10000, 1.0);
+    const computed = range.min + (range.max - range.min) * scaleFactor;
+    
     return Math.floor(computed);
   };
 
@@ -66,7 +62,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       clientName,
       email,
       projectType,
-      dimensions: `Scope: ${projectSize.toUpperCase()}`,
+      dimensions: `${sqFt.toLocaleString()} SQ. FT.`,
       materialGrade: 'Standard',
       safetyLevel: 'Standard',
       notes: notes || 'N/A',
@@ -106,11 +102,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
             {/* Header */}
             <div className="flex justify-between items-center mb-8">
               <div>
-                <h2 className="font-display text-3xl font-black text-white uppercase tracking-tight">
-                  Get a Free Quote
+                <h2 className="font-display text-3xl font-black text-white uppercase tracking-tight leading-none">
+                  Free Estimate
                 </h2>
                 <p className="text-emerald-500 font-mono text-[10px] uppercase tracking-widest font-bold mt-1">
-                  Leander's Choice for Quality Construction
+                  Drag to Adjust Square Footage
                 </p>
               </div>
               <button onClick={onClose} className="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-500 hover:text-emerald-500">
@@ -132,13 +128,13 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   {step === 1 && (
                     <div className="space-y-8">
                       <div>
-                        <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-4">Select Service</label>
+                        <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-4">1. Select Service</label>
                         <div className="grid grid-cols-2 gap-3">
                           {Object.keys(pricingData).map((key) => (
                             <button
                               key={key}
                               onClick={() => setProjectType(key)}
-                              className={`py-3.5 px-4 rounded-2xl border-2 text-xs font-black uppercase tracking-tight transition-all text-left ${
+                              className={`py-3.5 px-4 rounded-2xl border-2 text-[11px] font-black uppercase tracking-tight transition-all text-left ${
                                 projectType === key 
                                   ? 'bg-emerald-600 border-emerald-500 text-white shadow-lg shadow-emerald-900/40 translate-y-[-2px]' 
                                   : 'bg-slate-800/50 border-slate-800 text-slate-500 hover:border-slate-700'
@@ -150,35 +146,43 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         </div>
                       </div>
 
-                      <div>
-                        <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-4">Project Size</label>
-                        <div className="flex gap-3">
-                          {['small', 'medium', 'large', 'custom'].map((size) => (
-                            <button
-                              key={size}
-                              onClick={() => setProjectSize(size)}
-                              className={`flex-1 py-3 rounded-xl border-2 text-[10px] font-black uppercase tracking-widest transition-all ${
-                                projectSize === size 
-                                  ? 'bg-emerald-600 border-emerald-500 text-white' 
-                                  : 'bg-slate-800/50 border-slate-800 text-slate-500 hover:border-slate-700'
-                              }`}
-                            >
-                              {size}
-                            </button>
-                          ))}
+                      <div className="space-y-6">
+                        <div className="flex justify-between items-end">
+                          <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block">2. Project Size (Sq Ft)</label>
+                          <div className="flex items-center gap-2 text-emerald-400">
+                            <Maximize className="h-4 w-4" />
+                            <span className="font-display text-2xl font-black">{sqFt.toLocaleString()}</span>
+                          </div>
+                        </div>
+                        
+                        <div className="relative pt-2">
+                          <input 
+                            type="range"
+                            min="100"
+                            max="10000"
+                            step="50"
+                            value={sqFt}
+                            onChange={(e) => setSqFt(Number(e.target.value))}
+                            className="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                          />
+                          <div className="flex justify-between mt-2 font-mono text-[9px] text-slate-600 uppercase font-bold">
+                            <span>100 FT</span>
+                            <span>5,000 FT</span>
+                            <span>10,000 FT</span>
+                          </div>
                         </div>
                       </div>
 
                       <div className="pt-6 border-t border-slate-800 flex justify-between items-center">
                         <div>
-                          <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Estimated Base</span>
+                          <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Estimated Range</span>
                           <span className="text-3xl font-black text-emerald-400">${activeEstimate.toLocaleString()}*</span>
                         </div>
                         <button
                           onClick={() => setStep(2)}
                           className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-emerald-900/30"
                         >
-                          Continue &rarr;
+                          Next Step &rarr;
                         </button>
                       </div>
                     </div>
@@ -211,11 +215,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             </div>
                           </div>
                           <div>
-                            <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Email Address</label>
+                            <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Email (Optional)</label>
                             <div className="relative">
                               <Mail className="absolute left-4 top-3.5 h-5 w-5 text-slate-600" />
                               <input
-                                type="email" required placeholder="email@address.com" value={email}
+                                type="email" placeholder="email@address.com" value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 pl-12 text-sm text-white focus:border-emerald-500 outline-none transition-all"
                               />
@@ -223,9 +227,9 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           </div>
                         </div>
                         <div>
-                          <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Additional Details</label>
+                          <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Project Details</label>
                           <textarea
-                            placeholder="Tell us more about the project..." rows={3} value={notes}
+                            placeholder="Tell us about the issue or project..." rows={3} value={notes}
                             onChange={(e) => setNotes(e.target.value)}
                             className="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-sm text-white focus:border-emerald-500 outline-none resize-none transition-all"
                           />
@@ -237,7 +241,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           Back
                         </button>
                         <button type="submit" className="flex-[2] bg-emerald-600 text-white hover:bg-emerald-500 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-emerald-900/30 transition-all">
-                          Submit Request
+                          Confirm Quote
                         </button>
                       </div>
                     </form>
@@ -248,28 +252,28 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       <div className="bg-emerald-900/20 border-2 border-emerald-500/20 p-8 rounded-3xl space-y-6">
                         <div className="flex justify-between items-end border-b border-emerald-500/10 pb-6">
                           <div>
-                            <span className="text-emerald-500 text-[10px] font-black uppercase tracking-widest block mb-1">Your Quote Estimate</span>
+                            <span className="text-emerald-500 text-[10px] font-black uppercase tracking-widest block mb-1">Generated Budget Range</span>
                             <span className="text-4xl font-black text-white">${activeEstimate.toLocaleString()}*</span>
                           </div>
-                          <span className="bg-emerald-500 text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter mb-1">Budget Draft</span>
+                          <span className="bg-emerald-500 text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter mb-1">Official Draft</span>
                         </div>
                         <div className="grid grid-cols-2 gap-8 py-2">
                           <div>
-                            <span className="text-slate-500 text-[10px] font-black uppercase block mb-1">Service Type</span>
+                            <span className="text-slate-500 text-[10px] font-black uppercase block mb-1">Service Node</span>
                             <span className="text-white font-bold text-lg uppercase">{pricingData[projectType].label}</span>
                           </div>
                           <div>
-                            <span className="text-slate-500 text-[10px] font-black uppercase block mb-1">Project Size</span>
-                            <span className="text-white font-bold text-lg uppercase">{projectSize}</span>
+                            <span className="text-slate-500 text-[10px] font-black uppercase block mb-1">Area Factor</span>
+                            <span className="text-white font-bold text-lg uppercase">{sqFt.toLocaleString()} FT</span>
                           </div>
                         </div>
                         <p className="text-[11px] text-slate-500 leading-relaxed italic pt-4">
-                          *Pricing is a range based on local materials and labor. Final cost confirmed after onsite evaluation.
+                          *This estimate is generated for planning. A final price is provided after onsite structural inspection by our team.
                         </p>
                       </div>
 
                       <button onClick={onClose} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all">
-                        Finish
+                        Finish Survey
                       </button>
                     </div>
                   )}
@@ -279,18 +283,18 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   <div className="space-y-6">
                     <div className="flex items-center gap-2 text-emerald-500 mb-2">
                       <FileText className="h-5 w-5" />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Recent Quotes</span>
+                      <span className="text-[10px] font-black uppercase tracking-widest">Quote Registry</span>
                     </div>
                     
                     {quoteHistory.length === 0 ? (
-                      <p className="text-slate-600 text-xs italic">No saved quotes found.</p>
+                      <p className="text-slate-600 text-xs italic">No local quote history detected.</p>
                     ) : (
                       <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                         {quoteHistory.map((q) => (
                           <div key={q.id} className="bg-slate-800/40 border border-slate-800 p-4 rounded-2xl group hover:border-emerald-500/30 transition-all">
                             <div className="flex justify-between items-start mb-2">
                               <span className="text-[9px] font-black text-emerald-500">{q.id}</span>
-                              <button onClick={(e) => handleDeleteHistoryItem(q.id, e)} className="text-slate-700 hover:text-red-400">
+                              <button onClick={(e) => handleDeleteHistoryItem(q.id, e)} className="text-slate-700 hover:text-red-400 transition-colors">
                                 <Trash2 className="h-4 w-4" />
                               </button>
                             </div>
@@ -304,7 +308,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       </div>
                     )}
                   </div>
-                  <p className="text-[10px] text-slate-600 mt-10">Calculations based on 2026 local market data.</p>
+                  <p className="text-[10px] text-slate-600 mt-10">Real-time local labor rates applied.</p>
                 </div>
               </div>
             )}
