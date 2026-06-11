@@ -15,9 +15,10 @@ export const PROJECTS: Project[] = [
     description: "Critical response for burst pipes. We arrived within 30 minutes, handled water remediation, and managed the entire insurance coordination process for our Leander neighbors.",
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCOdaZyBWFS0BsIb7mAKhEX9Pm3izUX-CtnR0Nl1Vu7azPZOypws18wgwP-Nn16pMyGUcsj2_3A2kVQMeybRuO_M5U5TLP-nXzYVl_RgTX_StlKICvfeE6lG60XqC1Pd2E7JqnITfOkXoPljGPoHK0sgPq2Qyz8YBjaW6V9GqONlB-vEnzcbY7yvaqRyVa_qpnfC5TsYhtp_q2IJYaD9ITe2fxndPSyB4LgxeHIYjM5bu_y2tTFJyHwtrV31rNnqp8PmidJSPu6taTY',
     blueprintCode: 'CASE-WAT-001',
-    engineer: 'Sarah M. (Client)'
-  },
-  {
+    engineer: 'Sarah M. (Client)',
+    budget: '$15,000 - $25,000'
+    },
+    {
     id: 'crystal-falls-foundation',
     title: 'Structural Foundation Leveling',
     type: 'industrial',
@@ -28,12 +29,13 @@ export const PROJECTS: Project[] = [
       completion: '100% Levelled',
       efficiency: 'High-Core PSI Concrete',
     },
-    description: 'Expert foundation repair addressing Texas soil shifts. We implemented structural leveling and crack repair with professional precision and clear communication.',
+    description: 'Expert foundation repair addressing Texas soil shifts. We implemented structural leveling and crack repair with professional precision.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCaXJF9yT4Xy7MVHmoq1ytLOSRxeWWhsU1hTIAdtCgnE9mADKb5BqFN_elz-fI-lAhvJSr_Ko-tgWRgxojHzKUqkXXnSHTLP_rP4AbtzOMkHy5KV3eApv2G3LikE9Ml7Ut3OtcQLoqWbFDQOMMaD_leNp7Att198gJY-Pck1RxYtG7tur1dUhI1PYcXb-Vu2mqnfAm_L1LByo5sw70KmI3YvGqY9VdqjKBubwOEzLHhTAAKiRHNRi6TbvqXx9jtpMUelo7IGEq--Qoj',
     blueprintCode: 'CASE-FND-042',
-    engineer: 'James R. (Client)'
-  }
-];
+    engineer: 'James R. (Client)',
+    budget: '$20,000 - $40,000'
+    }
+    ];
 
 export const SERVICES: TechnicalService[] = [
   {

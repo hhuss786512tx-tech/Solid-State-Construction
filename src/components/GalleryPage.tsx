@@ -246,80 +246,66 @@ export default function GalleryPage() {
               {/* Top Row Close trigger */}
               <div className="flex justify-between items-start mb-6 border-b border-slate-900 pb-4">
                 <div>
-                  <span className="font-mono text-[9px] text-emerald-500 font-extrabold uppercase bg-emerald-950/20 px-2 py-0.5 border border-emerald-600/10">
-                    CERTIFIED: {selectedProject.blueprintCode}
+                  <span className="font-mono text-[9px] text-emerald-500 font-extrabold uppercase bg-emerald-950/20 px-2 py-0.5 border border-emerald-600/10 rounded">
+                    CASE STUDY: {selectedProject.blueprintCode}
                   </span>
-                  <h2 className="font-display text-2xl font-black text-slate-100 uppercase mt-1.5 tracking-tight">
+                  <h2 className="font-display text-2xl font-black text-white uppercase mt-2 tracking-tight">
                     {selectedProject.title}
                   </h2>
                 </div>
                 <button 
                   onClick={() => setSelectedProject(null)}
-                  className="text-slate-500 hover:text-emerald-600 transition-colors p-1"
+                  className="text-slate-500 hover:text-emerald-500 hover:bg-slate-800 rounded-full transition-colors p-2"
                 >
                   <X className="h-5 w-5" />
                 </button>
               </div>
 
-              {/* Blueprint vector preview mockup (ASCII Drawing layout) */}
-              <div className="p-4 border border-slate-900 bg-slate-950 font-mono text-[8px] text-emerald-500/80 rounded leading-tight overflow-x-auto select-none mb-6">
-                <div>// BENTLEY BIM EXPORT LAYER: ELEVATION_01A</div>
-                <div>{`_______________________________________________________`}</div>
-                <div>{`      /\\                                           /\\ `}</div>
-                <div>{`     /  \\          [SOLID STATE CORE]             /  \\`}</div>
-                <div>{`____/____\\_______________________________________/____\\`}</div>
-                <div>{`   |      |                                     |      |`}</div>
-                <div>{`   |  []  |      SYS STATUS: ACTIVE CONTRACT     |  []  |`}</div>
-                <div>{`   |      |                                     |      |`}</div>
-                <div>{`===|======|=====================================|======|===`}</div>
-                <div>{`   |      |   X-DIM: 480ft || Y-DIM: 220ft      |      |`}</div>
-                <div>{`   |  __  |   FOUNDATION COMPRESSION: 8.5K psi   |  __  |`}</div>
-                <div>{`___|__||__|_____________________________________|__||__|`}</div>
-                <div>// LATITUDE_COORD: 30.578 // LONGITUDE_COORD: -97.853</div>
+              {/* Clean Image Preview */}
+              <div className="mb-6 rounded-2xl overflow-hidden border border-slate-800 shadow-xl relative aspect-video">
+                <img 
+                  src={selectedProject.image} 
+                  alt={selectedProject.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  referrerPolicy="no-referrer"
+                />
               </div>
 
-              <div className="space-y-4">
+              {/* Clean Details Breakdown */}
+              <div className="space-y-6">
                 <div>
-                  <h4 className="font-display text-xs font-bold text-slate-200 uppercase mb-1">
-                    Engineering Specification Breakdown
+                  <h4 className="font-display text-sm font-bold text-white uppercase mb-2">
+                    Project Overview
                   </h4>
-                  <p className="text-xs text-slate-400 font-sans leading-relaxed">
+                  <p className="text-sm text-slate-400 font-sans leading-relaxed">
                     {selectedProject.description}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 bg-slate-900/50 border border-slate-900 p-4 font-mono text-xs">
+                <div className="grid grid-cols-2 gap-4 bg-slate-900 border border-slate-800 rounded-xl p-5">
                   <div>
-                    <span className="text-[10px] text-slate-500 uppercase">LEAD ENGINEER SIGN-OFF:</span>
-                    <div className="text-slate-200 font-bold flex items-center gap-1.5 mt-1">
-                      <User className="h-3.5 w-3.5 text-emerald-500" />
-                      {selectedProject.engineer}
+                    <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Expected Budget</span>
+                    <div className="text-emerald-400 font-black text-lg">
+                      {selectedProject.budget || 'Custom Quote'}
                     </div>
                   </div>
                   <div>
-                    <span className="text-[10px] text-slate-500 uppercase">LOCATION STATUS:</span>
-                    <div className="text-slate-200 font-bold flex items-center gap-1.5 mt-1">
-                      <MapPin className="h-3.5 w-3.5 text-emerald-500" />
+                    <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Location</span>
+                    <div className="text-white font-bold flex items-center gap-1.5 mt-1">
+                      <MapPin className="h-4 w-4 text-emerald-500" />
                       {selectedProject.location}
                     </div>
                   </div>
                 </div>
-
-                <div className="bg-emerald-950/20 border border-emerald-600/10 p-3 flex gap-2.5 items-center">
-                  <Info className="h-4 w-4 text-emerald-600 shrink-0" />
-                  <p className="font-sans text-[11px] text-slate-400 leading-normal">
-                    This file is verified in Solid State Construction Global Vault. To request modified dimensional files or physical sample cores, launch the Spec Quote Generator.
-                  </p>
-                </div>
               </div>
 
               {/* Close CTAs */}
-              <div className="mt-8 flex justify-end gap-3 font-mono text-xs">
+              <div className="mt-8 flex justify-end">
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-4 py-2 bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 uppercase"
+                  className="w-full sm:w-auto px-8 py-3 bg-emerald-600 hover:bg-emerald-500 text-white rounded-xl font-display font-black text-xs uppercase tracking-widest shadow-xl shadow-emerald-900/20 transition-all"
                 >
-                  Close Blueprint
+                  Close Case Study
                 </button>
               </div>
 

@@ -19,6 +19,7 @@ export interface Project {
   image: string;
   blueprintCode: string;
   engineer: string;
+  budget?: string;
 }
 
 export interface ServiceDetail {

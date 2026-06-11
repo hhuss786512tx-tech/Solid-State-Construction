@@ -158,7 +158,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <div className="relative pt-2">
                           <input 
                             type="range"
-                            min="100"
+                            min="0"
                             max="10000"
                             step="50"
                             value={sqFt}
@@ -166,7 +166,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             className="w-full h-3 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-emerald-500"
                           />
                           <div className="flex justify-between mt-2 font-mono text-[9px] text-slate-600 uppercase font-bold">
-                            <span>100 FT</span>
+                            <span>0 FT</span>
                             <span>5,000 FT</span>
                             <span>10,000 FT</span>
                           </div>
