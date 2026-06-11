@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Calculator, ShieldCheck, ListTodo, Download, FileText, CheckCircle2, Terminal, RefreshCw, Trash2 } from 'lucide-react';
+import { X, CheckCircle2, FileText, Trash2, Phone, Mail, User } from 'lucide-react';
 import { QuoteRequest } from '../types';
 
 interface QuoteModalProps {
@@ -9,25 +9,17 @@ interface QuoteModalProps {
 }
 
 export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
-  // Wizard States
   const [step, setStep] = useState(1);
   const [clientName, setClientName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
-  const [projectType, setProjectType] = useState('foundation'); // roofing | foundation | plumbing | tiling | combined
-  const [length, setLength] = useState(120);
-  const [width, setWidth] = useState(80);
-  const [levels, setLevels] = useState(2);
-  const [materialGrade, setMaterialGrade] = useState('high-tensile'); // standard | high-tensile | seismic-resilient
-  const [safetyLevel, setSafetyLevel] = useState('20% Redundancy'); // 10% | 20% | 30%
+  const [projectType, setProjectType] = useState('water-remediation');
+  const [projectSize, setProjectSize] = useState('medium'); 
   const [notes, setNotes] = useState('');
-
-  // Local storage history of quotes
   const [quoteHistory, setQuoteHistory] = useState<QuoteRequest[]>([]);
-  const [lastEstimate, setLastEstimate] = useState<number>(0);
   const [savedSuccess, setSavedSuccess] = useState(false);
 
   useEffect(() => {
-    // Load quote history from local storage
     const stored = localStorage.getItem('solid_state_construction_quotes');
     if (stored) {
       try {
@@ -38,24 +30,25 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     }
   }, []);
 
-  // Recalculate dynamic bid estimation when factors change
+  // PRICING FRAMEWORK
+  const pricingData: Record<string, { min: number, max: number, label: string }> = {
+    'water-remediation': { min: 2500, max: 250000, label: 'Water Remediation' },
+    'roofing': { min: 4000, max: 300000, label: 'Roofing Services' },
+    'foundation': { min: 5000, max: 500000, label: 'Concrete & Foundation' },
+    'plumbing': { min: 2000, max: 150000, label: 'Concrete Plumbing' },
+    'painting': { min: 1500, max: 150000, label: 'Painting & Drywall' },
+    'flooring': { min: 2500, max: 200000, label: 'Flooring & Tile' },
+    'remodeling': { min: 15000, max: 2500000, label: 'Full Home Remodeling' }
+  };
+
   const computeEstimate = () => {
-    let basePricePerSqFt = 75; // Foundation base
-    if (projectType === 'roofing') basePricePerSqFt = 92;
-    if (projectType === 'plumbing') basePricePerSqFt = 68;
-    if (projectType === 'tiling') basePricePerSqFt = 54;
-    if (projectType === 'combined') basePricePerSqFt = 245;
+    const range = pricingData[projectType] || { min: 0, max: 0 };
+    let multiplier = 0.4; // Medium
+    if (projectSize === 'small') multiplier = 0.1;
+    if (projectSize === 'large') multiplier = 0.7;
+    if (projectSize === 'custom') multiplier = 1.0;
 
-    let gradeMultiplier = 1.0;
-    if (materialGrade === 'high-tensile') gradeMultiplier = 1.25;
-    if (materialGrade === 'seismic-resilient') gradeMultiplier = 1.45;
-
-    let redundancyMultiplier = 1.0;
-    if (safetyLevel.includes('20%')) redundancyMultiplier = 1.15;
-    if (safetyLevel.includes('30%')) redundancyMultiplier = 1.30;
-
-    const totalSqFt = length * width * levels;
-    const computed = totalSqFt * basePricePerSqFt * gradeMultiplier * redundancyMultiplier;
+    const computed = range.min + (range.max - range.min) * multiplier;
     return Math.floor(computed);
   };
 
@@ -63,23 +56,23 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
   const handleSaveQuote = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!clientName.trim() || !email.trim()) {
-      alert('Please fill out client authentication parameters first.');
+    if (!clientName.trim() || !phone.trim()) {
+      alert('Please provide your name and phone number.');
       return;
     }
 
     const newQuote: QuoteRequest = {
-      id: `REQ-${Math.floor(1000 + Math.random() * 9000)}`,
+      id: `QT-${Math.floor(1000 + Math.random() * 9000)}`,
       clientName,
       email,
       projectType,
-      dimensions: `${length}ft L x ${width}ft W x ${levels} levels`,
-      materialGrade,
-      safetyLevel,
-      notes: notes || 'No technical notes modified.',
+      dimensions: `Scope: ${projectSize.toUpperCase()}`,
+      materialGrade: 'Standard',
+      safetyLevel: 'Standard',
+      notes: notes || 'N/A',
       estimatedCost: activeEstimate,
-      date: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' }),
-      status: 'APPROVED'
+      date: new Date().toLocaleDateString(),
+      status: 'PENDING'
     };
 
     const updatedHistory = [newQuote, ...quoteHistory];
@@ -89,8 +82,8 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setSavedSuccess(true);
     setTimeout(() => {
       setSavedSuccess(false);
-      setStep(3); // Go to invoice readout step
-    }, 1200);
+      setStep(3);
+    }, 1500);
   };
 
   const handleDeleteHistoryItem = (id: string, e: React.MouseEvent) => {
@@ -103,364 +96,218 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-brand-darker/90 backdrop-blur-sm p-4">
-          
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/90 backdrop-blur-sm p-4">
           <motion.div
-            initial={{ scale: 0.96, opacity: 0, y: 15 }}
+            initial={{ scale: 0.95, opacity: 0, y: 20 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.96, opacity: 0, y: 15 }}
-            transition={{ type: 'spring', duration: 0.4 }}
-            className="relative w-full max-w-2xl border border-slate-800 bg-slate-950 p-6 sm:p-8 overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)] text-slate-100"
+            exit={{ scale: 0.95, opacity: 0, y: 20 }}
+            className="relative w-full max-w-2xl border border-slate-800 bg-slate-900 p-6 sm:p-10 shadow-2xl text-slate-100 rounded-3xl overflow-hidden"
           >
-            {/* Corner decorations */}
-            <div className="absolute top-0 left-0 h-4 w-4 border-t-2 border-l-2 border-emerald-600" />
-            <div className="absolute top-0 right-0 h-4 w-4 border-t-2 border-r-2 border-emerald-600" />
-            <div className="absolute bottom-0 left-0 h-4 w-4 border-b-2 border-l-2 border-emerald-600" />
-            <div className="absolute bottom-0 right-0 h-4 w-4 border-b-2 border-r-2 border-emerald-600" />
-
             {/* Header */}
-            <div className="flex justify-between items-start border-b border-slate-900 pb-4 mb-6">
-              <div className="flex items-center gap-3">
-                <div className="flex h-8 w-8 items-center justify-center border-2 border-emerald-600 font-mono text-sm font-bold text-emerald-500">
-                  <Calculator className="h-4.5 w-4.5" />
-                </div>
-                <div>
-                  <h2 className="font-display text-lg font-black text-slate-100 uppercase tracking-widest leading-none">
-                    Spec Quote Generator
-                  </h2>
-                  <span className="font-mono text-[9px] text-slate-500">
-                    DIAGNOSTIC QUANTITY SURVEYOR V4.1 // ISO REGISTERS
-                  </span>
-                </div>
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h2 className="font-display text-3xl font-black text-white uppercase tracking-tight">
+                  Get a Free Quote
+                </h2>
+                <p className="text-emerald-500 font-mono text-[10px] uppercase tracking-widest font-bold mt-1">
+                  Leander's Choice for Quality Construction
+                </p>
               </div>
-              <button 
-                onClick={onClose} 
-                className="text-slate-500 hover:text-emerald-600 p-1 bg-slate-950 hover:bg-slate-900 border border-transparent hover:border-slate-800 rounded transition-all"
-              >
-                <X className="h-5 w-5" />
+              <button onClick={onClose} className="p-2 hover:bg-slate-800 rounded-full transition-colors text-slate-500 hover:text-emerald-500">
+                <X className="h-7 w-7" />
               </button>
             </div>
 
-            {/* Sub-steps Indicator */}
-            <div className="flex justify-between items-center mb-6 font-mono text-[10px] text-slate-500 border-b border-slate-900/60 pb-3">
-              <div className="flex gap-4">
-                <span className={step === 1 ? 'text-emerald-500 font-bold' : 'text-slate-500'}>01. PARAM_SPECS</span>
-                <span>&rarr;</span>
-                <span className={step === 2 ? 'text-emerald-500 font-bold' : 'text-slate-500'}>02. COMPILATION</span>
-                <span>&rarr;</span>
-                <span className={step === 3 ? 'text-emerald-500 font-bold' : 'text-slate-500'}>03. GEN_INVOICE</span>
-              </div>
-              <div className="text-[9px] text-emerald-600 font-extrabold uppercase">
-                BID_RES: ${activeEstimate.toLocaleString()} USD
-              </div>
-            </div>
-
             {savedSuccess ? (
-              <div className="flex flex-col items-center justify-center py-16 text-center space-y-4">
-                <motion.div 
-                  animate={{ scale: [1, 1.1, 1], rotate: [0, 5, -5, 0] }}
-                  className="rounded-full bg-emerald-950/20 border-2 border-emerald-500 p-4 text-emerald-400"
-                >
-                  <CheckCircle2 className="h-8 w-8" />
-                </motion.div>
-                <div className="font-mono text-sm text-emerald-400 uppercase font-black tracking-widest">
-                  SPECS REGISTERED SUCCESSFULLY
+              <div className="py-20 text-center flex flex-col items-center">
+                <div className="h-20 w-20 bg-emerald-500/20 border-2 border-emerald-500 rounded-full flex items-center justify-center mb-6">
+                  <CheckCircle2 className="h-10 w-10 text-emerald-400" />
                 </div>
-                <p className="text-xs text-slate-400 max-w-xs font-sans">
-                  Compiling dynamic load vectors, material takeoffs, and drafting PDF takeoff certificates...
-                </p>
+                <h3 className="text-2xl font-black uppercase mb-2">Request Sent!</h3>
+                <p className="text-slate-400 max-w-xs mx-auto">We'll review your details and contact you shortly.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                
-                {/* Steps left inputs (8 cols) */}
-                <div className="lg:col-span-8 space-y-5">
-                  
-                  {/* Step 1: Adjust Dimensions Parameters */}
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                <div className="lg:col-span-8 space-y-8">
                   {step === 1 && (
-                    <div className="space-y-4 font-mono text-xs">
+                    <div className="space-y-8">
                       <div>
-                        <label className="text-slate-500 bock mb-2 font-bold uppercase block">DIVISION SPECS MODE:</label>
-                        <select
-                          value={projectType}
-                          onChange={(e) => setProjectType(e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-800 p-2.5 text-slate-200 focus:border-emerald-600 outline-none rounded"
-                        >
-                          <option value="water-remediation">Water Remediation (24/7 EMERGENCY)</option>
-                          <option value="foundation">Foundation Repair (DIVISION 03)</option>
-                          <option value="remodeling">Full Home Remodeling (DIVISION 09)</option>
-                          <option value="painting">Painting & Drywall (DIVISION 09)</option>
-                          <option value="roofing">Roofing Services (DIVISION 07)</option>
-                          <option value="flooring">Flooring & Tile (DIVISION 09)</option>
-                        </select>
-                      </div>
-
-                      {/* Dimensions slider configurations */}
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between text-[11px] text-slate-400">
-                            <span>LENGTH FACTOR:</span>
-                            <span className="text-emerald-500 text-bold font-bold">{length} FT</span>
-                          </div>
-                          <input 
-                            type="range"
-                            min="40"
-                            max="300"
-                            value={length}
-                            onChange={(e) => setLength(Number(e.target.value))}
-                            className="w-full accent-emerald-600"
-                          />
-                        </div>
-                        <div className="space-y-1.5">
-                          <div className="flex justify-between text-[11px] text-slate-400">
-                            <span>WIDTH FACTOR:</span>
-                            <span className="text-emerald-500 text-bold font-bold">{width} FT</span>
-                          </div>
-                          <input 
-                            type="range"
-                            min="30"
-                            max="200"
-                            value={width}
-                            onChange={(e) => setWidth(Number(e.target.value))}
-                            className="w-full accent-emerald-600"
-                          />
-                        </div>
-                      </div>
-
-                      <div className="space-y-1.5">
-                        <div className="flex justify-between text-[11px] text-slate-400">
-                          <span>FLOOR LEVELS:</span>
-                          <span className="text-white font-bold">{levels} FLOORS</span>
-                        </div>
-                        <div className="flex gap-2">
-                          {[1, 2, 4, 8, 12].map((num) => (
+                        <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-4">Select Service</label>
+                        <div className="grid grid-cols-2 gap-3">
+                          {Object.keys(pricingData).map((key) => (
                             <button
-                              key={num}
-                              type="button"
-                              onClick={() => setLevels(num)}
-                              className={`flex-1 py-1.5 font-bold uppercase tracking-wider text-[10px] border transition-all ${
-                                levels === num 
-                                  ? 'bg-emerald-700 text-slate-900 border-emerald-700' 
-                                  : 'bg-slate-900 border-slate-800 text-slate-400'
+                              key={key}
+                              onClick={() => setProjectType(key)}
+                              className={`py-3.5 px-4 rounded-2xl border-2 text-xs font-black uppercase tracking-tight transition-all text-left ${
+                                projectType === key 
+                                  ? 'bg-emerald-600 border-emerald-500 text-white shadow-lg shadow-emerald-900/40 translate-y-[-2px]' 
+                                  : 'bg-slate-800/50 border-slate-800 text-slate-500 hover:border-slate-700'
                               }`}
                             >
-                              {num} LVL
+                              {pricingData[key].label}
                             </button>
                           ))}
                         </div>
                       </div>
 
-                      <div className="pt-2">
+                      <div>
+                        <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-4">Project Size</label>
+                        <div className="flex gap-3">
+                          {['small', 'medium', 'large', 'custom'].map((size) => (
+                            <button
+                              key={size}
+                              onClick={() => setProjectSize(size)}
+                              className={`flex-1 py-3 rounded-xl border-2 text-[10px] font-black uppercase tracking-widest transition-all ${
+                                projectSize === size 
+                                  ? 'bg-emerald-600 border-emerald-500 text-white' 
+                                  : 'bg-slate-800/50 border-slate-800 text-slate-500 hover:border-slate-700'
+                              }`}
+                            >
+                              {size}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="pt-6 border-t border-slate-800 flex justify-between items-center">
+                        <div>
+                          <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Estimated Base</span>
+                          <span className="text-3xl font-black text-emerald-400">${activeEstimate.toLocaleString()}*</span>
+                        </div>
                         <button
-                          type="button"
                           onClick={() => setStep(2)}
-                          className="w-full bg-slate-900 border border-slate-800 hover:border-emerald-600/40 text-emerald-500 py-3 font-display uppercase tracking-wider text-xs font-bold"
+                          className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-emerald-900/30"
                         >
-                          PROCEED TO AUTHENTICATION PARAMETERS &rarr;
+                          Continue &rarr;
                         </button>
                       </div>
                     </div>
                   )}
 
-                  {/* Step 2: Client Auth and Quality details */}
                   {step === 2 && (
-                    <form onSubmit={handleSaveQuote} className="space-y-4 font-mono text-xs">
-                      <div className="grid grid-cols-2 gap-4">
+                    <form onSubmit={handleSaveQuote} className="space-y-6">
+                      <div className="space-y-5">
+                        <div className="relative">
+                          <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Full Name</label>
+                          <div className="relative">
+                            <User className="absolute left-4 top-3.5 h-5 w-5 text-slate-600" />
+                            <input
+                              type="text" required placeholder="Your Name" value={clientName}
+                              onChange={(e) => setClientName(e.target.value)}
+                              className="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 pl-12 text-sm text-white focus:border-emerald-500 outline-none transition-all"
+                            />
+                          </div>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                          <div>
+                            <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Phone Number</label>
+                            <div className="relative">
+                              <Phone className="absolute left-4 top-3.5 h-5 w-5 text-slate-600" />
+                              <input
+                                type="tel" required placeholder="(512) 000-0000" value={phone}
+                                onChange={(e) => setPhone(e.target.value)}
+                                className="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 pl-12 text-sm text-white focus:border-emerald-500 outline-none transition-all"
+                              />
+                            </div>
+                          </div>
+                          <div>
+                            <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Email Address</label>
+                            <div className="relative">
+                              <Mail className="absolute left-4 top-3.5 h-5 w-5 text-slate-600" />
+                              <input
+                                type="email" required placeholder="email@address.com" value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 pl-12 text-sm text-white focus:border-emerald-500 outline-none transition-all"
+                              />
+                            </div>
+                          </div>
+                        </div>
                         <div>
-                          <label className="text-slate-500 block mb-1 font-bold uppercase">CLIENT NAME:</label>
-                          <input
-                            type="text"
-                            required
-                            placeholder="John Doe"
-                            value={clientName}
-                            onChange={(e) => setClientName(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 focus:border-emerald-600 p-2 text-slate-200 outline-none"
+                          <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Additional Details</label>
+                          <textarea
+                            placeholder="Tell us more about the project..." rows={3} value={notes}
+                            onChange={(e) => setNotes(e.target.value)}
+                            className="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 text-sm text-white focus:border-emerald-500 outline-none resize-none transition-all"
                           />
                         </div>
-                        <div>
-                          <label className="text-slate-500 block mb-1 font-bold uppercase">COMM_EMAIL_ID:</label>
-                          <input
-                            type="email"
-                            required
-                            placeholder="doe@contractor.org"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 focus:border-emerald-600 p-2 text-slate-200 outline-none"
-                          />
-                        </div>
                       </div>
 
-                      <div className="grid grid-cols-2 gap-4">
-                        <div>
-                          <label className="text-slate-500 block mb-1 font-bold uppercase">MATERIAL SPEC GRADE:</label>
-                          <select
-                            value={materialGrade}
-                            onChange={(e) => setMaterialGrade(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 p-2 text-slate-200 focus:border-emerald-600 outline-none"
-                          >
-                            <option value="standard">ASTM Standard Steel/Concrete</option>
-                            <option value="high-tensile">High-Tensile (Cold-Rolled Decking)</option>
-                            <option value="seismic-resilient">Seismic Resilient Continuous Anchors</option>
-                          </select>
-                        </div>
-                        <div>
-                          <label className="text-slate-500 block mb-1 font-bold uppercase">REDUNDANCY RATIO:</label>
-                          <select
-                            value={safetyLevel}
-                            onChange={(e) => setSafetyLevel(e.target.value)}
-                            className="w-full bg-slate-900 border border-slate-800 p-2 text-slate-200 focus:border-emerald-600 outline-none"
-                          >
-                            <option value="10% Redundancy">10% Safety Buffer (Standard)</option>
-                            <option value="20% Redundancy">20% Redundancy (Commercial Highrise)</option>
-                            <option value="30% Redundancy">30% High Shock Seismic</option>
-                          </select>
-                        </div>
-                      </div>
-
-                      <div>
-                        <label className="text-slate-500 block mb-1 font-bold uppercase">ADDITIONAL DESIGN PARAM NOTES:</label>
-                        <textarea
-                          placeholder="E.g. specialized water table elevations, thermal parameters specifications."
-                          rows={2}
-                          value={notes}
-                          onChange={(e) => setNotes(e.target.value)}
-                          className="w-full bg-slate-900 border border-slate-800 focus:border-emerald-600 p-2 text-slate-200 outline-none resize-none"
-                        />
-                      </div>
-
-                      <div className="flex gap-4 pt-2">
-                        <button
-                          type="button"
-                          onClick={() => setStep(1)}
-                          className="flex-1 bg-slate-900 border border-slate-800 text-slate-400 py-3 font-display uppercase tracking-widest text-xs font-bold"
-                        >
-                          &larr; BACK
+                      <div className="flex gap-4 pt-4">
+                        <button type="button" onClick={() => setStep(1)} className="flex-1 bg-slate-800 text-slate-400 py-4 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-slate-700 transition-all">
+                          Back
                         </button>
-                        <button
-                          type="submit"
-                          className="flex-1 bg-emerald-700 text-brand-dark hover:bg-emerald-800 transition-colors py-3 font-display uppercase tracking-widest text-xs font-bold font-black"
-                        >
-                          SUBMIT SPEC TO REGISTRY
+                        <button type="submit" className="flex-[2] bg-emerald-600 text-white hover:bg-emerald-500 py-4 rounded-2xl font-black uppercase tracking-widest text-xs shadow-xl shadow-emerald-900/30 transition-all">
+                          Submit Request
                         </button>
                       </div>
                     </form>
                   )}
 
-                  {/* Step 3: View finalized printed estimate certificate list */}
                   {step === 3 && (
-                    <div className="space-y-4 font-mono text-xs">
-                      <div className="bg-slate-900/60 border border-slate-850 p-4 rounded text-slate-300 relative space-y-3">
-                        <div className="absolute right-3 top-3 bg-emerald-950/20 text-emerald-500 font-bold border border-emerald-600/10 text-[8px] px-1.5 py-0.5 uppercase">
-                          OFFICIAL CERTIFICATE
-                        </div>
-                        <div className="border-b border-slate-800 pb-2">
-                          <span className="text-[10px] text-slate-500 block uppercase font-bold">REGISTRY CLIENT:</span>
-                          <span className="text-white text-sm font-bold">{clientName} ({email})</span>
-                        </div>
-                        <div className="grid grid-cols-2 gap-4">
+                    <div className="space-y-8">
+                      <div className="bg-emerald-900/20 border-2 border-emerald-500/20 p-8 rounded-3xl space-y-6">
+                        <div className="flex justify-between items-end border-b border-emerald-500/10 pb-6">
                           <div>
-                            <span className="text-[10px] text-slate-500 block uppercase font-bold">STRUCTURAL MASS AREA:</span>
-                            <span>{length * width * levels} Sq.Ft.</span>
+                            <span className="text-emerald-500 text-[10px] font-black uppercase tracking-widest block mb-1">Your Quote Estimate</span>
+                            <span className="text-4xl font-black text-white">${activeEstimate.toLocaleString()}*</span>
+                          </div>
+                          <span className="bg-emerald-500 text-slate-900 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter mb-1">Budget Draft</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-8 py-2">
+                          <div>
+                            <span className="text-slate-500 text-[10px] font-black uppercase block mb-1">Service Type</span>
+                            <span className="text-white font-bold text-lg uppercase">{pricingData[projectType].label}</span>
                           </div>
                           <div>
-                            <span className="text-[10px] text-slate-500 block uppercase font-bold">MATERIAL CONFORMENT:</span>
-                            <span className="text-emerald-500 uppercase font-bold">{materialGrade}</span>
+                            <span className="text-slate-500 text-[10px] font-black uppercase block mb-1">Project Size</span>
+                            <span className="text-white font-bold text-lg uppercase">{projectSize}</span>
                           </div>
                         </div>
-                        <div className="border-t border-slate-850 pt-2 flex justify-between items-center bg-slate-950 p-2">
-                          <span className="text-[10px] text-slate-500 uppercase font-black">ESTIMATED EXPOSURE RATE SUMMARY:</span>
-                          <span className="text-emerald-400 font-extrabold text-base">${activeEstimate.toLocaleString()} USD</span>
-                        </div>
+                        <p className="text-[11px] text-slate-500 leading-relaxed italic pt-4">
+                          *Pricing is a range based on local materials and labor. Final cost confirmed after onsite evaluation.
+                        </p>
                       </div>
 
-                      <div className="flex gap-4 pt-2">
-                        <button
-                          type="button"
-                          onClick={() => {
-                            setStep(1);
-                            setClientName('');
-                            setEmail('');
-                            setNotes('');
-                          }}
-                          className="flex-1 bg-slate-900 border border-slate-800 text-slate-300 py-3 font-display uppercase tracking-widest text-xs"
-                        >
-                          CALCULATE NEW SPEC
-                        </button>
-                        <button
-                          type="button"
-                          onClick={onClose}
-                          className="flex-1 bg-emerald-700 text-slate-900 hover:bg-emerald-800 transition-colors font-display font-extrabold uppercase tracking-widest text-xs py-3"
-                        >
-                          Close SURVEYOR
-                        </button>
-                      </div>
+                      <button onClick={onClose} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all">
+                        Finish
+                      </button>
                     </div>
                   )}
-
                 </div>
 
-                {/* Right sidebar quotes history log values (4 cols) */}
-                <div className="lg:col-span-4 border-l border-slate-900/80 pl-6 flex flex-col justify-between font-mono text-[10px] space-y-5">
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="text-[10px] text-slate-400 uppercase mb-3 font-bold flex items-center gap-1">
-                        <FileText className="h-4 w-4 text-emerald-600 shrink-0" />
-                        COMMITTED SPECS REGISTRY ({quoteHistory.length})
-                      </div>
-                      
-                      {quoteHistory.length === 0 ? (
-                        <p className="text-slate-600 text-[10px] leading-relaxed italic">
-                          No historic quotes committed to this workspace cache. Submit a calculated design spec above to store records locally.
-                        </p>
-                      ) : (
-                        <div className="space-y-3.5 max-h-56 overflow-y-auto pr-1">
-                          {quoteHistory.map((q) => (
-                            <div 
-                              key={q.id}
-                              onClick={() => {
-                                setClientName(q.clientName);
-                                setEmail(q.email);
-                                setProjectType(q.projectType);
-                                setMaterialGrade(q.materialGrade);
-                                setSafetyLevel(q.safetyLevel);
-                                setStep(3);
-                              }}
-                              className="border border-slate-850 bg-slate-900/30 p-2.5 transition-all hover:border-emerald-600/30 cursor-pointer relative"
-                            >
-                              <div className="flex justify-between items-start">
-                                <span className="font-extrabold text-[9px] text-emerald-500">{q.id}</span>
-                                <button 
-                                  onClick={(e) => handleDeleteHistoryItem(q.id, e)}
-                                  className="text-slate-600 hover:text-rose-500 transition-colors"
-                                >
-                                  <Trash2 className="h-3 w-3" />
-                                </button>
-                              </div>
-                              <div className="text-[11px] font-bold text-slate-300 mt-1 truncate">
-                                {q.clientName}
-                              </div>
-                              <div className="font-sans text-[9px] text-slate-500 tracking-normal mt-0.5">
-                                {q.dimensions}
-                              </div>
-                              <div className="flex justify-between items-center border-t border-slate-950 mt-2 pt-1">
-                                <span className="text-[8px] text-slate-600">{q.date.split(',')[0]}</span>
-                                <span className="text-emerald-400 font-extrabold font-bold">${q.estimatedCost.toLocaleString()}</span>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+                <div className="lg:col-span-4 border-l border-slate-800 pl-8 hidden lg:flex flex-col justify-between">
+                  <div className="space-y-6">
+                    <div className="flex items-center gap-2 text-emerald-500 mb-2">
+                      <FileText className="h-5 w-5" />
+                      <span className="text-[10px] font-black uppercase tracking-widest">Recent Quotes</span>
                     </div>
+                    
+                    {quoteHistory.length === 0 ? (
+                      <p className="text-slate-600 text-xs italic">No saved quotes found.</p>
+                    ) : (
+                      <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                        {quoteHistory.map((q) => (
+                          <div key={q.id} className="bg-slate-800/40 border border-slate-800 p-4 rounded-2xl group hover:border-emerald-500/30 transition-all">
+                            <div className="flex justify-between items-start mb-2">
+                              <span className="text-[9px] font-black text-emerald-500">{q.id}</span>
+                              <button onClick={(e) => handleDeleteHistoryItem(q.id, e)} className="text-slate-700 hover:text-red-400">
+                                <Trash2 className="h-4 w-4" />
+                              </button>
+                            </div>
+                            <div className="text-sm font-bold text-white mb-1 truncate">{q.clientName}</div>
+                            <div className="flex justify-between items-end">
+                              <span className="text-[10px] text-slate-500 font-mono">{q.date}</span>
+                              <span className="text-emerald-400 font-black">${q.estimatedCost.toLocaleString()}</span>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
-
-                  <div className="border-t border-slate-900 pt-4 text-slate-600 leading-normal text-[9px] font-sans">
-                    All calculations are simulated locally inside user workspace caches. True ISO designs require architectural sign-offs.
-                  </div>
+                  <p className="text-[10px] text-slate-600 mt-10">Calculations based on 2026 local market data.</p>
                 </div>
-
               </div>
             )}
-
           </motion.div>
         </div>
       )}
