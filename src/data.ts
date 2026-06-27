@@ -113,7 +113,7 @@ export const SERVICES: TechnicalService[] = [
   {
     id: 'plumbing',
     divisionCode: 'SPECIALIZED',
-    name: 'Concrete Plumbing',
+    name: 'Plumbing Services',
     tagline: 'Structural Hydraulic Networks',
     description: 'Specialized hydraulic plumbing solutions integrated into concrete foundations. We handle the complex infrastructure underneath your slabs to ensure zero-leak integrity.',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDvGY9whEnTAB-_ldLCbceXqDPcYVuVnP4yjCS72PBDevrULpfBXKN5ov5nIoaSq3setURD3v0Yc-xD7OdWKpKjtn4XezWm-YC7F3wMN8yPC170-vEnaY8B0kpTUbUrcrRo_MteQksR7TLNna1PrOCgJoRE2ENJ-_w16-WkMogtNhYix-i5hsJ89D3Z_Cc68743pmTuZCce6hMbLlGeAwDKraqar0SQzw405PmEn4ZDXR0uEazOINITvr1lveSD0_gT7Bj5OxzoKUjv',
@@ -182,7 +182,7 @@ export const HOMEPAGE_WIDGETS = {
     },
     digitalTwins: {
       title: 'Concrete & Plumbing',
-      desc: 'Foundation repair and specialized concrete plumbing.'
+      desc: 'Foundation repair and specialized plumbing services.'
     }
   },
   globalCommandCenters: [

@@ -5,7 +5,7 @@
 export interface Project {
   id: string;
   title: string;
-  type: 'industrial' | 'infrastructure' | 'commercial';
+  type: 'industrial' | 'infrastructure';
   status: 'In Progress' | 'Completed';
   location: string;
   specs: {

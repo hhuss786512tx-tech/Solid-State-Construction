@@ -31,8 +31,8 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
     },
     {
       id: 'plumbing',
-      title: 'Concrete Plumbing',
-      desc: 'Specialized structural plumbing and hydraulic network solutions.',
+      title: 'Plumbing Services',
+      desc: 'Professional leak detection, pipe replacement, fixtures installation, and emergency plumbing.',
       icon: Wrench,
     }
   ];

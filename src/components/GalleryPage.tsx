@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { Search, SlidersHorizontal, Eye, Download, Info, Terminal, User, MapPin, X, CheckCircle } from 'lucide-react';
 
 export default function GalleryPage() {
-  const [filter, setFilter] = useState<'ALL' | 'industrial' | 'infrastructure' | 'commercial'>('ALL');
+  const [filter, setFilter] = useState<'ALL' | 'industrial' | 'infrastructure'>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [downloading, setDownloading] = useState(false);
@@ -20,14 +20,14 @@ export default function GalleryPage() {
     return matchesFilter && matchesSearch;
   });
 
-  const handleDownloadRegistry = () => {
+  const handleDownloadProjects = () => {
     setDownloading(true);
     setTimeout(() => {
       setDownloading(false);
       setDownloadSuccess(true);
       
       // Create a nice fake text file download of structural specifications
-      const content = `SOLID STATE CONSTRUCTION SYSTEM REGISTRY EXPORT - ISO 9001:2015\n` + 
+      const content = `SOLID STATE CONSTRUCTION PROJECT EXPORT - ISO 9001:2015\n` + 
                       `===================================================\n\n` +
                       PROJECTS.map(p => (
                         `PROJECT: ${p.title}\n` +
@@ -47,7 +47,7 @@ export default function GalleryPage() {
       const url = URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.download = 'solid_state_construction_project_registry_takeoff.txt';
+      link.download = 'solid_state_construction_projects_export.txt';
       link.click();
       URL.revokeObjectURL(url);
 
@@ -63,23 +63,23 @@ export default function GalleryPage() {
         <div>
           <span className="font-mono text-xs uppercase tracking-widest text-emerald-500">// STRUCTURAL PORTFOLIO</span>
           <h1 className="font-display text-4xl font-extrabold uppercase tracking-tight text-white mt-1">
-            Visual Project Registry
+            Projects
           </h1>
           <p className="mt-2 text-sm text-slate-400 font-sans max-w-xl">
-            A comprehensive vault displaying fully detailed industrial architectures, infrastructure spans, and seismic-ready corporate assemblies.
+            A comprehensive vault displaying fully detailed industrial architectures and infrastructure spans.
           </p>
         </div>
 
-        {/* Action Button: Download Full Registry */}
+        {/* Action Button: Download Full Project List */}
         <button
-          onClick={handleDownloadRegistry}
+          onClick={handleDownloadProjects}
           disabled={downloading}
           className="group flex items-center gap-2 border border-emerald-600 bg-emerald-950/10 hover:bg-emerald-700 hover:text-brand-dark transition-all duration-200 px-5 py-2.5 font-display text-xs font-bold uppercase tracking-wider text-emerald-500 cursor-pointer"
         >
           {downloading ? (
             <>
               <Terminal className="h-4 w-4 animate-spin" />
-              Compiling Registry Data...
+              Compiling Project Data...
             </>
           ) : downloadSuccess ? (
             <>
@@ -89,7 +89,7 @@ export default function GalleryPage() {
           ) : (
             <>
               <Download className="h-4 w-4" />
-              Download Full Registry
+              Download Full Project List
             </>
           )}
         </button>
@@ -100,7 +100,7 @@ export default function GalleryPage() {
         
         {/* Tab Filters */}
         <div className="flex flex-wrap gap-2">
-          {(['ALL', 'industrial', 'infrastructure', 'commercial'] as const).map((tab) => (
+          {(['ALL', 'industrial', 'infrastructure'] as const).map((tab) => (
             <button
               key={tab}
               onClick={() => setFilter(tab)}

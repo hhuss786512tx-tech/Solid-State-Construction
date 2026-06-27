@@ -35,7 +35,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     'water-remediation': { min: 2500, max: 250000, label: 'Water Remediation', baseSqFt: 500 },
     'roofing': { min: 4000, max: 300000, label: 'Roofing Services', baseSqFt: 2000 },
     'concrete': { min: 5000, max: 500000, label: 'Concrete & Foundation', baseSqFt: 1000 },
-    'plumbing': { min: 2000, max: 150000, label: 'Concrete Plumbing', baseSqFt: 500 }
+    'plumbing': { min: 2000, max: 150000, label: 'Plumbing Services', baseSqFt: 500 }
   };
 
   const computeEstimate = () => {
@@ -124,7 +124,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               </div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                <div className="lg:col-span-8 space-y-8">
+                <div className="lg:col-span-9 space-y-8">
                   {step === 1 && (
                     <div className="space-y-8">
                       <div>
@@ -279,36 +279,36 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                   )}
                 </div>
 
-                <div className="lg:col-span-4 border-l border-slate-800 pl-8 hidden lg:flex flex-col justify-between">
+                <div className="lg:col-span-3 border-l border-slate-800 pl-6 hidden lg:flex flex-col justify-between">
                   <div className="space-y-6">
                     <div className="flex items-center gap-2 text-emerald-500 mb-2">
-                      <FileText className="h-5 w-5" />
-                      <span className="text-[10px] font-black uppercase tracking-widest">Quote Registry</span>
+                      <FileText className="h-4 w-4" />
+                      <span className="text-[9px] font-black uppercase tracking-widest">Quote History</span>
                     </div>
                     
                     {quoteHistory.length === 0 ? (
-                      <p className="text-slate-600 text-xs italic">No local quote history detected.</p>
+                      <p className="text-slate-600 text-[10px] italic">No local quote history detected.</p>
                     ) : (
-                      <div className="space-y-4 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
+                      <div className="space-y-3 max-h-[400px] overflow-y-auto pr-2 custom-scrollbar">
                         {quoteHistory.map((q) => (
-                          <div key={q.id} className="bg-slate-800/40 border border-slate-800 p-4 rounded-2xl group hover:border-emerald-500/30 transition-all">
-                            <div className="flex justify-between items-start mb-2">
-                              <span className="text-[9px] font-black text-emerald-500">{q.id}</span>
+                          <div key={q.id} className="bg-slate-800/40 border border-slate-800 p-3 rounded-xl group hover:border-emerald-500/30 transition-all">
+                            <div className="flex justify-between items-start mb-1">
+                              <span className="text-[8px] font-black text-emerald-500">{q.id}</span>
                               <button onClick={(e) => handleDeleteHistoryItem(q.id, e)} className="text-slate-700 hover:text-red-400 transition-colors">
-                                <Trash2 className="h-4 w-4" />
+                                <Trash2 className="h-3 w-3" />
                               </button>
                             </div>
-                            <div className="text-sm font-bold text-white mb-1 truncate">{q.clientName}</div>
-                            <div className="flex justify-between items-end">
-                              <span className="text-[10px] text-slate-500 font-mono">{q.date}</span>
-                              <span className="text-emerald-400 font-black">${q.estimatedCost.toLocaleString()}</span>
+                            <div className="text-xs font-bold text-white mb-1 truncate" title={q.clientName}>{q.clientName}</div>
+                            <div className="flex justify-between items-end mt-1">
+                              <span className="text-[9px] text-slate-500 font-mono">{q.date}</span>
+                              <span className="text-emerald-400 font-black text-sm">${q.estimatedCost.toLocaleString()}</span>
                             </div>
                           </div>
                         ))}
                       </div>
                     )}
                   </div>
-                  <p className="text-[10px] text-slate-600 mt-10">Real-time local labor rates applied.</p>
+                  <p className="text-[9px] text-slate-600 mt-8">Real-time local rates applied.</p>
                 </div>
               </div>
             )}
