@@ -118,3 +118,11 @@ body {
 .hover\:bg-emerald-500:hover, .hover\:bg-emerald-600:hover, .hover\:bg-emerald-700:hover { background-color: #065f46 !important; }
 .hover\:border-emerald-500\/40:hover, .hover\:border-emerald-600\/40:hover { border-color: rgba(5, 150, 105, 0.4) !important; }
 .group-hover\:text-emerald-400:hover, .group-hover\:text-emerald-500:hover { color: #059669 !important; }
+
+/* Custom global hover button white glow effect */
+button:hover,
+a.btn:hover,
+.btn:hover,
+[role="button"]:hover {
+  box-shadow: 0 0 15px 4px rgba(255, 255, 255, 0.4) !important;
+}
