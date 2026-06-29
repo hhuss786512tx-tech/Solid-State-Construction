@@ -32,10 +32,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
 
   // PRICING FRAMEWORK
   const pricingData: Record<string, { min: number, max: number, label: string, baseSqFt: number }> = {
-    'water-remediation': { min: 2500, max: 250000, label: 'Water Remediation', baseSqFt: 500 },
-    'roofing': { min: 4000, max: 300000, label: 'Roofing Services', baseSqFt: 2000 },
-    'concrete': { min: 5000, max: 500000, label: 'Concrete & Foundation', baseSqFt: 1000 },
-    'plumbing': { min: 2000, max: 150000, label: 'Plumbing Services', baseSqFt: 500 }
+    'water-remediation': { min: 1500, max: 45000, label: 'Water Remediation', baseSqFt: 500 },
+    'roofing': { min: 4000, max: 55000, label: 'Roofing Services', baseSqFt: 2000 },
+    'concrete': { min: 2000, max: 85000, label: 'Concrete & Foundation', baseSqFt: 1000 },
+    'plumbing': { min: 1500, max: 48000, label: 'Plumbing Services', baseSqFt: 500 }
   };
 
   const computeEstimate = () => {
