@@ -173,17 +173,26 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         </div>
                       </div>
 
-                      <div className="pt-6 border-t border-slate-800 flex justify-between items-center">
-                        <div>
+                      <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <div className="text-center sm:text-left">
                           <span className="text-[10px] text-slate-500 uppercase font-bold block mb-1">Estimated Range</span>
                           <span className="text-3xl font-black text-emerald-400">${activeEstimate.toLocaleString()}*</span>
                         </div>
-                        <button
-                          onClick={() => setStep(2)}
-                          className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-xs transition-all shadow-xl shadow-emerald-900/30"
-                        >
-                          Next Step &rarr;
-                        </button>
+                        <div className="flex gap-3 w-full sm:w-auto">
+                          <a 
+                            href={`mailto:contact@solidstateconstruction.com?subject=Detailed Custom Quote Request - ${pricingData[projectType]?.label || 'Service'}&body=Hello Solid State Construction Team,%0A%0AI would like to request a detailed custom quote for the following project:%0A%0A- Service: ${pricingData[projectType]?.label || 'N/A'}%0A- Approximate Size: ${sqFt} SQ. FT.%0A%0APlease contact me back to discuss the details.%0A%0ABest regards,%0A[Your Name]`}
+                            className="flex-1 sm:flex-initial text-center border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-slate-300 hover:text-white px-5 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-[10px] transition-all"
+                            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', whiteSpace: 'nowrap' }}
+                          >
+                            Email Us Directly
+                          </a>
+                          <button
+                            onClick={() => setStep(2)}
+                            className="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-[10px] transition-all shadow-xl shadow-emerald-900/30"
+                          >
+                            Next Step &rarr;
+                          </button>
+                        </div>
                       </div>
                     </div>
                   )}
