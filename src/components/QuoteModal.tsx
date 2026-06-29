@@ -184,7 +184,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             className="flex-1 sm:flex-initial text-center border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-slate-300 hover:text-white px-5 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-[10px] transition-all"
                             style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', whiteSpace: 'nowrap' }}
                           >
-                            Email Us Directly
+                            Get a more detailed estimate
                           </a>
                           <button
                             onClick={() => setStep(2)}
