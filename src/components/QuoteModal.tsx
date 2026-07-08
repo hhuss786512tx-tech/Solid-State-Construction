@@ -75,6 +75,25 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setQuoteHistory(updatedHistory);
     localStorage.setItem('solid_state_construction_quotes', JSON.stringify(updatedHistory));
     
+    // Submit lead via Web3Forms API
+    const accessKey = "YOUR_ACCESS_KEY_HERE"; 
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      },
+      body: JSON.stringify({
+        access_key: accessKey,
+        name: clientName,
+        phone: phone,
+        email: email || "N/A",
+        service: pricingData[projectType].label,
+        message: notes || "N/A",
+        subject: `New Lead: ${pricingData[projectType].label} from Solid State Construction`
+      })
+    }).catch(err => console.error("Lead submission error:", err));
+
     setSavedSuccess(true);
     setTimeout(() => {
       setSavedSuccess(false);
@@ -179,13 +198,18 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                           <span className="text-3xl font-black text-emerald-400">${activeEstimate.toLocaleString()}*</span>
                         </div>
                         <div className="flex gap-3 w-full sm:w-auto">
-                          <a 
-                            href={`mailto:contact@solidstateconstruction.com?subject=Detailed Custom Quote Request - ${pricingData[projectType]?.label || 'Service'}&body=Hello Solid State Construction Team,%0A%0AI would like to request a detailed custom quote for the following project:%0A%0A- Service: ${pricingData[projectType]?.label || 'N/A'}%0A- Approximate Size: ${sqFt} SQ. FT.%0A%0APlease contact me back to discuss the details.%0A%0ABest regards,%0A[Your Name]`}
+                          <button 
+                            type="button"
+                            onClick={() => {
+                              const prefilledDetails = `Detailed Custom Estimate Request for ${pricingData[projectType].label}.\n\nProject Specifications:\n- Approximate Size: ${sqFt} SQ. FT.\n- Preliminary Estimated Budget: $${activeEstimate.toLocaleString()}*\n\nPlease contact me back to discuss the details.`;
+                              setNotes(prefilledDetails);
+                              setStep(2);
+                            }}
                             className="flex-1 sm:flex-initial text-center border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-slate-300 hover:text-white px-5 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-[10px] transition-all"
-                            style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', whiteSpace: 'nowrap' }}
+                            style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                           >
                             Get a more detailed estimate
-                          </a>
+                          </button>
                           <button
                             onClick={() => setStep(2)}
                             className="flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-[10px] transition-all shadow-xl shadow-emerald-900/30"
