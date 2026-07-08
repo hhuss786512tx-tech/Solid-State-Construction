@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from 'motion/react';
 import { X, CheckCircle2, FileText, Trash2, Phone, Mail, User, Maximize } from 'lucide-react';
 import { QuoteRequest } from '../types';
 
+// CONFIGURATION FOR LEAD EMAILS:
+// 1. Go to https://web3forms.com
+// 2. Enter your business email: info@solidstatesconstruction.com
+// 3. You will immediately receive a free Access Key in your inbox.
+// 4. Paste that Access Key in the variable below:
+const WEB3FORMS_ACCESS_KEY = "YOUR_ACCESS_KEY_HERE";
+
 interface QuoteModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -76,7 +83,6 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     localStorage.setItem('solid_state_construction_quotes', JSON.stringify(updatedHistory));
     
     // Submit lead via Web3Forms API
-    const accessKey = "YOUR_ACCESS_KEY_HERE"; 
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -84,7 +90,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
         Accept: "application/json"
       },
       body: JSON.stringify({
-        access_key: accessKey,
+        access_key: WEB3FORMS_ACCESS_KEY,
         name: clientName,
         phone: phone,
         email: email || "N/A",
