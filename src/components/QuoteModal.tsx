@@ -83,61 +83,81 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setQuoteHistory(updatedHistory);
     localStorage.setItem('solid_state_construction_quotes', JSON.stringify(updatedHistory));
     
-    // Submit lead to business & dispatch automated email to client via FormSubmit autoresponder API
+    // Native form submit via hidden iframe to bypass Cloudflare AJAX blocks
     const serviceName = pricingData[projectType]?.label || 'Construction Services';
-    const autoResponderMsg = `Hello ${clientName || 'there'},
+    const autoResponderMsg = `Hello ${clientName || 'there'},\n\nThank you for contacting Solid State Construction! We have received your inquiry regarding ${serviceName}.\n\nOur team is currently reviewing your project details and we will get back to you shortly.\n\nIf you need urgent assistance, please reach out to us at (512) 595-2332.\n\nBest regards,\nSolid State Construction Team\nconstructionsresponse@gmail.com`;
 
-Thank you for contacting Solid State Construction! We have received your inquiry regarding ${serviceName}.
+    // Ensure hidden iframe exists
+    let iframe = document.getElementById('hidden_submit_iframe') as HTMLIFrameElement;
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.id = 'hidden_submit_iframe';
+      iframe.name = 'hidden_submit_iframe';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
 
-Our team is currently reviewing your project details and we will get back to you shortly.
+    // 1. Submit lead to Web3Forms
+    const w3Form = document.createElement('form');
+    w3Form.method = 'POST';
+    w3Form.action = 'https://api.web3forms.com/submit';
+    w3Form.target = 'hidden_submit_iframe';
 
-If you need urgent or immediate assistance, please reach out to us directly at (512) 595-2332.
+    const w3Fields: Record<string, string> = {
+      access_key: WEB3FORMS_ACCESS_KEY,
+      from_name: 'Solid State Construction Website',
+      to_email: 'info@solidstatesconstruction.com, constructionsresponse@gmail.com',
+      replyto: email || 'constructionsresponse@gmail.com',
+      name: clientName,
+      phone: phone,
+      email: email || 'N/A',
+      service: serviceName,
+      estimated_cost: `$${activeEstimate.toLocaleString()}`,
+      dimensions: `${sqFt.toLocaleString()} SQ. FT.`,
+      message: notes || 'N/A',
+      subject: `New Inquiry (${serviceName}) from ${clientName}`
+    };
 
-Best regards,
-Solid State Construction Team
-constructionsresponse@gmail.com | info@solidstateconstruction.com`;
+    Object.entries(w3Fields).forEach(([k, v]) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = k;
+      input.value = v;
+      w3Form.appendChild(input);
+    });
+    document.body.appendChild(w3Form);
+    w3Form.submit();
+    setTimeout(() => { if (document.body.contains(w3Form)) document.body.removeChild(w3Form); }, 1000);
 
-    // 1. Submit lead details to business emails
-    fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json"
-      },
-      body: JSON.stringify({
-        access_key: WEB3FORMS_ACCESS_KEY,
-        name: clientName,
-        email: email || "N/A",
-        phone: phone,
-        replyto: email || "constructionsresponse@gmail.com",
-        from_name: "Solid State Construction Website",
-        to_email: "info@solidstatesconstruction.com, constructionsresponse@gmail.com",
-        subject: `New Inquiry (${serviceName}) from ${clientName}`,
-        service: serviceName,
-        estimated_cost: `$${activeEstimate.toLocaleString()}`,
-        dimensions: `${sqFt.toLocaleString()} SQ. FT.`,
-        message: notes || "N/A"
-      })
-    }).catch(err => console.error("Lead submission error:", err));
-
-    // 2. Dispatch guaranteed automated thank-you email directly to client's email address
+    // 2. Submit to FormSubmit for client auto-responder
     if (email && email.includes('@')) {
-      fetch("https://formsubmit.co/ajax/constructionsresponse@gmail.com", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
-        },
-        body: JSON.stringify({
-          name: clientName,
-          email: email,
-          phone: phone,
-          service: serviceName,
-          _subject: `Thank You for Your Inquiry - Solid State Construction`,
-          _autoresponse: autoResponderMsg,
-          _captcha: "false"
-        })
-      }).catch(err => console.error("Autoresponder dispatch error:", err));
+      const fsForm = document.createElement('form');
+      fsForm.method = 'POST';
+      fsForm.action = 'https://formsubmit.co/constructionsresponse@gmail.com';
+      fsForm.target = 'hidden_submit_iframe';
+
+      const fsFields: Record<string, string> = {
+        name: clientName,
+        email: email,
+        phone: phone,
+        service: serviceName,
+        _subject: `Thank You for Your Inquiry - Solid State Construction`,
+        _autoresponse: autoResponderMsg,
+        _captcha: 'false'
+      };
+
+      Object.entries(fsFields).forEach(([k, v]) => {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = k;
+        input.value = v;
+        fsForm.appendChild(input);
+      });
+      document.body.appendChild(fsForm);
+      setTimeout(() => {
+        fsForm.submit();
+        setTimeout(() => { if (document.body.contains(fsForm)) document.body.removeChild(fsForm); }, 1000);
+      }, 500);
     }
 
     setSavedSuccess(true);
