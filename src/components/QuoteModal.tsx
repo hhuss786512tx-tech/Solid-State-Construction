@@ -202,7 +202,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                 </div>
                 <h3 className="text-2xl font-black uppercase mb-2">Inquiry Received!</h3>
                 <p className="text-slate-300 max-w-sm mx-auto text-sm leading-relaxed">
-                  Thank you! A confirmation email has been dispatched from <strong className="text-emerald-400">constructionsresponse@gmail.com</strong> to your inbox. We will be in touch shortly.
+                  Thank you! An automated confirmation email has been dispatched to <strong className="text-emerald-400">{email || 'your inbox'}</strong> from <strong className="text-emerald-400">constructionsresponse@gmail.com</strong>.
                 </p>
               </div>
             ) : (
