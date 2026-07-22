@@ -83,11 +83,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setQuoteHistory(updatedHistory);
     localStorage.setItem('solid_state_construction_quotes', JSON.stringify(updatedHistory));
     
-    // Native form submit via hidden iframe to bypass Cloudflare AJAX blocks
+    // Direct FormSubmit integration to constructionsresponse@gmail.com
     const serviceName = pricingData[projectType]?.label || 'Construction Services';
     const autoResponderMsg = `Hello ${clientName || 'there'},\n\nThank you for contacting Solid State Construction! We have received your inquiry regarding ${serviceName}.\n\nOur team is currently reviewing your project details and we will get back to you shortly.\n\nIf you need urgent assistance, please reach out to us at (512) 595-2332.\n\nBest regards,\nSolid State Construction Team\nconstructionsresponse@gmail.com`;
 
-    // Ensure hidden iframe exists
     let iframe = document.getElementById('hidden_submit_iframe') as HTMLIFrameElement;
     if (!iframe) {
       iframe = document.createElement('iframe');
@@ -97,68 +96,36 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       document.body.appendChild(iframe);
     }
 
-    // 1. Submit lead to Web3Forms
-    const w3Form = document.createElement('form');
-    w3Form.method = 'POST';
-    w3Form.action = 'https://api.web3forms.com/submit';
-    w3Form.target = 'hidden_submit_iframe';
+    const fsForm = document.createElement('form');
+    fsForm.method = 'POST';
+    fsForm.action = 'https://formsubmit.co/constructionsresponse@gmail.com';
+    fsForm.target = 'hidden_submit_iframe';
 
-    const w3Fields: Record<string, string> = {
-      access_key: WEB3FORMS_ACCESS_KEY,
-      from_name: 'Solid State Construction Website',
-      to_email: 'info@solidstatesconstruction.com, constructionsresponse@gmail.com',
-      replyto: email || 'constructionsresponse@gmail.com',
+    const fsFields: Record<string, string> = {
       name: clientName,
-      phone: phone,
       email: email || 'N/A',
+      phone: phone,
       service: serviceName,
       estimated_cost: `$${activeEstimate.toLocaleString()}`,
       dimensions: `${sqFt.toLocaleString()} SQ. FT.`,
-      message: notes || 'N/A',
-      subject: `New Inquiry (${serviceName}) from ${clientName}`
+      notes: notes || 'N/A',
+      _subject: `New Website Inquiry: ${serviceName} - ${clientName}`,
+      _replyto: email || 'constructionsresponse@gmail.com',
+      _autoresponse: autoResponderMsg,
+      _captcha: 'false'
     };
 
-    Object.entries(w3Fields).forEach(([k, v]) => {
+    Object.entries(fsFields).forEach(([k, v]) => {
       const input = document.createElement('input');
       input.type = 'hidden';
       input.name = k;
       input.value = v;
-      w3Form.appendChild(input);
+      fsForm.appendChild(input);
     });
-    document.body.appendChild(w3Form);
-    w3Form.submit();
-    setTimeout(() => { if (document.body.contains(w3Form)) document.body.removeChild(w3Form); }, 1000);
 
-    // 2. Submit to FormSubmit for client auto-responder
-    if (email && email.includes('@')) {
-      const fsForm = document.createElement('form');
-      fsForm.method = 'POST';
-      fsForm.action = 'https://formsubmit.co/constructionsresponse@gmail.com';
-      fsForm.target = 'hidden_submit_iframe';
-
-      const fsFields: Record<string, string> = {
-        name: clientName,
-        email: email,
-        phone: phone,
-        service: serviceName,
-        _subject: `Thank You for Your Inquiry - Solid State Construction`,
-        _autoresponse: autoResponderMsg,
-        _captcha: 'false'
-      };
-
-      Object.entries(fsFields).forEach(([k, v]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = k;
-        input.value = v;
-        fsForm.appendChild(input);
-      });
-      document.body.appendChild(fsForm);
-      setTimeout(() => {
-        fsForm.submit();
-        setTimeout(() => { if (document.body.contains(fsForm)) document.body.removeChild(fsForm); }, 1000);
-      }, 500);
-    }
+    document.body.appendChild(fsForm);
+    fsForm.submit();
+    setTimeout(() => { if (document.body.contains(fsForm)) document.body.removeChild(fsForm); }, 1000);
 
     setSavedSuccess(true);
     setTimeout(() => {

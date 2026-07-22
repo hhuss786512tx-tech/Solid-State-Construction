@@ -126,65 +126,35 @@ export default function QuoteModal({ isOpen, onClose, initialService, onDetailed
       document.body.appendChild(iframe);
     }
 
-    const w3Form = document.createElement('form');
-    w3Form.method = 'POST';
-    w3Form.action = 'https://api.web3forms.com/submit';
-    w3Form.target = 'hidden_submit_iframe';
+    const fsForm = document.createElement('form');
+    fsForm.method = 'POST';
+    fsForm.action = 'https://formsubmit.co/constructionsresponse@gmail.com';
+    fsForm.target = 'hidden_submit_iframe';
 
-    const w3Fields = {
-      access_key: "700a045a-9c7d-409d-ba90-8133f2c3b3a1",
-      from_name: 'Solid State Construction Website',
-      to_email: 'info@solidstatesconstruction.com, constructionsresponse@gmail.com',
-      replyto: email || 'constructionsresponse@gmail.com',
+    const fsFields = {
       name: clientName,
-      phone: phone,
       email: email || 'N/A',
+      phone: phone,
       service: serviceName,
       estimated_cost: `$${activeEstimate.toLocaleString()}`,
-      message: notes || 'N/A',
-      subject: `New Inquiry (${serviceName}) from ${clientName}`
+      notes: notes || 'N/A',
+      _subject: `New Website Inquiry: ${serviceName} - ${clientName}`,
+      _replyto: email || 'constructionsresponse@gmail.com',
+      _autoresponse: autoResponderMsg,
+      _captcha: 'false'
     };
 
-    Object.entries(w3Fields).forEach(([k, v]) => {
+    Object.entries(fsFields).forEach(([k, v]) => {
       const input = document.createElement('input');
       input.type = 'hidden';
       input.name = k;
       input.value = v;
-      w3Form.appendChild(input);
+      fsForm.appendChild(input);
     });
-    document.body.appendChild(w3Form);
-    w3Form.submit();
-    setTimeout(() => { if (document.body.contains(w3Form)) document.body.removeChild(w3Form); }, 1000);
 
-    if (email && email.includes('@')) {
-      const fsForm = document.createElement('form');
-      fsForm.method = 'POST';
-      fsForm.action = 'https://formsubmit.co/constructionsresponse@gmail.com';
-      fsForm.target = 'hidden_submit_iframe';
-
-      const fsFields = {
-        name: clientName,
-        email: email,
-        phone: phone,
-        service: serviceName,
-        _subject: `Thank You for Your Inquiry - Solid State Construction`,
-        _autoresponse: autoResponderMsg,
-        _captcha: 'false'
-      };
-
-      Object.entries(fsFields).forEach(([k, v]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = k;
-        input.value = v;
-        fsForm.appendChild(input);
-      });
-      document.body.appendChild(fsForm);
-      setTimeout(() => {
-        fsForm.submit();
-        setTimeout(() => { if (document.body.contains(fsForm)) document.body.removeChild(fsForm); }, 1000);
-      }, 500);
-    }
+    document.body.appendChild(fsForm);
+    fsForm.submit();
+    setTimeout(() => { if (document.body.contains(fsForm)) document.body.removeChild(fsForm); }, 1000);
 
     const updatedHistory = [newQuote, ...quoteHistory];
     setQuoteHistory(updatedHistory);
