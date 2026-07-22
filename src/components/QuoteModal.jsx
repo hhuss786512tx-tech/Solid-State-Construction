@@ -137,6 +137,7 @@ export default function QuoteModal({ isOpen, onClose, initialService, onDetailed
           service_id: "service_93epy7t",
           template_id: "template_1p5nbqo",
           user_id: "GzoEufUCan1ZZqM_h",
+          accessToken: "zBjKT-z4BYjZTYynhrPKZ",
           template_params: emailjsParams
         })
       }).then(res => res.text()).then(txt => console.log("EmailJS result:", txt))
