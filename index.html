@@ -19,6 +19,16 @@
     <!-- Calendly Widget Popup Assets -->
     <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
     <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+    <!-- EmailJS Browser SDK for Instant Auto-Reply -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+      (function() {
+        if (window.emailjs) {
+          window.emailjs.init("zBjKT-z4BYjZTYynhrPKZ");
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

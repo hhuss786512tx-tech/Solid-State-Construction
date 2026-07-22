@@ -83,10 +83,40 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setQuoteHistory(updatedHistory);
     localStorage.setItem('solid_state_construction_quotes', JSON.stringify(updatedHistory));
     
-    // Direct FormSubmit integration to constructionsresponse@gmail.com
+    // Dispatch lead notification to business & auto-reply to client via EmailJS & FormSubmit
     const serviceName = pricingData[projectType]?.label || 'Construction Services';
     const autoResponderMsg = `Hello ${clientName || 'there'},\n\nThank you for contacting Solid State Construction! We have received your inquiry regarding ${serviceName}.\n\nOur team is currently reviewing your project details and we will get back to you shortly.\n\nIf you need urgent assistance, please reach out to us at (512) 595-2332.\n\nBest regards,\nSolid State Construction Team\nconstructionsresponse@gmail.com`;
 
+    // 1. Dispatch EmailJS instant auto-reply directly to client
+    if (email && email.includes('@')) {
+      const emailjsParams = {
+        to_email: email,
+        to_name: clientName,
+        name: clientName,
+        email: email,
+        phone: phone,
+        service_name: serviceName,
+        message: notes || 'N/A'
+      };
+
+      if (typeof window !== 'undefined' && (window as any).emailjs) {
+        (window as any).emailjs.send("service_93epy7t", "template_1p5nbqo", emailjsParams, "zBjKT-z4BYjZTYynhrPKZ")
+          .catch((err: any) => console.error("EmailJS SDK error:", err));
+      } else {
+        fetch("https://api.emailjs.com/api/v1.0/email/send", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            service_id: "service_93epy7t",
+            template_id: "template_1p5nbqo",
+            user_id: "zBjKT-z4BYjZTYynhrPKZ",
+            template_params: emailjsParams
+          })
+        }).catch(err => console.error("EmailJS API error:", err));
+      }
+    }
+
+    // 2. Submit lead notification to constructionsresponse@gmail.com via FormSubmit
     let iframe = document.getElementById('hidden_submit_iframe') as HTMLIFrameElement;
     if (!iframe) {
       iframe = document.createElement('iframe');
