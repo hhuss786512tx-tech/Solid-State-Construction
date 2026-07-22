@@ -338,11 +338,11 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                             </div>
                           </div>
                           <div>
-                            <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Email (Optional)</label>
+                            <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-2 ml-1">Email Address (Required for Auto-Reply)</label>
                             <div className="relative">
                               <Mail className="absolute left-4 top-3.5 h-5 w-5 text-slate-600" />
                               <input
-                                type="email" placeholder="email@address.com" value={email}
+                                type="email" required placeholder="your.email@gmail.com" value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 className="w-full bg-slate-800 border-2 border-slate-700 rounded-2xl p-4 pl-12 text-sm text-white focus:border-emerald-500 outline-none transition-all"
                               />
