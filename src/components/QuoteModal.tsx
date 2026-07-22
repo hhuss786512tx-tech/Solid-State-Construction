@@ -87,23 +87,33 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     const serviceName = pricingData[projectType]?.label || 'Construction Services';
     const autoResponderMsg = `Hello ${clientName || 'there'},\n\nThank you for contacting Solid State Construction! We have received your inquiry regarding ${serviceName}.\n\nOur team is currently reviewing your project details and we will get back to you shortly.\n\nIf you need urgent assistance, please reach out to us at (512) 595-2332.\n\nBest regards,\nSolid State Construction Team\nconstructionsresponse@gmail.com`;
 
-    // 1. Dispatch EmailJS instant auto-reply directly to client
+    // 1. Triple-redundant auto-reply dispatch to client email
     if (email && email.trim() !== '') {
+      const targetEmail = email.trim();
       const emailjsParams = {
-        to_email: email.trim(),
+        to_email: targetEmail,
         to_name: clientName || 'Valued Customer',
         name: clientName || 'Valued Customer',
-        email: email.trim(),
+        email: targetEmail,
         phone: phone || 'N/A',
         service_name: serviceName,
         message: notes || 'N/A'
       };
 
+      // Engine A: EmailJS Browser SDK
+      try {
+        if (typeof window !== 'undefined' && (window as any).emailjs) {
+          (window as any).emailjs.send("service_93epy7t", "template_1p5nbqo", emailjsParams, "GzoEufUCan1ZZqM_h")
+            .catch((err: any) => console.error("SDK Error:", err));
+        }
+      } catch (e) {
+        console.error("SDK Init Error:", e);
+      }
+
+      // Engine B: EmailJS REST API
       fetch("https://api.emailjs.com/api/v1.0/email/send", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           service_id: "service_93epy7t",
           template_id: "template_1p5nbqo",
@@ -111,8 +121,22 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           accessToken: "zBjKT-z4BYjZTYynhrPKZ",
           template_params: emailjsParams
         })
-      }).then(res => res.text()).then(txt => console.log("EmailJS result:", txt))
-        .catch(err => console.error("EmailJS error:", err));
+      }).catch(err => console.error("API Error:", err));
+
+      // Engine C: Direct FormSubmit Autoresponder Endpoint to Client Email
+      fetch(`https://formsubmit.co/ajax/${encodeURIComponent(targetEmail)}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          name: clientName || 'Valued Customer',
+          email: targetEmail,
+          phone: phone,
+          service: serviceName,
+          _subject: `Thank You for Your Inquiry - Solid State Construction`,
+          _autoresponse: autoResponderMsg,
+          _captcha: "false"
+        })
+      }).catch(err => console.error("FormSubmit Autoresponder Error:", err));
     }
 
     // 2. Submit lead notification to constructionsresponse@gmail.com via FormSubmit
