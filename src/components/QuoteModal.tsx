@@ -194,6 +194,31 @@ constructionsresponse@gmail.com | info@solidstateconstruction.com`;
                 <div className="lg:col-span-9 space-y-8">
                   {step === 1 && (
                     <div className="space-y-8">
+                      {/* Stunning Dark Mode Walkthrough Banner */}
+                      <div className="relative overflow-hidden rounded-2xl border border-emerald-500/30 bg-slate-800/80 p-5 shadow-xl backdrop-blur-md">
+                        <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                          <div className="text-center sm:text-left space-y-1">
+                            <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400 font-mono">Skip the Form</span>
+                            <h4 className="text-sm font-bold text-white uppercase tracking-tight">
+                              Prefer to pick your own time?
+                            </h4>
+                            <p className="text-xs text-slate-300">
+                              Book a walkthrough inspection directly on our calendar.
+                            </p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              onClose();
+                              openCalendly(e);
+                            }}
+                            className="shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white font-display font-black uppercase tracking-widest text-[10px] px-5 py-3 rounded-xl transition-all shadow-lg shadow-emerald-900/40 hover:scale-105 flex items-center gap-2 cursor-pointer border border-emerald-400/20"
+                          >
+                            <span>Book Walkthrough Inspection</span>
+                          </button>
+                        </div>
+                      </div>
+
                       <div>
                         <label className="text-slate-500 text-[10px] font-black uppercase tracking-widest block mb-4">1. Select Service</label>
                         <div className="grid grid-cols-2 gap-3">

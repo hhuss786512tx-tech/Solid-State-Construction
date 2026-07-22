@@ -7,8 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(28, 32, 26, 0.6); /* Tinted dark overlay */
-  backdrop-filter: blur(8px);
+  background-color: rgba(2, 6, 23, 0.85); /* Deep dark overlay */
+  backdrop-filter: blur(12px);
   padding: 1.5rem;
   transition: all 0.3s ease;
 }
@@ -16,32 +16,30 @@
 .quote-modal-container {
   position: relative;
   width: 100%;
-  max-width: 700px;
+  max-width: 720px;
   height: auto;
   max-height: 90vh;
-  background-color: var(--card-bg);
-  color: var(--text-dark);
+  background-color: #0f172a; /* Solid dark slate */
+  color: #f8fafc; /* Crisp white text */
   border-radius: 24px;
-  border: 1px solid rgba(112, 130, 105, 0.15);
-  shadow: var(--shadow);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   display: flex;
   flex-direction: row;
   overflow: hidden;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 40px rgba(16, 185, 129, 0.1);
   font-family: var(--font-sans);
 }
 
 :root {
-  --modal-border: rgba(112, 130, 105, 0.15);
-  --modal-input-bg: var(--bg-color);
-  --modal-accent: var(--accent);
-  --modal-highlight: #b25e38; /* Warm copper/terracotta for highlights/prices */
-}
-
-[data-theme='dark'] {
-  --modal-border: rgba(149, 158, 146, 0.15);
-  --modal-input-bg: #111410;
-  --modal-highlight: #e2875c; /* Lighter warm copper for dark mode readability */
+  --modal-border: rgba(16, 185, 129, 0.2);
+  --modal-input-bg: #1e293b;
+  --modal-accent: #10b981;
+  --modal-highlight: #10b981;
+  --card-bg: #1e293b;
+  --secondary: #1e293b;
+  --text-dark: #f8fafc;
+  --text-light: #94a3b8;
+  --primary: #059669;
 }
 
 /* Left Sidebar / History Panel */
