@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { X, CheckCircle2, FileText, Trash2, Phone, Mail, User, Maximize } from 'lucide-react';
 import { QuoteRequest } from '../types';
+import { openCalendly } from '../utils/calendly';
 
 // CONFIGURATION FOR LEAD EMAILS:
 // 1. Go to https://web3forms.com
@@ -82,7 +83,21 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setQuoteHistory(updatedHistory);
     localStorage.setItem('solid_state_construction_quotes', JSON.stringify(updatedHistory));
     
-    // Submit lead via Web3Forms API
+    // Submit lead to info@solidstateconstruction.com and trigger immediate autoresponder email to client
+    const serviceName = pricingData[projectType]?.label || 'Construction Services';
+    const autoResponderMsg = `Hello ${clientName || 'there'},
+
+Thank you for your inquiry with Solid State Construction! We have received your request regarding ${serviceName}.
+
+Our team is currently reviewing your project details and we will get back to you shortly.
+
+If you need urgent or immediate assistance, please reach out to us at (512) 595-2332.
+
+Best regards,
+Solid State Construction Team
+constructionsresponse@gmail.com | info@solidstateconstruction.com`;
+
+    // Send single unified payload to Web3Forms with built-in autoresponder enabled for the client's email
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -92,11 +107,20 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       body: JSON.stringify({
         access_key: WEB3FORMS_ACCESS_KEY,
         name: clientName,
-        phone: phone,
         email: email || "N/A",
-        service: pricingData[projectType].label,
+        phone: phone,
+        replyto: email || "constructionsresponse@gmail.com",
+        from_name: "Solid State Construction",
+        to_email: "info@solidstateconstruction.com, constructionsresponse@gmail.com",
+        subject: `New Inquiry (${serviceName}) from ${clientName}`,
+        service: serviceName,
+        estimated_cost: `$${activeEstimate.toLocaleString()}`,
+        dimensions: `${sqFt.toLocaleString()} SQ. FT.`,
         message: notes || "N/A",
-        subject: `New Lead: ${pricingData[projectType].label} from Solid State Construction`
+        // Web3Forms Autoresponder fields to email client immediately
+        autoresponder: "true",
+        autoresponder_subject: "Thank You for Your Inquiry - Solid State Construction",
+        autoresponder_message: autoResponderMsg
       })
     }).catch(err => console.error("Lead submission error:", err));
 
@@ -104,7 +128,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setTimeout(() => {
       setSavedSuccess(false);
       setStep(3);
-    }, 1500);
+    }, 2500);
   };
 
   const handleDeleteHistoryItem = (id: string, e: React.MouseEvent) => {
@@ -144,8 +168,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                 <div className="h-20 w-20 bg-emerald-500/20 border-2 border-emerald-500 rounded-full flex items-center justify-center mb-6">
                   <CheckCircle2 className="h-10 w-10 text-emerald-400" />
                 </div>
-                <h3 className="text-2xl font-black uppercase mb-2">Request Sent!</h3>
-                <p className="text-slate-400 max-w-xs mx-auto">We'll review your details and contact you shortly.</p>
+                <h3 className="text-2xl font-black uppercase mb-2">Inquiry Received!</h3>
+                <p className="text-slate-300 max-w-sm mx-auto text-sm leading-relaxed">
+                  Thank you! A confirmation email has been dispatched from <strong className="text-emerald-400">constructionsresponse@gmail.com</strong> to your inbox. We will be in touch shortly.
+                </p>
               </div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
@@ -311,9 +337,21 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         </p>
                       </div>
 
-                      <button onClick={onClose} className="w-full bg-emerald-600 hover:bg-emerald-500 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-sm shadow-xl transition-all">
-                        Finish Survey
-                      </button>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <button
+                          onClick={(e) => {
+                            onClose();
+                            openCalendly(e);
+                          }}
+                          className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-center py-4 rounded-2xl font-display font-black uppercase tracking-widest text-xs shadow-xl transition-all flex items-center justify-center gap-2 cursor-pointer"
+                        >
+                          <span>Book Walkthrough Inspection</span>
+                          <span>&rarr;</span>
+                        </button>
+                        <button onClick={onClose} className="px-6 bg-slate-800 hover:bg-slate-700 text-slate-300 py-4 rounded-2xl font-black uppercase tracking-widest text-xs transition-all">
+                          Done
+                        </button>
+                      </div>
                     </div>
                   )}
                 </div>

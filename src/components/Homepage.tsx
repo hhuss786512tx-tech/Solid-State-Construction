@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight, Droplets, Home, Hammer, Wrench, Award } from 'lucide-react';
 import { TESTIMONIALS } from '../data';
+import { openCalendly } from '../utils/calendly';
 
 interface HomepageProps {
   setTab: (tab: string) => void;
@@ -57,43 +58,53 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
             </span>
-            <span>Local & Reliable Leander Experts</span>
+            <span>Premier General Contractor & Restoration | Leander, TX</span>
           </motion.div>
 
           <motion.h1 
             initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.1 }}
-            className="font-display text-5xl sm:text-7xl font-black uppercase tracking-tight text-white leading-[1.1]"
+            className="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white leading-[1.1]"
           >
-            Solid State <br />
-            <span className="text-emerald-500">Construction</span>
+            Solid-Built <span className="text-emerald-500">Construction.</span><br />
+            Guaranteed Timelines. <br className="hidden sm:inline" />
+            <span className="text-slate-200">Zero Hidden Costs.</span>
           </motion.h1>
 
           <motion.p 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="mt-8 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-2xl mx-auto"
+            className="mt-8 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto"
           >
-            Straight to the point: We fix homes. From emergency water remediation to foundational concrete, we provide quality craftsmanship you can trust.
+            <strong className="text-white">Solid State Construction</strong> delivers licensed, rock-solid craftsmanship across Leander and surrounding areas. From emergency water remediation to roofing repair, structural concrete, and expert plumbing.
           </motion.p>
 
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="mt-12 flex flex-col sm:flex-row justify-center gap-4"
+            className="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4"
           >
             <button
+              onClick={openCalendly}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-emerald-900/30 w-full sm:w-auto text-center flex items-center justify-center gap-2 group cursor-pointer"
+            >
+              <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+              </svg>
+              <span>Book Walkthrough Inspection</span>
+            </button>
+            <button
               onClick={onRequestQuote}
-              className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-emerald-900/30 w-full sm:w-auto"
+              className="border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-800 text-white px-8 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-sm transition-all w-full sm:w-auto"
             >
               Get a Free Quote
             </button>
             <a
               href="tel:5125952332"
-              className="flex items-center justify-center gap-2 border-2 border-slate-700 bg-slate-800/50 hover:bg-slate-800 px-8 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-sm text-white transition-all w-full sm:w-auto"
+              className="flex items-center justify-center gap-2 text-slate-400 hover:text-white px-6 py-4 rounded-2xl font-display font-black uppercase tracking-widest text-xs transition-all w-full sm:w-auto border border-slate-800"
             >
               Call (512) 595-2332
             </a>
@@ -181,12 +192,21 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
           <p className="text-slate-400 mb-10 max-w-xl mx-auto">
             Contact us today for a free estimate. We are ready to handle your water remediation, roofing, concrete, and plumbing needs.
           </p>
-          <button 
-            onClick={onRequestQuote}
-            className="bg-emerald-600 hover:bg-emerald-500 text-white px-10 py-5 rounded-2xl font-display font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-emerald-900/30"
-          >
-            Get Your Free Estimate
-          </button>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
+            <button
+              onClick={openCalendly}
+              className="bg-emerald-600 hover:bg-emerald-500 text-white px-8 py-5 rounded-2xl font-display font-black uppercase tracking-widest text-sm transition-all shadow-xl shadow-emerald-900/30 w-full sm:w-auto inline-flex items-center justify-center gap-2 group cursor-pointer"
+            >
+              <span>Book Walkthrough Inspection</span>
+              <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </button>
+            <button 
+              onClick={onRequestQuote}
+              className="border-2 border-slate-700 bg-slate-800/60 hover:bg-slate-800 text-white px-8 py-5 rounded-2xl font-display font-black uppercase tracking-widest text-sm transition-all w-full sm:w-auto"
+            >
+              Get Free Estimate
+            </button>
+          </div>
         </div>
       </section>
 

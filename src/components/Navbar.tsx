@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Compass, Hammer, Image, MapPin, Layers, LayoutGrid, Terminal, Sun, Moon } from 'lucide-react';
+import { openCalendly } from '../utils/calendly';
 
 interface NavbarProps {
   currentTab: string;
@@ -91,12 +92,19 @@ export default function Navbar({ currentTab, setTab, onRequestQuote }: NavbarPro
           </div>
 
           <button
+            onClick={openCalendly}
+            className="group relative overflow-hidden bg-emerald-600 px-5 py-2.5 font-display text-xs font-black uppercase tracking-widest text-white rounded-xl shadow-lg shadow-emerald-900/30 transition-all hover:bg-emerald-500 hover:scale-105 hidden sm:inline-flex items-center gap-1.5 cursor-pointer"
+          >
+            <span className="relative z-10">Book Walkthrough</span>
+          </button>
+
+          <button
             id="rfq-trigger-button"
             onClick={onRequestQuote}
-            className="group relative overflow-hidden bg-emerald-600 px-6 py-2.5 font-display text-xs font-black uppercase tracking-widest text-white rounded-xl shadow-lg shadow-emerald-900/30 transition-all hover:bg-emerald-500 hover:scale-105"
+            className="group relative overflow-hidden border border-slate-700 bg-slate-800/80 px-4 py-2.5 font-display text-xs font-black uppercase tracking-widest text-slate-200 rounded-xl transition-all hover:bg-slate-700 hover:text-white"
           >
             <span className="relative z-10 flex items-center gap-2">
-              Get a Quote
+              Get Quote
             </span>
           </button>
         </div>
