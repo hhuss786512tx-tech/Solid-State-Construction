@@ -100,7 +100,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       };
 
       if (typeof window !== 'undefined' && (window as any).emailjs) {
-        (window as any).emailjs.send("service_93epy7t", "template_1p5nbqo", emailjsParams, "zBjKT-z4BYjZTYynhrPKZ")
+        (window as any).emailjs.send("service_93epy7t", "template_1p5nbqo", emailjsParams, "GzoEufUCan1ZZqM_h")
           .catch((err: any) => console.error("EmailJS SDK error:", err));
       } else {
         fetch("https://api.emailjs.com/api/v1.0/email/send", {
@@ -109,7 +109,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
           body: JSON.stringify({
             service_id: "service_93epy7t",
             template_id: "template_1p5nbqo",
-            user_id: "zBjKT-z4BYjZTYynhrPKZ",
+            user_id: "GzoEufUCan1ZZqM_h",
             template_params: emailjsParams
           })
         }).catch(err => console.error("EmailJS API error:", err));
