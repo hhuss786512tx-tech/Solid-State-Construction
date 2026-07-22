@@ -88,32 +88,30 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     const autoResponderMsg = `Hello ${clientName || 'there'},\n\nThank you for contacting Solid State Construction! We have received your inquiry regarding ${serviceName}.\n\nOur team is currently reviewing your project details and we will get back to you shortly.\n\nIf you need urgent assistance, please reach out to us at (512) 595-2332.\n\nBest regards,\nSolid State Construction Team\nconstructionsresponse@gmail.com`;
 
     // 1. Dispatch EmailJS instant auto-reply directly to client
-    if (email && email.includes('@')) {
+    if (email && email.trim() !== '') {
       const emailjsParams = {
-        to_email: email,
-        to_name: clientName,
-        name: clientName,
-        email: email,
-        phone: phone,
+        to_email: email.trim(),
+        to_name: clientName || 'Valued Customer',
+        name: clientName || 'Valued Customer',
+        email: email.trim(),
+        phone: phone || 'N/A',
         service_name: serviceName,
         message: notes || 'N/A'
       };
 
-      if (typeof window !== 'undefined' && (window as any).emailjs) {
-        (window as any).emailjs.send("service_93epy7t", "template_1p5nbqo", emailjsParams, "GzoEufUCan1ZZqM_h")
-          .catch((err: any) => console.error("EmailJS SDK error:", err));
-      } else {
-        fetch("https://api.emailjs.com/api/v1.0/email/send", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            service_id: "service_93epy7t",
-            template_id: "template_1p5nbqo",
-            user_id: "GzoEufUCan1ZZqM_h",
-            template_params: emailjsParams
-          })
-        }).catch(err => console.error("EmailJS API error:", err));
-      }
+      fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          service_id: "service_93epy7t",
+          template_id: "template_1p5nbqo",
+          user_id: "GzoEufUCan1ZZqM_h",
+          template_params: emailjsParams
+        })
+      }).then(res => res.text()).then(txt => console.log("EmailJS result:", txt))
+        .catch(err => console.error("EmailJS error:", err));
     }
 
     // 2. Submit lead notification to constructionsresponse@gmail.com via FormSubmit
