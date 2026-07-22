@@ -117,17 +117,17 @@ export default function QuoteModal({ isOpen, onClose, initialService, onDetailed
     const serviceName = pricingData[projectType]?.label || 'Construction Services';
     const autoResponderMsg = `Hello ${clientName || 'there'},
 
-Thank you for your inquiry with Solid State Construction! We have received your request regarding ${serviceName}.
+Thank you for contacting Solid State Construction! We have received your inquiry regarding ${serviceName}.
 
 Our team is currently reviewing your project details and we will get back to you shortly.
 
-If you need urgent or immediate assistance, please reach out to us at (512) 595-2332.
+If you need urgent or immediate assistance, please reach out to us directly at (512) 595-2332.
 
 Best regards,
 Solid State Construction Team
 constructionsresponse@gmail.com | info@solidstateconstruction.com`;
 
-    // Send single unified payload to Web3Forms with built-in autoresponder enabled for the client's email
+    // 1. Submit lead details to business emails
     fetch("https://api.web3forms.com/submit", {
       method: "POST",
       headers: {
@@ -140,18 +140,34 @@ constructionsresponse@gmail.com | info@solidstateconstruction.com`;
         email: email || "N/A",
         phone: phone,
         replyto: email || "constructionsresponse@gmail.com",
-        from_name: "Solid State Construction",
-        to_email: "info@solidstateconstruction.com, constructionsresponse@gmail.com",
+        from_name: "Solid State Construction Website",
+        to_email: "info@solidstatesconstruction.com, constructionsresponse@gmail.com",
         subject: `New Inquiry (${serviceName}) from ${clientName}`,
         service: serviceName,
         estimated_cost: `$${activeEstimate.toLocaleString()}`,
-        message: notes || "N/A",
-        // Web3Forms Autoresponder fields to email client immediately
-        autoresponder: "true",
-        autoresponder_subject: "Thank You for Your Inquiry - Solid State Construction",
-        autoresponder_message: autoResponderMsg
+        message: notes || "N/A"
       })
     }).catch(err => console.error("Lead submission error:", err));
+
+    // 2. Dispatch guaranteed automated thank-you email directly to client's email address
+    if (email && email.includes('@')) {
+      fetch("https://formsubmit.co/ajax/constructionsresponse@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json"
+        },
+        body: JSON.stringify({
+          name: clientName,
+          email: email,
+          phone: phone,
+          service: serviceName,
+          _subject: `Thank You for Your Inquiry - Solid State Construction`,
+          _autoresponse: autoResponderMsg,
+          _captcha: "false"
+        })
+      }).catch(err => console.error("Autoresponder dispatch error:", err));
+    }
 
     const updatedHistory = [newQuote, ...quoteHistory];
     setQuoteHistory(updatedHistory);
