@@ -1,0 +1,76 @@
+<!--
+  CANONICAL NAV PARTIAL — copy this block verbatim into every page's <body>, then adjust ONLY:
+    1. href paths (see path table below)
+    2. the "active" page's link: add class "text-brand-400" and remove "text-white/80" from it
+  Do not otherwise change structure, classes, or the phone number.
+
+  Path table:
+    From root pages (index.html, about.html, contact.html):
+      logo/home href="index.html"
+      services hrefs="services/concrete.html" etc.
+      about href="about.html", contact href="contact.html"
+    From /services/*.html:
+      logo/home href="../index.html"
+      services hrefs="concrete.html" (siblings, no prefix)
+      about href="../about.html", contact href="../contact.html"
+
+  Phone number (used site-wide, must match footer.html and all CTAs): (512) 555-0182
+-->
+<nav data-nav class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-ink-700 transition-shadow duration-300">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href="index.html" class="font-display text-xl font-semibold tracking-tightest text-white flex items-center gap-2">
+        <span class="text-brand-400">Solid State</span> Construction
+      </a>
+
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="index.html" class="text-sm font-medium text-white/80 hover:text-brand-400 transition-colors">Home</a>
+
+        <div class="relative group">
+          <button class="text-sm font-medium text-white/80 hover:text-brand-400 transition-colors flex items-center gap-1">
+            Services
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+          </button>
+          <div class="absolute top-full left-0 pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+            <div class="surface-floating rounded-xl p-2 w-56 shadow-brand-lg">
+              <a href="services/concrete.html" class="block px-4 py-2.5 rounded-lg text-sm text-white/85 hover:bg-brand-500/10 hover:text-brand-400 transition-colors">Concrete</a>
+              <a href="services/tunneling.html" class="block px-4 py-2.5 rounded-lg text-sm text-white/85 hover:bg-brand-500/10 hover:text-brand-400 transition-colors">Tunneling</a>
+              <a href="services/plumbing.html" class="block px-4 py-2.5 rounded-lg text-sm text-white/85 hover:bg-brand-500/10 hover:text-brand-400 transition-colors">Plumbing</a>
+              <a href="services/roofing.html" class="block px-4 py-2.5 rounded-lg text-sm text-white/85 hover:bg-brand-500/10 hover:text-brand-400 transition-colors">Roofing</a>
+              <a href="services/water-remediation.html" class="block px-4 py-2.5 rounded-lg text-sm text-white/85 hover:bg-brand-500/10 hover:text-brand-400 transition-colors">Water Remediation</a>
+            </div>
+          </div>
+        </div>
+
+        <a href="about.html" class="text-sm font-medium text-white/80 hover:text-brand-400 transition-colors">About</a>
+        <a href="contact.html" class="text-sm font-medium text-white/80 hover:text-brand-400 transition-colors">Contact</a>
+      </div>
+
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="tel:+15125550182" class="text-sm font-semibold text-white/90 hover:text-brand-400 transition-colors flex items-center gap-2">
+          <svg class="w-4 h-4 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+          (512) 555-0182
+        </a>
+        <a href="contact.html" class="btn-primary">Get a Free Quote</a>
+      </div>
+
+      <button data-menu-toggle aria-expanded="false" aria-label="Toggle menu" class="lg:hidden text-white p-2">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+      </button>
+    </div>
+
+    <div data-mobile-menu class="hidden lg:hidden flex-col gap-1 pb-6 border-t border-ink-700 pt-4">
+      <a href="index.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Home</a>
+      <a href="services/concrete.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Concrete</a>
+      <a href="services/tunneling.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Tunneling</a>
+      <a href="services/plumbing.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Plumbing</a>
+      <a href="services/roofing.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Roofing</a>
+      <a href="services/water-remediation.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Water Remediation</a>
+      <a href="about.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">About</a>
+      <a href="contact.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Contact</a>
+      <a href="tel:+15125550182" class="px-2 py-2.5 text-sm font-semibold text-brand-400">(512) 555-0182</a>
+      <a href="contact.html" class="btn-primary mt-2 justify-center">Get a Free Quote</a>
+    </div>
+  </div>
+</nav>
+<div class="h-20"></div>
