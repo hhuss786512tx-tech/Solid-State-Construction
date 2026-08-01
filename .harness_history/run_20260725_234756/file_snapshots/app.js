@@ -1,0 +1,93 @@
+/**
+ * Solid State Construction - Interactive Application Engine
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggleBtn = document.getElementById('themeToggle');
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      themeToggleBtn.textContent = newTheme === 'dark' ? '🌙' : '☀️';
+    });
+  }
+
+  const mobileToggle = document.getElementById('mobileToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      if (!isActive) item.classList.add('active');
+    });
+  });
+
+  const scopeSlider = document.getElementById('scopeSlider');
+  const speedSlider = document.getElementById('speedSlider');
+  const calcOutput = document.getElementById('calcOutput');
+
+  function updateEstimate() {
+    if (!scopeSlider || !speedSlider || !calcOutput) return;
+    const scopeVal = parseInt(scopeSlider.value) || 4;
+    const speedVal = parseInt(speedSlider.value) || 2;
+    const baseRate = 250000;
+    const total = Math.round(baseRate * scopeVal * (1.2 - (speedVal * 0.05)));
+    calcOutput.textContent = '$' + total.toLocaleString();
+  }
+
+  if (scopeSlider) scopeSlider.addEventListener('input', updateEstimate);
+  if (speedSlider) speedSlider.addEventListener('input', updateEstimate);
+  updateEstimate();
+
+  const modal = document.getElementById('contactModal');
+  const openModalBtns = document.querySelectorAll('.open-modal');
+  const closeModalBtn = document.getElementById('closeModal');
+
+  openModalBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      if (modal) modal.classList.add('active');
+    });
+  });
+
+  if (closeModalBtn && modal) {
+    closeModalBtn.addEventListener('click', () => modal.classList.remove('active'));
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('active');
+    });
+  }
+
+  const contactForm = document.getElementById('contactForm');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you! Your project consultation request has been logged. Our executive team will reach out within 2 hours.');
+      if (modal) modal.classList.remove('active');
+      contactForm.reset();
+    });
+  }
+});

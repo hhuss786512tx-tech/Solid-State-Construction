@@ -1,0 +1,32 @@
+/* ==========================================================================
+   Solid State Construction Master Stylesheet
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap');
+
+:root {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #0f172a;
+}
+
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --text-primary: #0f172a;
+}
+
+[data-theme="dark"] {
+  --bg-primary: #0b0f19;
+  --bg-secondary: #111827;
+  --text-primary: #f9fafb;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Montserrat', system-ui, sans-serif;
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  body { font-size: 14px; }
+}

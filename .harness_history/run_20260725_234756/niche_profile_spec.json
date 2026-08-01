@@ -1,0 +1,175 @@
+{
+  "niche_name": "Luxury & Commercial Construction / General Contractor",
+  "theme_name": "slate_amber_construction",
+  "colors": {
+    "bg_primary_dark": "hsl(220, 20%, 9%)",
+    "bg_secondary_dark": "hsl(220, 18%, 13%)",
+    "bg_tertiary_dark": "hsl(220, 15%, 18%)",
+    "accent_primary": "hsl(38, 95%, 50%)",
+    "accent_hover": "hsl(38, 100%, 60%)",
+    "gold_accent": "hsl(45, 92%, 58%)"
+  },
+  "typography": "'Outfit', 'Plus Jakarta Sans', sans-serif",
+  "hero_badge": "\ud83c\udfd7\ufe0f AGC Award-Winning Commercial & Luxury Design-Build Contractor",
+  "hero_title_prefix": "Engineering Exceptional",
+  "hero_title_gradient": "Commercial & Residential Spaces",
+  "hero_subtitle": "From ground-up commercial steel structures to luxury architectural estates, Solid State Construction delivers precision engineering, zero-incident safety, and guaranteed budget adherence.",
+  "stats": [
+    {
+      "num": "$250M+",
+      "label": "Completed Portfolio Value"
+    },
+    {
+      "num": "99.4%",
+      "label": "On-Time & On-Budget Rate"
+    },
+    {
+      "num": "0.00",
+      "label": "EMR Jobsite Safety Rating"
+    },
+    {
+      "num": "4.99 \u2605",
+      "label": "Verified Client & Partner Rating"
+    }
+  ],
+  "trust_badges": [
+    {
+      "icon": "\ud83d\udee1\ufe0f",
+      "title": "OSHA 30 Certified",
+      "sub": "Zero Incident Record"
+    },
+    {
+      "icon": "\ud83c\udfc6",
+      "title": "AGC Excellence Award",
+      "sub": "Top Commercial Contractor"
+    },
+    {
+      "icon": "\ud83c\udf3f",
+      "title": "LEED Gold Accredited",
+      "sub": "Sustainable Build Leader"
+    },
+    {
+      "icon": "\ud83d\udcd0",
+      "title": "DBIA Certified",
+      "sub": "Design-Build Institute"
+    }
+  ],
+  "features": [
+    {
+      "icon": "\ud83d\udcd0",
+      "title": "Turnkey Design-Build Architecture",
+      "description": "Architectural drafting, structural engineering, and site management unified under one contract to eliminate cost overruns."
+    },
+    {
+      "icon": "\ud83c\udfd7\ufe0f",
+      "title": "Commercial & High-End Residential",
+      "description": "Custom heavy steel framing, multi-family developments, medical facilities, and luxury residential estates."
+    },
+    {
+      "icon": "\u26a1",
+      "title": "BIM 3D Precision Cost Estimation",
+      "description": "Building Information Modeling (BIM) paired with digital milestone tracking prevents budget drift before breaking ground."
+    },
+    {
+      "icon": "\ud83d\udee1\ufe0f",
+      "title": "OSHA-30 Certified & $10M Insured",
+      "description": "Strict jobsite safety compliance with an industry-leading 0.00 EMR safety record and comprehensive liability coverage."
+    }
+  ],
+  "projects": [
+    {
+      "title": "AeroTech Commercial Headquarters",
+      "category": "Commercial Steel & Office",
+      "value": "$28.5M",
+      "location": "Downtown Tech District",
+      "icon": "\ud83c\udfe2",
+      "desc": "45,000 sq ft LEED Gold certified steel-frame commercial headquarters completed 3 weeks ahead of schedule."
+    },
+    {
+      "title": "The Crestview Luxury Estate",
+      "category": "High-End Residential",
+      "value": "$8.2M",
+      "location": "Alpine Ridge",
+      "icon": "\ud83c\udfe1",
+      "desc": "Custom architectural timber & glass estate featuring cantilevered decks and geothermal climate systems."
+    },
+    {
+      "title": "CareMed Surgical & Medical Center",
+      "category": "Healthcare & Institutional",
+      "value": "$14.7M",
+      "location": "Metro Health Plaza",
+      "icon": "\ud83c\udfe5",
+      "desc": "State-of-the-art cleanroom surgical suites with specialized HVAC filtration and zero operational downtime."
+    }
+  ],
+  "pricing_packages": [
+    {
+      "name": "Pre-Construction & Feasibility",
+      "price": "$3,500",
+      "period": "one-time",
+      "badge": "Starter Feasibility",
+      "features": [
+        "Jobsite Topographical & Soil Inspection",
+        "BIM 3D Conceptual Architectural Rendering",
+        "Itemized Material & Cost Breakdown",
+        "Zoning & Municipal Permitting Pre-Check"
+      ]
+    },
+    {
+      "name": "Turnkey Design-Build Package",
+      "price": "$50,000+",
+      "period": "project milestone base",
+      "badge": "Most Popular",
+      "features": [
+        "Complete Architectural Blueprinting & Engineering",
+        "Full Subcontractor & Site Superintendent Management",
+        "Real-Time 24/7 Portal & Drone Jobsite Feeds",
+        "10-Year Structural Warranty & Inspection Guarantee"
+      ]
+    },
+    {
+      "name": "Commercial Heavy Erection",
+      "price": "Custom Bid",
+      "period": "contract",
+      "badge": "Enterprise Commercial",
+      "features": [
+        "Ground-Up Structural Steel & Reinforced Concrete",
+        "LEED Gold / Platinum Green Building Certification",
+        "Dedicated Senior Executive Project Manager",
+        "Commercial HVAC, Electrical & Fire Suppression"
+      ]
+    }
+  ],
+  "testimonials": [
+    {
+      "quote": "Solid State Construction delivered our 45,000 sq ft headquarters 3 weeks ahead of schedule and precisely on budget. Best general contractor in the region.",
+      "author": "Marcus Vance",
+      "role": "COO, Apex Logistics",
+      "avatar": "\ud83d\udc68\u200d\ud83d\udcbc",
+      "stars": 5
+    },
+    {
+      "quote": "The structural detail and craftsmanship on our luxury modern residential estate was breathtaking. Their BIM modeling kept costs completely transparent.",
+      "author": "Elena Rostova",
+      "role": "Architectural Principal, Rostova Design",
+      "avatar": "\ud83d\udc69\u200d\ud83c\udfa8",
+      "stars": 5
+    }
+  ],
+  "faqs": [
+    {
+      "q": "What sets Solid State Construction's design-build process apart?",
+      "a": "We unify architectural design, structural engineering, and physical jobsite construction into a single contract, eliminating miscommunication, delays, and surprise change orders."
+    },
+    {
+      "q": "Are you licensed and insured for large commercial construction?",
+      "a": "Yes, we maintain Class-A General Contractor licensing with full commercial liability and worker's compensation coverage up to $10M and a 0.00 EMR safety rating."
+    },
+    {
+      "q": "How do you manage project timelines and prevent cost overruns?",
+      "a": "We utilize real-time BIM 3D modeling paired with digital milestone tracking so clients receive weekly progress reports and transparent cost breakdowns before work commences."
+    }
+  ],
+  "schema_type": "GeneralContractor",
+  "site_name": "Solid State Construction"
+}

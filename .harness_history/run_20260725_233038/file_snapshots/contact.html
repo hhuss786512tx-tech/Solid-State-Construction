@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Solid State Construction</title>
+  <meta name="description" content="Get in touch with our expert construction team.">
+  
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="Contact Us | Solid State Construction">
+  <meta property="og:description" content="Get in touch with our expert construction team.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Google Fonts & Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "name": "Solid State Construction",
+  "description": "Get in touch with our expert construction team.",
+  "url": "https://example.com"
+}
+  </script>
+</head>
+<body>
+  <!-- Sticky Header Navbar -->
+  <header>
+    <nav class="navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">S</div>
+        <span>Solid State Construction</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="">Home</a></li>
+        <li><a href="services.html" class="">Services & Pricing</a></li>
+        <li><a href="portfolio.html" class="">Portfolio</a></li>
+        <li><a href="about.html" class="">About Us</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" title="Toggle Light/Dark Theme">🌙</button>
+        <a href="#contact" class="btn btn-primary open-modal">Request Consultation</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">☰</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="subtitle">Get In Touch</span>
+          <h1>Let's Build Something <span class="gradient-text">Extraordinary</span></h1>
+        </div>
+        <div style="max-width: 680px; margin: 0 auto;" class="card reveal">
+          <form id="pageContactForm">
+            <div class="form-group">
+              <label for="contactName">Your Name / Organization</label>
+              <input type="text" id="contactName" class="form-control" required placeholder="John Doe">
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Work Email Address</label>
+              <input type="email" id="contactEmail" class="form-control" required placeholder="john@company.com">
+            </div>
+            <div class="form-group">
+              <label for="contactMsg">Project Scope / Location</label>
+              <textarea id="contactMsg" class="form-control" rows="5" required placeholder="Describe your commercial build or luxury residential project scope..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Consultation Request</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3 style="font-size: 1.5rem; color: var(--text-primary); margin-bottom: 1rem;">Solid State Construction</h3>
+          <p style="color: var(--text-secondary); max-width: 320px;">From ground-up commercial steel structures to luxury architectural estates, Solid State Construction delivers precision engineering, zero-incident safety, and guaranteed budget adherence.</p>
+        </div>
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Navigation</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.6rem;">
+            <li><a href="index.html" style="color: var(--text-secondary); text-decoration: none;">Home</a></li>
+            <li><a href="services.html" style="color: var(--text-secondary); text-decoration: none;">Services</a></li>
+            <li><a href="portfolio.html" style="color: var(--text-secondary); text-decoration: none;">Portfolio Showcase</a></li>
+            <li><a href="about.html" style="color: var(--text-secondary); text-decoration: none;">About Us</a></li>
+            <li><a href="contact.html" style="color: var(--text-secondary); text-decoration: none;">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 style="color: var(--text-primary); margin-bottom: 1rem;">Legal & Certifications</h4>
+          <p style="color: var(--text-muted); font-size: 0.92rem;">AGC Member • OSHA 30 Certified • LEED Gold Accredited • Licensed & Insured Class-A Commercial General Contractor.</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Solid State Construction. All rights reserved. Powered by AGY Rapid Web Harness.</p>
+      </div>
+    </div>
+  </footer>
+  <!-- Contact Modal Drawer -->
+  <div class="modal-overlay" id="contactModal">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModal">&times;</button>
+      <h2>Request Consultation with <span class="gradient-text">Solid State Construction</span></h2>
+      <p style="color: var(--text-secondary); margin-bottom: 2rem;">Fill out the form below to receive a custom project estimate and feasibility study within 2 hours.</p>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="modalName">Full Name / Company</label>
+          <input type="text" id="modalName" class="form-control" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label for="modalEmail">Work Email</label>
+          <input type="email" id="modalEmail" class="form-control" placeholder="john@company.com" required>
+        </div>
+        <div class="form-group">
+          <label for="modalMessage">Project Details / Location</label>
+          <textarea id="modalMessage" class="form-control" rows="4" placeholder="Describe your commercial build or luxury residential scope..." required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Submit Consultation Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
