@@ -1,7 +1,13 @@
 import React, { useState } from 'react';
 import { Terminal, Send, CheckCircle2 } from 'lucide-react';
+import { SERVICE_PAGES } from '../data/servicePages';
 
-export default function Footer({ setTab }: { setTab: (tab: string) => void }) {
+interface FooterProps {
+  setTab: (tab: string) => void;
+  navigateToService?: (slug: string) => void;
+}
+
+export default function Footer({ setTab, navigateToService }: FooterProps) {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -16,10 +22,16 @@ export default function Footer({ setTab }: { setTab: (tab: string) => void }) {
     }
   };
 
+  const handleServiceClick = (slug: string) => {
+    if (navigateToService) {
+      navigateToService(slug);
+    }
+  };
+
   return (
     <footer className="border-t border-slate-800 bg-brand-darker pt-16 pb-8 text-slate-400 technical-grid">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-5">
           
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-4">
@@ -32,8 +44,31 @@ export default function Footer({ setTab }: { setTab: (tab: string) => void }) {
               </span>
             </div>
             <p className="max-w-md text-sm text-slate-400 leading-relaxed font-sans mt-4">
-              Your local Leander construction and restoration specialists. Quality craftsmanship for water remediation, roofing, concrete, and remodeling.
+              Your local Leander construction and restoration specialists. Quality craftsmanship for water remediation, roofing, concrete, and plumbing.
             </p>
+            {/* RMP License — update with real number when Haider provides it */}
+            <p className="text-xs text-slate-600 mt-2 font-mono">
+              TSBPE RMP License #M-XXXXX
+            </p>
+          </div>
+
+          {/* Service Pages — SEO crawl discovery links */}
+          <div>
+            <h4 className="font-display text-sm font-black uppercase tracking-widest text-slate-100 mb-4 border-l-2 border-emerald-600 pl-3">
+              OUR SERVICES
+            </h4>
+            <ul className="space-y-2 font-sans text-sm">
+              {SERVICE_PAGES.map((svc) => (
+                <li key={svc.slug}>
+                  <button
+                    onClick={() => handleServiceClick(svc.slug)}
+                    className="text-slate-400 hover:text-emerald-500 transition-colors text-left cursor-pointer"
+                  >
+                    {svc.h1.split('—')[0].trim()}
+                  </button>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Quick Hub Links */}
@@ -51,10 +86,13 @@ export default function Footer({ setTab }: { setTab: (tab: string) => void }) {
               <li className="flex items-center gap-2">
                 <a href="mailto:contact@solidstateconstruction.com" className="text-slate-400 hover:text-emerald-500 transition-colors">contact@solidstateconstruction.com</a>
               </li>
+              <li className="flex items-center gap-2">
+                <a href="mailto:constructionsresponse@gmail.com" className="text-slate-400 hover:text-emerald-500 transition-colors text-xs">constructionsresponse@gmail.com</a>
+              </li>
             </ul>
           </div>
 
-          {/* Newsletter / Direct Feed Subscription */}
+          {/* CTA */}
           <div>
             <h4 className="font-display text-sm font-black uppercase tracking-widest text-slate-100 mb-4 border-l-2 border-emerald-600 pl-3">
               READY TO START?

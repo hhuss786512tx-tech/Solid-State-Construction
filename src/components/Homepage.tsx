@@ -58,7 +58,7 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75"></span>
               <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
             </span>
-            <span>Premier General Contractor & Restoration | Leander, TX</span>
+            <span>24/7 Emergency Response | (512) 595-2332</span>
           </motion.div>
 
           <motion.h1 
@@ -67,9 +67,7 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
             transition={{ delay: 0.1 }}
             className="font-display text-4xl sm:text-6xl font-black uppercase tracking-tight text-white leading-[1.1]"
           >
-            Solid-Built <span className="text-emerald-500">Construction.</span><br />
-            Guaranteed Timelines. <br className="hidden sm:inline" />
-            <span className="text-slate-200">Zero Hidden Costs.</span>
+            Solid State <span className="text-emerald-500">Construction</span>
           </motion.h1>
 
           <motion.p 
@@ -78,7 +76,7 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
             transition={{ delay: 0.2 }}
             className="mt-8 text-lg sm:text-xl text-slate-300 leading-relaxed max-w-3xl mx-auto"
           >
-            <strong className="text-white">Solid State Construction</strong> delivers licensed, rock-solid craftsmanship across Leander and surrounding areas. From emergency water remediation to roofing repair, structural concrete, and expert plumbing.
+            Water remediation, roofing, concrete, foundation repair & plumbing — on-site within 1 hour in Leander, Cedar Park, and North Austin.
           </motion.p>
 
           <motion.div 
@@ -154,7 +152,7 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
             <h2 className="font-display text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
               Top Rated in Leander
             </h2>
-            <p className="text-slate-400 font-bold mt-3 tracking-widest uppercase text-sm">5.0/5.0 Based on 50+ Local Reviews</p>
+            <p className="text-slate-400 font-bold mt-3 tracking-widest uppercase text-sm">5.0/5.0 — Real Reviews from Leander Neighbors</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

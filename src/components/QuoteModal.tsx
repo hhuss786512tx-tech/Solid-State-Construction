@@ -181,6 +181,20 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
     setTimeout(() => { if (document.body.contains(fsForm)) document.body.removeChild(fsForm); }, 1000);
 
     setSavedSuccess(true);
+
+    // Fire conversion tracking + navigate to thank-you for destination-based conversion rules
+    if (typeof window !== 'undefined' && (window as any).sscTrackConversion) {
+      (window as any).sscTrackConversion('form');
+    }
+    // Also fire gtag directly as fallback
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      const gtag = (window as any).gtag;
+      const ads = (window as any).SSC_ADS;
+      if (ads && ads.formLabel) {
+        gtag('event', 'conversion', { send_to: ads.formLabel });
+      }
+    }
+
     setTimeout(() => {
       setSavedSuccess(false);
       setStep(3);

@@ -6,15 +6,39 @@
   <!-- Homepage -->
   <url>
     <loc>https://solidstatesconstruction.com/</loc>
-    <lastmod>2026-07-28</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
   </url>
-  <!-- Gallery Page -->
+  <!-- Service Landing Pages -->
   <url>
-    <loc>https://solidstatesconstruction.com/gallery</loc>
-    <lastmod>2026-07-28</lastmod>
+    <loc>https://solidstatesconstruction.com/services/water-remediation</loc>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.80</priority>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://solidstatesconstruction.com/services/plumbing</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://solidstatesconstruction.com/services/roofing</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://solidstatesconstruction.com/services/concrete</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://solidstatesconstruction.com/services/excavation</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>
