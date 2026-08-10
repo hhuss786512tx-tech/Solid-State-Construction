@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
       "error",
       function onError() {
         if (this.dataset.fallbackApplied) return;
+        // Never substitute stock imagery for a real project photo served from assets/.
+        // A broken real photo is honest; a random stock stand-in misrepresents our work.
+        if (!/^https?:/i.test(this.getAttribute("src") || "")) return;
         this.dataset.fallbackApplied = "true";
         const match = this.src.match(/(\d+)\/(\d+)/);
         const w = match ? match[1] : 1200;
@@ -40,6 +43,47 @@ document.addEventListener("DOMContentLoaded", () => {
     revealTargets.forEach((el) => observer.observe(el));
   } else {
     revealTargets.forEach((el) => el.classList.add("is-visible"));
+  }
+
+  // Gallery b-roll: only play a clip while it is actually on screen, and only fetch
+  // it at that point (the markup ships preload="none"). Keeps three background videos
+  // from decoding at once or costing anything on a page the visitor never scrolls.
+  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const lazyVideos = document.querySelectorAll("video[data-autoplay-in-view]");
+
+  if (lazyVideos.length && !reducedMotion.matches) {
+    if ("IntersectionObserver" in window) {
+      const videoObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target;
+            if (entry.isIntersecting) {
+              if (video.preload === "none") video.preload = "auto";
+              // play() rejects on browsers that block autoplay — poster stays, which is fine.
+              video.play().catch(() => {});
+            } else {
+              video.pause();
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      lazyVideos.forEach((video) => videoObserver.observe(video));
+    } else {
+      lazyVideos.forEach((video) => {
+        video.preload = "auto";
+        video.play().catch(() => {});
+      });
+    }
+  }
+
+  // Reduced motion: stop the hero loop too. CSS hides it, but a hidden <video> with
+  // autoplay would still decode frames in some browsers.
+  if (reducedMotion.matches) {
+    document.querySelectorAll("video.motion-video").forEach((video) => {
+      video.autoplay = false;
+      video.pause();
+    });
   }
 
   // Sticky nav: add a stronger shadow/blur once the page has scrolled.

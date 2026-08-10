@@ -23,13 +23,13 @@
 <meta property="og:description" content="Concrete, tunneling, plumbing, roofing & water remediation for Austin & Central Texas. Licensed, insured, and trusted since 2011.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.solidstateconstruction.com/">
-<meta property="og:image" content="https://picsum.photos/seed/ssc-index-1-construction-worksite/1200/630">
+<meta property="og:image" content="https://www.solidstateconstruction.com/assets/img/og-cover.jpg">
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="assets/tailwind-config.js"></script>
 <link rel="stylesheet" href="assets/styles.css">
 <script defer src="assets/animations.js"></script>
 <script type="application/ld+json">
-{ "@context":"https://schema.org","@type":"GeneralContractor","name":"Solid State Construction","image":"https://picsum.photos/seed/ssc-index-2-construction/1200/630","telephone":"+1-512-595-2332","email":"contact@solidstatesconstruction.com","address":{"@type":"PostalAddress","streetAddress":"4521 Rigsby Industrial Loop","addressLocality":"Austin","addressRegion":"TX","postalCode":"78744","addressCountry":"US"},"areaServed":["Austin, TX","Round Rock, TX","Cedar Park, TX","Georgetown, TX","San Marcos, TX","Pflugerville, TX"],"url":"https://www.solidstateconstruction.com/","priceRange":"$$","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"18:00"}}
+{ "@context":"https://schema.org","@type":"GeneralContractor","name":"Solid State Construction","image":"https://www.solidstateconstruction.com/assets/img/og-cover.jpg","telephone":"+1-512-595-2332","email":"contact@solidstatesconstruction.com","address":{"@type":"PostalAddress","streetAddress":"4521 Rigsby Industrial Loop","addressLocality":"Austin","addressRegion":"TX","postalCode":"78744","addressCountry":"US"},"areaServed":["Austin, TX","Round Rock, TX","Cedar Park, TX","Georgetown, TX","San Marcos, TX","Pflugerville, TX"],"url":"https://www.solidstateconstruction.com/","priceRange":"$$","openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"07:00","closes":"18:00"}}
 </script>
 </head>
 <body class="bg-ink-900 text-white font-sans antialiased">
@@ -60,6 +60,7 @@
           </div>
         </div>
 
+        <a href="index.html#gallery" class="text-sm font-medium text-white/80 hover:text-brand-400 transition-colors">Gallery</a>
         <a href="about.html" class="text-sm font-medium text-white/80 hover:text-brand-400 transition-colors">About</a>
         <a href="contact.html" class="text-sm font-medium text-white/80 hover:text-brand-400 transition-colors">Contact</a>
       </div>
@@ -84,6 +85,7 @@
       <a href="services/plumbing.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Plumbing</a>
       <a href="services/roofing.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Roofing</a>
       <a href="services/water-remediation.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Water Remediation</a>
+      <a href="index.html#gallery" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Gallery</a>
       <a href="about.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">About</a>
       <a href="contact.html" class="px-2 py-2.5 text-sm text-white/85 hover:text-brand-400">Contact</a>
       <a href="tel:+15125952332" class="px-2 py-2.5 text-sm font-semibold text-brand-400">(512) 595-2332</a>
@@ -98,7 +100,15 @@
   <!-- 1. HERO -->
   <section class="relative min-h-[88vh] flex items-center overflow-hidden">
     <div class="img-frame absolute inset-0 rounded-none">
-      <img src="https://picsum.photos/seed/ssc-index-3-construction-worksite/1920/1080" alt="Construction crew working on a job site in Austin, TX" class="w-full h-full">
+      <video
+        class="motion-video"
+        autoplay muted loop playsinline
+        preload="metadata"
+        poster="assets/img/hero-concrete-compaction-poster.jpg"
+        aria-hidden="true">
+        <source src="assets/video/hero-concrete-compaction.mp4" type="video/mp4">
+      </video>
+      <img src="assets/img/hero-concrete-compaction-poster.jpg" alt="Solid State Construction crew compacting a sand base along a new concrete edge" class="motion-still w-full h-full">
     </div>
     <div class="absolute inset-0 bg-gradient-to-t from-ink-950 via-ink-950/70 to-ink-950/30"></div>
 
@@ -304,8 +314,107 @@
     </div>
   </section>
 
-  <!-- 5. TESTIMONIALS -->
-  <section class="py-24 lg:py-32">
+  <!-- 5. GALLERY — real job-site footage and before/after stills -->
+  <section id="gallery" class="py-24 lg:py-32 scroll-mt-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+      <div class="max-w-2xl mx-auto text-center mb-16 reveal" data-delay="0">
+        <span class="text-brand-400 text-sm font-semibold tracking-wide uppercase">Our Work</span>
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold text-white tracking-tightest mt-3 mb-5">From the Job Site</h2>
+        <p class="text-white/65 leading-relaxed">Real crews, real projects across Austin and Central Texas — no stock photography.</p>
+      </div>
+
+      <!-- Before / after pair -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+        <figure class="card surface-elevated rounded-xl overflow-hidden reveal" data-delay="0">
+          <div class="img-frame h-64 sm:h-80 rounded-none relative">
+            <span class="ba-label ba-label--before">Before</span>
+            <img
+              src="assets/img/before-lawn-install-800.jpg"
+              srcset="assets/img/before-lawn-install-800.jpg 800w, assets/img/before-lawn-install-1600.jpg 1600w"
+              sizes="(min-width: 768px) 50vw, 100vw"
+              width="1600" height="1200" loading="lazy" decoding="async"
+              alt="Front yard stripped to bare soil with pallets of fresh sod staged on the driveway">
+          </div>
+          <figcaption class="p-7">
+            <h3 class="font-display text-xl font-semibold text-white mb-2.5">Grading &amp; Site Prep</h3>
+            <p class="text-sm text-white/65 leading-relaxed">The yard cleared and graded, with sod staged and ready to lay.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card surface-elevated rounded-xl overflow-hidden reveal" data-delay="100">
+          <div class="img-frame h-64 sm:h-80 rounded-none relative">
+            <span class="ba-label ba-label--after">After</span>
+            <img
+              src="assets/img/after-lawn-install-800.jpg"
+              srcset="assets/img/after-lawn-install-800.jpg 800w, assets/img/after-lawn-install-1600.jpg 1600w"
+              sizes="(min-width: 768px) 50vw, 100vw"
+              width="1600" height="1200" loading="lazy" decoding="async"
+              alt="The same front yard finished with fresh sod laid edge to edge and trimmed tree rings">
+          </div>
+          <figcaption class="p-7">
+            <h3 class="font-display text-xl font-semibold text-white mb-2.5">Finished Install</h3>
+            <p class="text-sm text-white/65 leading-relaxed">Full sod coverage, clean edges at the walk, and stone tree rings reset.</p>
+          </figcaption>
+        </figure>
+      </div>
+
+      <!-- Job-site b-roll -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <figure class="card surface-elevated rounded-xl overflow-hidden reveal" data-delay="0">
+          <div class="img-frame h-56 rounded-none">
+            <video class="motion-video" muted loop playsinline preload="none"
+                   poster="assets/img/work-base-preparation-poster.jpg"
+                   data-autoplay-in-view aria-hidden="true">
+              <source src="assets/video/work-base-preparation.mp4" type="video/mp4">
+            </video>
+            <img src="assets/img/work-base-preparation-poster.jpg" class="motion-still w-full h-full" loading="lazy" decoding="async"
+                 alt="Plate compactor tamping a sand base against a poured concrete edge">
+          </div>
+          <figcaption class="p-7">
+            <h3 class="font-display text-xl font-semibold text-white mb-2.5">Base Preparation</h3>
+            <p class="text-sm text-white/65 leading-relaxed">Compacting the sand base before setting pavers — the step that decides whether a surface stays level.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card surface-elevated rounded-xl overflow-hidden reveal" data-delay="100">
+          <div class="img-frame h-56 rounded-none">
+            <video class="motion-video" muted loop playsinline preload="none"
+                   poster="assets/img/work-material-haul-poster.jpg"
+                   data-autoplay-in-view aria-hidden="true">
+              <source src="assets/video/work-material-haul.mp4" type="video/mp4">
+            </video>
+            <img src="assets/img/work-material-haul-poster.jpg" class="motion-still w-full h-full" loading="lazy" decoding="async"
+                 alt="Crew loading gravel into a lined truck bed during site cleanup">
+          </div>
+          <figcaption class="p-7">
+            <h3 class="font-display text-xl font-semibold text-white mb-2.5">Material Haul-Off</h3>
+            <p class="text-sm text-white/65 leading-relaxed">Spoil and surplus aggregate loaded out daily so the site stays clear and safe.</p>
+          </figcaption>
+        </figure>
+
+        <figure class="card surface-elevated rounded-xl overflow-hidden reveal" data-delay="200">
+          <div class="img-frame h-56 rounded-none">
+            <video class="motion-video" muted loop playsinline preload="none"
+                   poster="assets/img/work-site-grading-poster.jpg"
+                   data-autoplay-in-view aria-hidden="true">
+              <source src="assets/video/work-site-grading.mp4" type="video/mp4">
+            </video>
+            <img src="assets/img/work-site-grading-poster.jpg" class="motion-still w-full h-full" loading="lazy" decoding="async"
+                 alt="Worker sweeping joint sand across a finished concrete surface">
+          </div>
+          <figcaption class="p-7">
+            <h3 class="font-display text-xl font-semibold text-white mb-2.5">Finishing &amp; Cleanup</h3>
+            <p class="text-sm text-white/65 leading-relaxed">Joint sand swept in and the surface swept down before the crew calls it done.</p>
+          </figcaption>
+        </figure>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. TESTIMONIALS -->
+  <section class="py-24 lg:py-32 surface-base border-y border-ink-700">
     <div class="max-w-7xl mx-auto px-6 lg:px-8">
       <div class="max-w-2xl mx-auto text-center mb-16 reveal" data-delay="0">
         <span class="text-brand-400 text-sm font-semibold tracking-wide uppercase">Testimonials</span>
@@ -355,7 +464,7 @@
     </div>
   </section>
 
-  <!-- 6. MID-PAGE CONVERSION CTA -->
+  <!-- 7. MID-PAGE CONVERSION CTA -->
   <section class="reveal-scale" data-delay="0">
     <div class="bg-gradient-to-br from-brand-900 via-brand-950 to-ink-950 border-y border-ink-700">
       <div class="max-w-5xl mx-auto px-6 lg:px-8 py-20 text-center">

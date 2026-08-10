@@ -134,6 +134,49 @@ select:focus-visible {
   background: linear-gradient(to top, rgba(5,7,10,0.6) 0%, rgba(46,114,245,0.15) 100%);
 }
 
+/* Video b-roll — mirrors .img-frame img so clips inherit the same crop and overlay.
+   No hover scale here: background footage shouldn't react to the pointer. */
+.img-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Reduced-motion: autoplaying b-roll is swapped for its poster still.
+   animations.js also skips play() entirely when the query matches. */
+.motion-still { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .motion-video { display: none; }
+  .motion-still { display: block; }
+}
+
+/* Before/after pair — the corner label that marks which state a photo shows */
+.ba-label {
+  position: absolute;
+  top: 0.875rem;
+  left: 0.875rem;
+  z-index: 2;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  backdrop-filter: blur(8px);
+}
+.ba-label--before {
+  background-color: rgba(27,33,43,0.82);
+  color: #F6F8FB;
+  border: 1px solid #2A313D;
+}
+.ba-label--after {
+  background-color: rgba(46,114,245,0.85);
+  color: #FFFFFF;
+  border: 1px solid #5A93FF;
+}
+
 /* Scroll-reveal base state — animations.js toggles .is-visible via IntersectionObserver */
 .reveal {
   opacity: 0;
