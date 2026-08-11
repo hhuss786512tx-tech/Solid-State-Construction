@@ -10,6 +10,82 @@ interface HomepageProps {
   setSelectedHubId?: (id: string) => void;
 }
 
+type JobSiteItem = {
+  kind: 'video' | 'photo';
+  src: string;
+  poster?: string;
+  srcSet?: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+  title: string;
+  caption: string;
+};
+
+// Real job-site media. Captions describe only what is visible in each shot —
+// none of these are tied to a specific client or case study.
+const jobSiteMedia: JobSiteItem[] = [
+  {
+    kind: 'video',
+    src: '/media/work-tunnel-shoring.mp4',
+    poster: '/media/work-tunnel-shoring-poster.jpg',
+    title: 'Tunnel Shoring',
+    caption:
+      'Timber cribbing and forced-air ventilation down an access tunnel — reaching the line without opening the slab above.',
+  },
+  {
+    kind: 'video',
+    src: '/media/work-bedding-sand.mp4',
+    poster: '/media/work-bedding-sand-poster.jpg',
+    title: 'Bedding Sand by Hand',
+    caption:
+      "Sand moved bucket by bucket and screeded out by hand where a machine can't reach the edge.",
+  },
+  {
+    kind: 'video',
+    src: '/media/work-driveway-rebuild.mp4',
+    poster: '/media/work-driveway-rebuild-poster.jpg',
+    title: 'Driveway Rebuild',
+    caption:
+      'The full run of a driveway job — material staged, bed prepared, and the drive kept passable throughout.',
+  },
+  {
+    kind: 'photo',
+    src: '/media/work-concrete-cut-repair-800.jpg',
+    srcSet:
+      '/media/work-concrete-cut-repair-800.jpg 800w, /media/work-concrete-cut-repair-1600.jpg 1600w',
+    width: 1600,
+    height: 1200,
+    alt: 'A narrow strip of fresh concrete poured back into a cut running the length of an existing driveway',
+    title: 'Driveway Cut Repair',
+    caption: 'A utility cut poured back flush with the existing drive and left to cure behind tape.',
+  },
+  {
+    // Carries an EXIF orientation flag: the browser renders this one portrait,
+    // so it is declared 1200x1600 even though the stored buffer reads landscape.
+    kind: 'photo',
+    src: '/media/work-utility-trench-800.jpg',
+    srcSet:
+      '/media/work-utility-trench-800.jpg 800w, /media/work-utility-trench-1600.jpg 1600w',
+    width: 1200,
+    height: 1600,
+    alt: 'New white PVC line bedded along the floor of an open trench with existing services crossing above it',
+    title: 'Utility Line Trench',
+    caption:
+      'A new line bedded in an open trench, with the services already in the ground exposed and worked around.',
+  },
+  {
+    kind: 'photo',
+    src: '/media/work-spoil-haul-800.jpg',
+    srcSet: '/media/work-spoil-haul-800.jpg 800w, /media/work-spoil-haul-1600.jpg 1600w',
+    width: 1600,
+    height: 1200,
+    alt: 'Crew member loading excavated soil into a dump trailer hitched behind a truck on a residential street',
+    title: 'Spoil Haul-Off',
+    caption: 'Excavated material loaded straight out to the trailer rather than left sitting on the street.',
+  },
+];
+
 export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
   const coreServices = [
     {
@@ -46,8 +122,34 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
       </div>
 
       {/* Hero Section */}
-      <section className="relative px-4 pt-24 pb-20 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-4xl text-center">
+      <section className="relative px-4 pt-24 pb-20 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Job-site b-roll behind the hero copy. Muted + decorative, so it carries
+            no alt text and is hidden from assistive tech; the poster covers
+            reduced-motion and any browser that blocks autoplay. */}
+        <div className="pointer-events-none absolute inset-0 z-0">
+          <video
+            className="h-full w-full object-cover motion-reduce:hidden"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster="/media/hero-crew-material-chain-poster.jpg"
+            aria-hidden="true"
+          >
+            <source src="/media/hero-crew-material-chain.mp4" type="video/mp4" />
+          </video>
+          <img
+            src="/media/hero-crew-material-chain-poster.jpg"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 hidden h-full w-full object-cover motion-reduce:block"
+          />
+          <div className="absolute inset-0 bg-brand-darker/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-darker/90 via-brand-darker/40 to-brand-darker" />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-4xl text-center">
           
           <motion.div 
             initial={{ opacity: 0, y: -10 }}
@@ -140,6 +242,83 @@ export default function Homepage({ setTab, onRequestQuote }: HomepageProps) {
                   Learn More &rarr;
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Job Site Media Section */}
+      <section className="px-4 py-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-16">
+            <h2 className="font-display text-3xl sm:text-4xl font-black uppercase tracking-tight text-white">
+              From the Job Site
+            </h2>
+            <p className="mt-4 text-slate-400 max-w-xl mx-auto">
+              Our own crews on our own projects — every clip and photo below was shot on site.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {jobSiteMedia.map((item, i) => (
+              <motion.figure
+                key={item.src}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-80px' }}
+                transition={{ delay: (i % 3) * 0.1 }}
+                className="overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/50"
+              >
+                <div className="h-56 overflow-hidden bg-slate-950">
+                  {item.kind === 'video' ? (
+                    <video
+                      className="h-full w-full object-cover"
+                      muted
+                      loop
+                      playsInline
+                      preload="none"
+                      poster={item.poster}
+                      aria-hidden="true"
+                      ref={(el) => {
+                        if (!el || el.dataset.observed) return;
+                        el.dataset.observed = 'true';
+                        // Only fetch and play a clip once it is actually on screen.
+                        const io = new IntersectionObserver(
+                          ([entry]) => {
+                            if (entry.isIntersecting) {
+                              el.play().catch(() => {});
+                            } else {
+                              el.pause();
+                            }
+                          },
+                          { threshold: 0.25 }
+                        );
+                        io.observe(el);
+                      }}
+                    >
+                      <source src={item.src} type="video/mp4" />
+                    </video>
+                  ) : (
+                    <img
+                      src={item.src}
+                      srcSet={item.srcSet}
+                      sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                      width={item.width}
+                      height={item.height}
+                      loading="lazy"
+                      decoding="async"
+                      alt={item.alt}
+                      className="h-full w-full object-cover"
+                    />
+                  )}
+                </div>
+                <figcaption className="p-6">
+                  <h3 className="font-display text-lg font-black uppercase tracking-tight text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-slate-400 leading-relaxed">{item.caption}</p>
+                </figcaption>
+              </motion.figure>
             ))}
           </div>
         </div>
