@@ -192,8 +192,14 @@
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="img-frame reveal-scale" data-delay="0">
-          <img src="https://picsum.photos/seed/ssc-services-tunneling-3-construction-excavator/800/900" alt="Excavator operating at an underground utility tunneling job site" class="w-full h-72 object-cover">
+        <div class="img-frame reveal-scale h-64 sm:h-full" data-delay="0">
+          <video class="motion-video" muted loop playsinline preload="none"
+                 poster="../assets/img/work-tunnel-shoring-poster.jpg"
+                 data-autoplay-in-view aria-hidden="true">
+            <source src="../assets/video/work-tunnel-shoring.mp4" type="video/mp4">
+          </video>
+          <img src="../assets/img/work-tunnel-shoring-poster.jpg" class="motion-still w-full h-full" loading="lazy" decoding="async"
+               alt="Timber-shored underground access tunnel with orange ventilation ducting running along the ceiling">
         </div>
         <div class="img-frame reveal-scale" data-delay="80">
           <img src="https://picsum.photos/seed/ssc-services-tunneling-4-underground-pipeline/800/900" alt="Underground pipeline section being installed via trenchless boring" class="w-full h-72 object-cover">
